@@ -2,6 +2,9 @@ import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 import getStripe from '../../utils/stripejs'
 import { IoCartOutline } from "react-icons/io5";
+import { connect } from 'react-redux'
+
+import { toggleDarkMode } from '../../store/app'
 
 const cardStyles = {
   display: 'flex',
@@ -42,7 +45,7 @@ const formatPrice = (amount, currency) => {
   return numberFormat.format(price)
 }
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, dispatch, isDarkMode }) => {
   const [loading, setLoading] = useState(false)
 
   const productInfo = product ? product : null
@@ -57,21 +60,22 @@ const ProductCard = ({ product }) => {
 
   const handleSubmit = async event => {
     event.preventDefault()
-    setLoading(true)
+    // setLoading(true)
+    dispatch(toggleDarkMode(!isDarkMode))
 
-    const price = new FormData(event.target).get('priceSelect')
-    const stripe = await getStripe()
-    const { error } = await stripe.redirectToCheckout({
-      mode: 'payment',
-      lineItems: [{ price, quantity: 1 }],
-      successUrl: `${window.location.origin}/page-2/`,
-      cancelUrl: `${window.location.origin}/advanced`,
-    })
+    // const price = new FormData(event.target).get('priceSelect')
+    // const stripe = await getStripe()
+    // const { error } = await stripe.redirectToCheckout({
+    //   mode: 'payment',
+    //   lineItems: [{ price, quantity: 1 }],
+    //   successUrl: `${window.location.origin}/page-2/`,
+    //   cancelUrl: `${window.location.origin}/advanced`,
+    // })
 
-    if (error) {
-      console.warn('Error:', error)
-      setLoading(false)
-    }
+    // if (error) {
+    //   console.warn('Error:', error)
+    //   setLoading(false)
+    // }
   }
 
   return (
@@ -124,4 +128,6 @@ const ProductCard = ({ product }) => {
   )
 }
 
-export default ProductCard
+export default connect(state => ({
+  isDarkMode: state.app.isDarkMode
+}), null)(ProductCard)

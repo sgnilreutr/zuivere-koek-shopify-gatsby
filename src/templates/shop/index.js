@@ -6,7 +6,6 @@ import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 import Products from '../../components/Products/Products'
-import { useSelector } from "react-redux"
 
 const DesktopWrapper = styled.div`
   @media only screen and (max-width: 480px) {
@@ -45,8 +44,6 @@ const Shop = props => {
       page: { pageHeaderText1, pageHeaderText2, pageHeaderImage },
     },
   } = props
-
-  const products = useSelector((state) => state)
 
 //   const heroImage = {
 //     img: hero.gatsbyImageData,
