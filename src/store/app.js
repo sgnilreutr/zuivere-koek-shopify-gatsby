@@ -1,17 +1,25 @@
 const initialState = {
-  isDarkMode: false,
-};
+  basketItems: [],
+}
 
-const TOGGLE_DARKMODE = 'TOGGLE_DARKMODE';
-export const toggleDarkMode = isDarkMode => ({
-  type: TOGGLE_DARKMODE, isDarkMode
-});
+const ACTION_TYPE = {
+  ADD_ITEM_BASKET: 'ADD_ITEM_BASKET',
+  REMOVE_ITEM_BASKET: 'REMOVE_ITEM_BASKET',
+}
+
+
+export const addItemBasket = (selectedProduct) => ({
+  type: ACTION_TYPE.ADD_ITEM_BASKET,
+  basketItems: selectedProduct,
+})
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_DARKMODE:
-      return { ...state, isDarkMode: action.isDarkMode };
+    case ACTION_TYPE.ADD_ITEM_BASKET:
+      return { ...state, basketItems: [...state.basketItems, action.basketItems]}
+    case ACTION_TYPE.REMOVE_ITEM_BASKET:
+      return { ...state, isDarkMode: action.isDarkMode }
     default:
-      return state;
+      return state
   }
-};
+}

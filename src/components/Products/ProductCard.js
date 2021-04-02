@@ -1,10 +1,10 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 import getStripe from '../../utils/stripejs'
-import { IoCartOutline } from "react-icons/io5";
+import { IoCartOutline } from 'react-icons/io5'
 import { connect } from 'react-redux'
 
-import { toggleDarkMode } from '../../store/app'
+import { addItemBasket } from '../../store/app'
 
 const cardStyles = {
   display: 'flex',
@@ -45,7 +45,7 @@ const formatPrice = (amount, currency) => {
   return numberFormat.format(price)
 }
 
-const ProductCard = ({ product, dispatch, isDarkMode }) => {
+const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
 
   const productInfo = product ? product : null
@@ -55,13 +55,17 @@ const ProductCard = ({ product, dispatch, isDarkMode }) => {
     // alt: productInfo?.image?.altText || `featured-image`,
   }
 
-  //   console.log(product)
+    // console.log(product)
   //   console.log(productImage.img)
 
   const handleSubmit = async event => {
     event.preventDefault()
     // setLoading(true)
-    dispatch(toggleDarkMode(!isDarkMode))
+    const selectedProduct = {
+      id: product.id,
+      name: product.name,
+    }
+    dispatch(addItemBasket(selectedProduct))
 
     // const price = new FormData(event.target).get('priceSelect')
     // const stripe = await getStripe()
@@ -128,6 +132,9 @@ const ProductCard = ({ product, dispatch, isDarkMode }) => {
   )
 }
 
-export default connect(state => ({
-  isDarkMode: state.app.isDarkMode
-}), null)(ProductCard)
+export default connect(
+  state => ({
+    basketItems: state.app.basketItems,
+  }),
+  null
+)(ProductCard)

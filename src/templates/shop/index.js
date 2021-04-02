@@ -45,10 +45,10 @@ const Shop = props => {
     },
   } = props
 
-//   const heroImage = {
-//     img: hero.gatsbyImageData,
-//     // alt: homepageACF.heroImage?.altText || ``,
-//   }
+  //   const heroImage = {
+  //     img: hero.gatsbyImageData,
+  //     // alt: homepageACF.heroImage?.altText || ``,
+  //   }
 
   // const servicesImage = {
   //   img: homepageACF.servicesImage?.localFile?.childImageSharp?.gatsbyImageData,
@@ -69,7 +69,7 @@ const Shop = props => {
               className="hero-image full-bleed"
             />
           )} */}
-            <Products />
+          <Products />
         </>
       ) : (
         <div>Something went wrong</div>

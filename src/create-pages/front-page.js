@@ -80,7 +80,6 @@ module.exports = async ({ actions, graphql }) => {
   })
 }
 
-
 // query GET_FRONT_PAGE {
 //   page: contentfulHomepage {
 //     heroHeader

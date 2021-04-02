@@ -29,7 +29,7 @@ const Products = () => {
                   id
                   name
                   localFiles {
-                    childImageSharp { 
+                    childImageSharp {
                       gatsbyImageData
                     }
                   }
