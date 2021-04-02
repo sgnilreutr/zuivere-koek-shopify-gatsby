@@ -1,6 +1,7 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 import getStripe from '../../utils/stripejs'
+import { IoCartOutline } from "react-icons/io5";
 
 const cardStyles = {
   display: 'flex',
@@ -51,8 +52,8 @@ const ProductCard = ({ product }) => {
     // alt: productInfo?.image?.altText || `featured-image`,
   }
 
-//   console.log(product)
-//   console.log(productImage.img)
+  //   console.log(product)
+  //   console.log(productImage.img)
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -116,7 +117,7 @@ const ProductCard = ({ product }) => {
               : buttonStyles
           }
         >
-          BUY ME
+          <IoCartOutline />
         </button>
       </form>
     </div>

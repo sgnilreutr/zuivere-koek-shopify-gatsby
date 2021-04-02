@@ -1,14 +1,14 @@
-import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import * as React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import styled from '@emotion/styled'
+
+const HeaderWrapper = styled.header`
+  background-color: hsl(234, 47%, 31%);
+`
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+  <HeaderWrapper>
     <div
       style={{
         margin: `0 auto`,
@@ -28,7 +28,7 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
-  </header>
+  </HeaderWrapper>
 )
 
 Header.propTypes = {

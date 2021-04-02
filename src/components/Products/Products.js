@@ -1,6 +1,9 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import ProductCard from './ProductCard'
+import { connect } from 'react-redux'
+
+import { toggleDarkMode } from '../../store/app'
 
 const containerStyles = {
   display: 'flex',
@@ -10,7 +13,7 @@ const containerStyles = {
   padding: '1rem 0 1rem 0',
 }
 
-const Products = () => {
+const Products = ({isDarkMode, dispatch}) => {
   return (
     <StaticQuery
       query={graphql`
@@ -56,6 +59,8 @@ const Products = () => {
             {Object.keys(products).map(key => (
               <ProductCard key={products[key].id} product={products[key]} />
             ))}
+            <button
+              style={isDarkMode ? { background: 'black', color: 'white' } : null} onClick={() => dispatch(toggleDarkMode(!isDarkMode))}>Dark mode {isDarkMode ? 'on' : 'off'}</button>
           </div>
         )
       }}
@@ -63,4 +68,6 @@ const Products = () => {
   )
 }
 
-export default Products
+export default connect(state => ({
+  isDarkMode: state.app.isDarkMode
+}), null)(Products)
