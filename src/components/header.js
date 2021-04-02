@@ -2,6 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
+import Menu from './Menu'
 
 const HeaderWrapper = styled.header`
   background-color: hsl(234, 47%, 31%);
@@ -28,6 +29,7 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
+    <Menu />
   </HeaderWrapper>
 )
 

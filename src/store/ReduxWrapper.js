@@ -5,6 +5,7 @@ import rootReducer from '.'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 const createStore = () => reduxCreateStore(rootReducer, composeEnhancers())
+// const createStore = () => reduxCreateStore(rootReducer)
 
 export default ({ element }) => (
   <Provider store={createStore()}>{element}</Provider>
