@@ -22,17 +22,16 @@ const Delete = styled.span`
   cursor: pointer;
 `
 
-const Cart = ({ basketItems, dispatch, useSelector, total }) => {
-//    const isLoading = useSelector((state) => state.isLoading)
+const Cart = ({ basketItems, dispatch, isLoading, total }) => {
+    const [loading, setLoading] = React.useState(isLoading)
 
   const removeItem = basketItem => {
     dispatch(removeItemBasket(basketItem))
   }
     
     const checkoutBasket = async (basketItems) => {
-        // isLoading(true)
+        setLoading(true)
         const lineItems = basketItems.map((item) => ({price: item.priceID, quantity: item.quantity}))
-        console.log('lineItems', lineItems)
         const stripe = await getStripe()
         const { error } = await stripe.redirectToCheckout({
           mode: 'payment',
@@ -41,10 +40,10 @@ const Cart = ({ basketItems, dispatch, useSelector, total }) => {
           cancelUrl: `${window.location.origin}/shop`,
         })
 
-        // if (error) {
-        //   console.warn('Error:', error)
-        //   isLoading(false)
-        // }
+        if (error) {
+          console.warn('Error:', error)
+          setLoading(false)
+        }
     }
 
   return (
@@ -61,7 +60,7 @@ const Cart = ({ basketItems, dispatch, useSelector, total }) => {
           <p>Estimated Total
             {basketItems.length > 0 && formatPrice(total, basketItems[0].currency)}
           </p>
-          <div onClick={() => checkoutBasket(basketItems)}><p>{CHECKOUT_TEXT}</p></div>
+          <button onClick={() => checkoutBasket(basketItems)} disabled={loading || basketItems.length < 1}><p>{CHECKOUT_TEXT}</p></button>
     </div>
   )
 }
@@ -70,6 +69,7 @@ export default connect(
   state => ({
     basketItems: state.app.basketItems,
     total: state.app.total,
+    isLoading: state.app.isLoading
   }),
   null
 )(Cart)
