@@ -21,7 +21,6 @@ const Delete = styled.span`
 
 const Cart = ({ basketItems, dispatch }) => {
   const removeItem = basketItem => {
-    console.log('Remove item', basketItem)
     dispatch(removeItemBasket(basketItem))
   }
 
