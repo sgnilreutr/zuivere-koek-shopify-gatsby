@@ -33,43 +33,52 @@ export const substractQuantity = selectedProduct => ({
 export default (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPE.ADD_ITEM_BASKET:
-      let basketItem =
+      let newBasketItem =
         state.basketItems.length > 0
-          ? (state.basketItems.find(item => item.id === action.basketItems.id) === undefined ? action.basketItems : state.basketItems.find(item => item.id === action.basketItems.id))
+          ? state.basketItems.find(
+              item => item.id === action.basketItems.id
+            ) === undefined
+            ? action.basketItems
+            : state.basketItems.find(item => item.id === action.basketItems.id)
           : action.basketItems
-      // let basketItem = state.basketItems.length > 0 ? state.basketItems.map(item.find(item => item.id === action.id)) : action.basketItems
-      let existingItem = state.basketItems.find(item => action.basketItems.id === item.id)
+      let existingItem = state.basketItems.find(
+        item => action.basketItems.id === item.id
+      )
       if (existingItem) {
-        basketItem.quantity += 1
+        newBasketItem.quantity += 1
         return {
           ...state,
           total: state.total + existingItem.price,
         }
       } else {
-        basketItem.quantity = 1
-        let newTotal = state.total + basketItem.price
+        newBasketItem.quantity = 1
+        let newTotal = state.total + newBasketItem.price
 
         return {
           ...state,
-          basketItems: [...state.basketItems, basketItem],
+          basketItems: [...state.basketItems, newBasketItem],
           total: newTotal,
         }
       }
-    // return {
-    //   ...state,
-    //   basketItems:
-    //   [...state.basketItems, action.basketItems]
-    // }
+
     case ACTION_TYPE.REMOVE_ITEM_BASKET:
+      let removeBasketItem = state.basketItems.find(item => item.id === action.basketItems.id)
+      let updatedBasketItems = state.basketItems.filter(item => item.id !== action.basketItems.id)
+      
+      console.log(removeBasketItem)
+      let newTotal = state.total - (removeBasketItem.price * removeBasketItem.quantity)
       return {
         ...state,
-        basketItems: [...state.basketItems, action.basketItems],
+        basketItems: updatedBasketItems,
+        total: newTotal
       }
+    
     case ACTION_TYPE.ADD_QUANTITY:
       return {
         ...state,
         basketItems: [...state.basketItems, action.basketItems],
       }
+    
     case ACTION_TYPE.SUB_QUANTITY:
       return {
         ...state,
