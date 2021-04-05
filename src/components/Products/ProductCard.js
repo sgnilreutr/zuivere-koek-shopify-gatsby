@@ -1,6 +1,6 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
-import getStripe from '../../utils/stripejs'
+
 import { IoCartOutline } from 'react-icons/io5'
 import { connect } from 'react-redux'
 
@@ -36,16 +36,6 @@ const buttonDisabledStyles = {
   cursor: 'not-allowed',
 }
 
-// const formatPrice = (amount, currency) => {
-//   let price = (amount / 100).toFixed(2)
-//   let numberFormat = new Intl.NumberFormat(['en-US'], {
-//     style: 'currency',
-//     currency: currency,
-//     currencyDisplay: 'symbol',
-//   })
-//   return numberFormat.format(price)
-// }
-
 const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
 
@@ -56,7 +46,7 @@ const ProductCard = ({ product, dispatch }) => {
     // alt: productInfo?.image?.altText || `featured-image`,
   }
 
-  // console.log(product.prices)
+  // console.log(product)
   //   console.log(productImage.img)
 
   const handleSubmit = async event => {
@@ -66,6 +56,7 @@ const ProductCard = ({ product, dispatch }) => {
       id: product.id,
       name: product.name,
       image: productImage.img,
+      priceID: product.prices[0].id,
       price: product.prices[0].unit_amount,
       currency: product.prices[0].currency,
     }
@@ -112,13 +103,11 @@ const ProductCard = ({ product, dispatch }) => {
           </legend>
           <label>
             Price{' '}
-            <select name="priceSelect">
               {product.prices.map(price => (
                 <option key={price.id} value={price.id}>
                   {formatPrice(price.unit_amount, price.currency)}
                 </option>
               ))}
-            </select>
           </label>
         </fieldset>
         <button
