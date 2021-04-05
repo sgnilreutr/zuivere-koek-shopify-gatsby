@@ -32,7 +32,7 @@ export const substractQuantity = selectedProduct => ({
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPE.ADD_ITEM_BASKET:
+    case ACTION_TYPE.ADD_ITEM_BASKET: {
       let newBasketItem =
         state.basketItems.length > 0
           ? state.basketItems.find(
@@ -60,30 +60,57 @@ export default (state = initialState, action) => {
           total: newTotal,
         }
       }
+    }
+    case ACTION_TYPE.REMOVE_ITEM_BASKET: {
+      let removeBasketItem = state.basketItems.find(
+        item => item.id === action.basketItems.id
+      )
+      let updatedBasketItems = state.basketItems.filter(
+        item => item.id !== action.basketItems.id
+      )
 
-    case ACTION_TYPE.REMOVE_ITEM_BASKET:
-      let removeBasketItem = state.basketItems.find(item => item.id === action.basketItems.id)
-      let updatedBasketItems = state.basketItems.filter(item => item.id !== action.basketItems.id)
-      
-      console.log(removeBasketItem)
-      let newTotal = state.total - (removeBasketItem.price * removeBasketItem.quantity)
+      let newTotal =
+        state.total - removeBasketItem.price * removeBasketItem.quantity
       return {
         ...state,
         basketItems: updatedBasketItems,
-        total: newTotal
+        total: newTotal,
       }
-    
-    case ACTION_TYPE.ADD_QUANTITY:
+    }
+    case ACTION_TYPE.ADD_QUANTITY: {
+      let basketItem = state.basketItems.find(
+        item => item.id === action.basketItems.id
+      )
+      basketItem.quantity += 1
+      let newTotal = state.total + basketItem.price
       return {
         ...state,
-        basketItems: [...state.basketItems, action.basketItems],
+        total: newTotal,
       }
-    
-    case ACTION_TYPE.SUB_QUANTITY:
-      return {
-        ...state,
-        basketItems: [...state.basketItems, action.basketItems],
+    }
+    case ACTION_TYPE.SUB_QUANTITY: {
+      let basketItem = state.basketItems.find(
+        item => item.id === action.basketItems.id
+      )
+      if (basketItem.quantity === 1) {
+        let updatedBasketItems = state.basketItems.find(
+          item => item.id !== action.basketItems.id
+        )
+        let newTotal = state.total - basketItem.price
+        return {
+          ...state,
+          basketItems: updatedBasketItems,
+          total: newTotal,
+        }
+      } else {
+        basketItem.quantity -= 1
+        let newTotal = state.total - basketItem.price
+        return {
+          ...state,
+          total: newTotal,
+        }
       }
+    }
     default:
       return state
   }
