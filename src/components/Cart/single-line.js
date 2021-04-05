@@ -3,12 +3,9 @@ import { connect } from 'react-redux'
 
 import styled from '@emotion/styled'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { IoClose } from 'react-icons/io5'
 
 import {
-  AddItemBasket,
   addQuantity,
-  RemoveItemBasket,
   subtractQuantity,
 } from '../../store/app'
 import { formatPrice } from '../../utils'
@@ -31,7 +28,6 @@ const SingleLine = ({ product, dispatch }) => {
     setItemQty(itemQty + 1)
   }
 
-  // console.log(product)
 
   let ProductPrice = product.price * product.quantity
 

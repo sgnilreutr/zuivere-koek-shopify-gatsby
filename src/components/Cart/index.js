@@ -1,12 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import getStripe from '../../utils/stripejs'
 
 import { removeItemBasket } from '../../store/app'
 import SingleLine from './single-line'
 import { IoTrashOutline } from 'react-icons/io5'
 import styled from '@emotion/styled'
+import { formatPrice } from '../../utils'
 
 const REMOVE_TEXT = 'Verwijder'
+const CHECKOUT_TEXT = 'Verder naar bestellen'
 
 const CartRow = styled.div`
   display: grid;
@@ -19,10 +22,30 @@ const Delete = styled.span`
   cursor: pointer;
 `
 
-const Cart = ({ basketItems, dispatch }) => {
+const Cart = ({ basketItems, dispatch, useSelector, total }) => {
+//    const isLoading = useSelector((state) => state.isLoading)
+
   const removeItem = basketItem => {
     dispatch(removeItemBasket(basketItem))
   }
+    
+    const checkoutBasket = async (basketItems) => {
+        // isLoading(true)
+        const lineItems = basketItems.map((item) => ({price: item.priceID, quantity: item.quantity}))
+        console.log('lineItems', lineItems)
+        const stripe = await getStripe()
+        const { error } = await stripe.redirectToCheckout({
+          mode: 'payment',
+          lineItems: lineItems,
+          successUrl: `${window.location.origin}/shop/`,
+          cancelUrl: `${window.location.origin}/shop`,
+        })
+
+        // if (error) {
+        //   console.warn('Error:', error)
+        //   isLoading(false)
+        // }
+    }
 
   return (
     <div>
@@ -35,6 +58,10 @@ const Cart = ({ basketItems, dispatch }) => {
             </Delete>
           </CartRow>
         ))}
+          <p>Estimated Total
+            {basketItems.length > 0 && formatPrice(total, basketItems[0].currency)}
+          </p>
+          <div onClick={() => checkoutBasket(basketItems)}><p>{CHECKOUT_TEXT}</p></div>
     </div>
   )
 }
