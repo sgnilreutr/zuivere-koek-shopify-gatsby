@@ -1,6 +1,11 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 import getStripe from '../../utils/stripejs'
+import { IoCartOutline } from 'react-icons/io5'
+import { connect } from 'react-redux'
+
+import { addItemBasket } from '../../store/app'
+import { formatPrice } from '../../utils'
 
 const cardStyles = {
   display: 'flex',
@@ -31,17 +36,17 @@ const buttonDisabledStyles = {
   cursor: 'not-allowed',
 }
 
-const formatPrice = (amount, currency) => {
-  let price = (amount / 100).toFixed(2)
-  let numberFormat = new Intl.NumberFormat(['en-US'], {
-    style: 'currency',
-    currency: currency,
-    currencyDisplay: 'symbol',
-  })
-  return numberFormat.format(price)
-}
+// const formatPrice = (amount, currency) => {
+//   let price = (amount / 100).toFixed(2)
+//   let numberFormat = new Intl.NumberFormat(['en-US'], {
+//     style: 'currency',
+//     currency: currency,
+//     currencyDisplay: 'symbol',
+//   })
+//   return numberFormat.format(price)
+// }
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
 
   const productInfo = product ? product : null
@@ -51,26 +56,34 @@ const ProductCard = ({ product }) => {
     // alt: productInfo?.image?.altText || `featured-image`,
   }
 
-//   console.log(product)
-//   console.log(productImage.img)
+  // console.log(product.prices)
+  //   console.log(productImage.img)
 
   const handleSubmit = async event => {
     event.preventDefault()
-    setLoading(true)
-
-    const price = new FormData(event.target).get('priceSelect')
-    const stripe = await getStripe()
-    const { error } = await stripe.redirectToCheckout({
-      mode: 'payment',
-      lineItems: [{ price, quantity: 1 }],
-      successUrl: `${window.location.origin}/page-2/`,
-      cancelUrl: `${window.location.origin}/advanced`,
-    })
-
-    if (error) {
-      console.warn('Error:', error)
-      setLoading(false)
+    // setLoading(true)
+    const selectedProduct = {
+      id: product.id,
+      name: product.name,
+      image: productImage.img,
+      price: product.prices[0].unit_amount,
+      currency: product.prices[0].currency,
     }
+    dispatch(addItemBasket(selectedProduct))
+
+    // const price = new FormData(event.target).get('priceSelect')
+    // const stripe = await getStripe()
+    // const { error } = await stripe.redirectToCheckout({
+    //   mode: 'payment',
+    //   lineItems: [{ price, quantity: 1 }],
+    //   successUrl: `${window.location.origin}/page-2/`,
+    //   cancelUrl: `${window.location.origin}/advanced`,
+    // })
+
+    // if (error) {
+    //   console.warn('Error:', error)
+    //   setLoading(false)
+    // }
   }
 
   return (
@@ -116,11 +129,16 @@ const ProductCard = ({ product }) => {
               : buttonStyles
           }
         >
-          BUY ME
+          <IoCartOutline />
         </button>
       </form>
     </div>
   )
 }
 
-export default ProductCard
+export default connect(
+  state => ({
+    basketItems: state.app.basketItems,
+  }),
+  null
+)(ProductCard)
