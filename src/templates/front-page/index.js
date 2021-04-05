@@ -79,7 +79,7 @@ const Homepage = props => {
   //   alt: homepageACF.servicesImage?.altText || ``,
   // }
 
-  console.log(props.pageContext.page)
+  // console.log(props.pageContext.page)
 
   return (
     <Layout>

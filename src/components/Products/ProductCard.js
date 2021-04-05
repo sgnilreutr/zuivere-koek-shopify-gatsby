@@ -5,6 +5,7 @@ import { IoCartOutline } from 'react-icons/io5'
 import { connect } from 'react-redux'
 
 import { addItemBasket } from '../../store/app'
+import { formatPrice } from '../../utils'
 
 const cardStyles = {
   display: 'flex',
@@ -35,15 +36,15 @@ const buttonDisabledStyles = {
   cursor: 'not-allowed',
 }
 
-const formatPrice = (amount, currency) => {
-  let price = (amount / 100).toFixed(2)
-  let numberFormat = new Intl.NumberFormat(['en-US'], {
-    style: 'currency',
-    currency: currency,
-    currencyDisplay: 'symbol',
-  })
-  return numberFormat.format(price)
-}
+// const formatPrice = (amount, currency) => {
+//   let price = (amount / 100).toFixed(2)
+//   let numberFormat = new Intl.NumberFormat(['en-US'], {
+//     style: 'currency',
+//     currency: currency,
+//     currencyDisplay: 'symbol',
+//   })
+//   return numberFormat.format(price)
+// }
 
 const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
@@ -55,7 +56,7 @@ const ProductCard = ({ product, dispatch }) => {
     // alt: productInfo?.image?.altText || `featured-image`,
   }
 
-    // console.log(product)
+  // console.log(product.prices)
   //   console.log(productImage.img)
 
   const handleSubmit = async event => {
@@ -64,6 +65,9 @@ const ProductCard = ({ product, dispatch }) => {
     const selectedProduct = {
       id: product.id,
       name: product.name,
+      image: productImage.img,
+      price: product.prices[0].unit_amount,
+      currency: product.prices[0].currency,
     }
     dispatch(addItemBasket(selectedProduct))
 

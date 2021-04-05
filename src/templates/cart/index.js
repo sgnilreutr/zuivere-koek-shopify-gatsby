@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
-import Products from '../../components/Products/Products'
+import Cart from '../../components/Cart'
 
 const DesktopWrapper = styled.div`
   @media only screen and (max-width: 480px) {
@@ -38,7 +38,7 @@ const BlogWrapper = styled.div`
   }
 `
 
-const Shop = props => {
+const CartPage = props => {
   const {
     pageContext: {
       page: { pageHeaderText1, pageHeaderText2, pageHeaderImage },
@@ -69,7 +69,7 @@ const Shop = props => {
               className="hero-image full-bleed"
             />
           )} */}
-          <Products />
+          <Cart />
         </>
       ) : (
         <div>Something went wrong</div>
@@ -78,4 +78,4 @@ const Shop = props => {
   )
 }
 
-export default Shop
+export default CartPage

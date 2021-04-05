@@ -1,11 +1,12 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { createStore as reduxCreateStore } from 'redux'
+import { createStore as reduxCreateStore, applyMiddleware } from 'redux'
 import rootReducer from '.'
+// import { composeWithDevTools } from 'redux-devtools-extension'
+import logger from 'redux-logger'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-const createStore = () => reduxCreateStore(rootReducer, composeEnhancers())
-// const createStore = () => reduxCreateStore(rootReducer)
+const createStore = () => reduxCreateStore(rootReducer, applyMiddleware(logger))
+// const createStore = () => reduxCreateStore(rootReducer, composeWithDevTools(), applyMiddleware(logger))
 
 export default ({ element }) => (
   <Provider store={createStore()}>{element}</Provider>
