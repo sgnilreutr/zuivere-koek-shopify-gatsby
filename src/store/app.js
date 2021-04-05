@@ -25,7 +25,7 @@ export const addQuantity = selectedProduct => ({
   basketItems: selectedProduct,
 })
 
-export const substractQuantity = selectedProduct => ({
+export const subtractQuantity = selectedProduct => ({
   type: ACTION_TYPE.SUB_QUANTITY,
   basketItems: selectedProduct,
 })

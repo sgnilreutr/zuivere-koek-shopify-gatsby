@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addItemBasket, removeItemBasket } from '../../store/app'
+import { removeItemBasket } from '../../store/app'
 import SingleLine from './single-line'
 import { IoTrashOutline } from 'react-icons/io5'
 import styled from '@emotion/styled'
@@ -24,7 +24,6 @@ const Cart = ({ basketItems, dispatch }) => {
     dispatch(removeItemBasket(basketItem))
   }
 
-  // console.log(basketItems)
   return (
     <div>
       {basketItems.length > 0 &&
@@ -43,6 +42,7 @@ const Cart = ({ basketItems, dispatch }) => {
 export default connect(
   state => ({
     basketItems: state.app.basketItems,
+    total: state.app.total,
   }),
   null
 )(Cart)

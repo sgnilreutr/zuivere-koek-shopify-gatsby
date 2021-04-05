@@ -1,10 +1,16 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { connect } from 'react-redux'
+
 import styled from '@emotion/styled'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { IoClose } from 'react-icons/io5'
 
-import { AddItemBasket, RemoveItemBasket } from '../../store/app'
+import {
+  AddItemBasket,
+  addQuantity,
+  RemoveItemBasket,
+  subtractQuantity,
+} from '../../store/app'
 import { formatPrice } from '../../utils'
 
 const ProductRow = styled.div`
@@ -13,32 +19,21 @@ const ProductRow = styled.div`
   align-items: end;
 `
 
-const SingleLine = ({ product }) => {
-  // const { allProducts } = useStaticQuery(graphql`
-  //   query ALL_PRODUCTS {
-  //     allStripePrice {
-  //       edges {
-  //         node {
-  //           product {
-  //             id
-  //             name
-  //             localFiles {
-  //               childImageSharp {
-  //                 gatsbyImageData
-  //               }
-  //             }
-  //           }
-  //           currency
-  //           unit_amount_decimal
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+const SingleLine = ({ product, dispatch }) => {
+  const [itemQty, setItemQty] = React.useState(product.quantity)
+
+  const subtractQuantityItem = basketItem => {
+    dispatch(subtractQuantity(basketItem))
+    setItemQty(itemQty - 1)
+  }
+  const addQuantityItem = basketItem => {
+    dispatch(addQuantity(basketItem))
+    setItemQty(itemQty + 1)
+  }
 
   // console.log(product)
-  // console.log(allProducts)
-  // console.log(allProducts.map(product =>  product.id))
+
+  let ProductPrice = product.price * product.quantity
 
   return (
     <ProductRow>
@@ -48,9 +43,19 @@ const SingleLine = ({ product }) => {
         //   className="hero-image full-bleed"
       />
       <p>{product.name}</p>
-      <p>{formatPrice(product.price, product.currency)}</p>
+      <div>
+        <div onClick={() => subtractQuantityItem(product)}>-</div>
+        <p>{product.quantity}</p>
+        <div onClick={() => addQuantityItem(product)}>+</div>
+      </div>
+      <p>{formatPrice(ProductPrice, product.currency)}</p>
     </ProductRow>
   )
 }
 
-export default SingleLine
+export default connect(
+  state => ({
+    basketItems: state.app.basketItems,
+  }),
+  null
+)(SingleLine)
