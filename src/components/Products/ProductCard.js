@@ -1,5 +1,6 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
+import {Link} from 'gatsby'
 
 import { IoCartOutline } from 'react-icons/io5'
 import { connect } from 'react-redux'
@@ -41,6 +42,8 @@ const ProductCard = ({ product, dispatch }) => {
 
   const productInfo = product ? product : null
 
+  console.log(productInfo)
+
   const productImage = {
     img: productInfo?.localFiles[0]?.childImageSharp?.gatsbyImageData,
     // alt: productInfo?.image?.altText || `featured-image`,
@@ -81,7 +84,8 @@ const ProductCard = ({ product, dispatch }) => {
     <div style={cardStyles}>
       <form onSubmit={handleSubmit}>
         <fieldset style={{ border: 'none' }}>
-          {productImage.img !== undefined || null ? (
+          {productImage.img ? (
+            <Link to={`${productInfo.id}`}>
             <figure>
               <GatsbyImage
                 image={productImage.img}
@@ -89,20 +93,12 @@ const ProductCard = ({ product, dispatch }) => {
                 className="blog-preview-image"
               />
             </figure>
-          ) : (
-            <figure>
-              <StaticImage
-                src="../../images/productImagePlaceholder.png"
-                alt="placeholder"
-                className="blog-preview-image"
-              />
-            </figure>
-          )}
+            </Link>
+          ) : null }
           <legend>
             <h4>{product.name}</h4>
           </legend>
           <label>
-            Price{' '}
               {product.prices.map(price => (
                 <option key={price.id} value={price.id}>
                   {formatPrice(price.unit_amount, price.currency)}

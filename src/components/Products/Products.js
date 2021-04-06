@@ -51,6 +51,8 @@ const Products = () => {
           products[product.id].prices.push(price)
         }
 
+        console.log(prices)
+
         return (
           <div style={containerStyles}>
             {Object.keys(products).map(key => (

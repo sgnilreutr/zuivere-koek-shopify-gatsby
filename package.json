@@ -9,6 +9,7 @@
     "@emotion/styled": "^11.1.5",
     "@reduxjs/toolkit": "^1.5.1",
     "@stripe/stripe-js": "^1.13.2",
+    "dompurify": "^2.2.7",
     "gatsby": "^3.1.2",
     "gatsby-plugin-gatsby-cloud": "^2.1.0",
     "gatsby-plugin-image": "^1.1.2",
