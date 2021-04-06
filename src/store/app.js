@@ -1,7 +1,7 @@
 const initialState = {
   basketItems: [],
   total: 0,
-  isLoading: false
+  isLoading: false,
 }
 
 const ACTION_TYPE = {

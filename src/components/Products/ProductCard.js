@@ -1,6 +1,6 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
-import {Link} from 'gatsby'
+import { Link } from 'gatsby'
 
 import { IoCartOutline } from 'react-icons/io5'
 import { connect } from 'react-redux'
@@ -39,22 +39,15 @@ const buttonDisabledStyles = {
 
 const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
-
   const productInfo = product ? product : null
-
-  console.log(productInfo)
 
   const productImage = {
     img: productInfo?.localFiles[0]?.childImageSharp?.gatsbyImageData,
     // alt: productInfo?.image?.altText || `featured-image`,
   }
 
-  // console.log(product)
-  //   console.log(productImage.img)
-
   const handleSubmit = async event => {
     event.preventDefault()
-    // setLoading(true)
     const selectedProduct = {
       id: product.id,
       name: product.name,
@@ -64,20 +57,6 @@ const ProductCard = ({ product, dispatch }) => {
       currency: product.prices[0].currency,
     }
     dispatch(addItemBasket(selectedProduct))
-
-    // const price = new FormData(event.target).get('priceSelect')
-    // const stripe = await getStripe()
-    // const { error } = await stripe.redirectToCheckout({
-    //   mode: 'payment',
-    //   lineItems: [{ price, quantity: 1 }],
-    //   successUrl: `${window.location.origin}/page-2/`,
-    //   cancelUrl: `${window.location.origin}/advanced`,
-    // })
-
-    // if (error) {
-    //   console.warn('Error:', error)
-    //   setLoading(false)
-    // }
   }
 
   return (
@@ -86,24 +65,24 @@ const ProductCard = ({ product, dispatch }) => {
         <fieldset style={{ border: 'none' }}>
           {productImage.img ? (
             <Link to={`${productInfo.id}`}>
-            <figure>
-              <GatsbyImage
-                image={productImage.img}
-                alt=""
-                className="blog-preview-image"
-              />
-            </figure>
+              <figure>
+                <GatsbyImage
+                  image={productImage.img}
+                  alt=""
+                  className="blog-preview-image"
+                />
+              </figure>
             </Link>
-          ) : null }
+          ) : null}
           <legend>
             <h4>{product.name}</h4>
           </legend>
           <label>
-              {product.prices.map(price => (
-                <option key={price.id} value={price.id}>
-                  {formatPrice(price.unit_amount, price.currency)}
-                </option>
-              ))}
+            {product.prices.map(price => (
+              <option key={price.id} value={price.id}>
+                {formatPrice(price.unit_amount, price.currency)}
+              </option>
+            ))}
           </label>
         </fieldset>
         <button
