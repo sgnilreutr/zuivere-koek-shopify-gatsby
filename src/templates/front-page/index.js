@@ -3,7 +3,7 @@ import Layout from '../../components/layout'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
-import { GatsbyImage } from 'gatsby-plugin-image'
+// import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 
 const DesktopWrapper = styled.div`
@@ -100,7 +100,7 @@ const Homepage = props => {
             <h2>{parse(reasonHeader)}</h2>
             <div>
               <div>
-                <GatsbyImage image={duurzaamImage} alt="" className="" />
+                {/* <GatsbyImage image={duurzaamImage} alt="" className="" /> */}
                 <div>
                   <h3>{parse(duurzaamHeader)}</h3>
                 </div>
