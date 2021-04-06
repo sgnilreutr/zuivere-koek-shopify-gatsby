@@ -86,13 +86,13 @@ const Homepage = props => {
       <SEO title="Home" />
       {props.pageContext.page ? (
         <>
-          {heroImage?.img && (
+          {/* {heroImage?.img && (
             <GatsbyImage
               image={heroImage.img}
               alt=""
               className="hero-image full-bleed"
             />
-          )}
+          )} */}
           <DiscoverContainer className="full-bleed">
             <h2>{parse(introductionHeader)}</h2>
           </DiscoverContainer>
