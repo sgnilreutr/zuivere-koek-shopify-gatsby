@@ -4,10 +4,7 @@ import { connect } from 'react-redux'
 import styled from '@emotion/styled'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import {
-  addQuantity,
-  subtractQuantity,
-} from '../../store/app'
+import { addQuantity, subtractQuantity } from '../../store/app'
 import { formatPrice } from '../../utils'
 
 const ProductRow = styled.div`
@@ -27,7 +24,6 @@ const SingleLine = ({ product, dispatch }) => {
     dispatch(addQuantity(basketItem))
     setItemQty(itemQty + 1)
   }
-
 
   let ProductPrice = product.price * product.quantity
 

@@ -1,5 +1,7 @@
 const { slash } = require(`gatsby-core-utils`)
-const singleProductTemplate = require.resolve(`../templates/single-product/index.js`)
+const singleProductTemplate = require.resolve(
+  `../templates/single-product/index.js`
+)
 // const { ImageFragment } = require('./fragments/image/index.js');
 // const { SeoFragment } = require('./fragments/seo/index.js');
 
@@ -37,10 +39,11 @@ module.exports = async ({ actions, graphql }) => {
     return await graphql(GET_ALL_PRODUCTS).then(({ data }) => {
       const { products } = data
 
-      let allTheProducts = [];
-		  products && products.edges.map(product => {
-			  allTheProducts.push(product)
-		  })
+      let allTheProducts = []
+      products &&
+        products.edges.map(product => {
+          allTheProducts.push(product)
+        })
 
       return { allProducts: allTheProducts }
     })
@@ -48,13 +51,14 @@ module.exports = async ({ actions, graphql }) => {
 
   // When the above fetchPosts is resolved, then create page and pass the data as pageContext to the page template.
   await fetchPosts().then(({ allProducts }) => {
-    allProducts.length && allProducts.map(product => {
-      createPage({
-        path: `shop/${product.node.product.id}`,
-        // path: page.uri,
-        component: slash(singleProductTemplate),
-        context: { product },
+    allProducts.length &&
+      allProducts.map(product => {
+        createPage({
+          path: `shop/${product.node.product.id}`,
+          // path: page.uri,
+          component: slash(singleProductTemplate),
+          context: { product },
+        })
       })
-    })
   })
 }

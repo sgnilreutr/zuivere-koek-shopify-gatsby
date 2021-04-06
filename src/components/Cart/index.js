@@ -23,28 +23,31 @@ const Delete = styled.span`
 `
 
 const Cart = ({ basketItems, dispatch, isLoading, total }) => {
-    const [loading, setLoading] = React.useState(isLoading)
+  const [loading, setLoading] = React.useState(isLoading)
 
   const removeItem = basketItem => {
     dispatch(removeItemBasket(basketItem))
   }
-    
-    const checkoutBasket = async (basketItems) => {
-        setLoading(true)
-        const lineItems = basketItems.map((item) => ({price: item.priceID, quantity: item.quantity}))
-        const stripe = await getStripe()
-        const { error } = await stripe.redirectToCheckout({
-          mode: 'payment',
-          lineItems: lineItems,
-          successUrl: `${window.location.origin}/shop/`,
-          cancelUrl: `${window.location.origin}/shop`,
-        })
 
-        if (error) {
-          console.warn('Error:', error)
-          setLoading(false)
-        }
+  const checkoutBasket = async basketItems => {
+    setLoading(true)
+    const lineItems = basketItems.map(item => ({
+      price: item.priceID,
+      quantity: item.quantity,
+    }))
+    const stripe = await getStripe()
+    const { error } = await stripe.redirectToCheckout({
+      mode: 'payment',
+      lineItems: lineItems,
+      successUrl: `${window.location.origin}/shop/`,
+      cancelUrl: `${window.location.origin}/shop`,
+    })
+
+    if (error) {
+      console.warn('Error:', error)
+      setLoading(false)
     }
+  }
 
   return (
     <div>
@@ -57,10 +60,16 @@ const Cart = ({ basketItems, dispatch, isLoading, total }) => {
             </Delete>
           </CartRow>
         ))}
-          <p>Estimated Total
-            {basketItems.length > 0 && formatPrice(total, basketItems[0].currency)}
-          </p>
-          <button onClick={() => checkoutBasket(basketItems)} disabled={loading || basketItems.length < 1}><p>{CHECKOUT_TEXT}</p></button>
+      <p>
+        Estimated Total
+        {basketItems.length > 0 && formatPrice(total, basketItems[0].currency)}
+      </p>
+      <button
+        onClick={() => checkoutBasket(basketItems)}
+        disabled={loading || basketItems.length < 1}
+      >
+        <p>{CHECKOUT_TEXT}</p>
+      </button>
     </div>
   )
 }
@@ -69,7 +78,7 @@ export default connect(
   state => ({
     basketItems: state.app.basketItems,
     total: state.app.total,
-    isLoading: state.app.isLoading
+    isLoading: state.app.isLoading,
   }),
   null
 )(Cart)

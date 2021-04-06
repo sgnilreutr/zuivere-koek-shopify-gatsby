@@ -1,4 +1,4 @@
-import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify'
 
 export const formatPrice = (amount, currency) => {
   let price = (amount / 100).toFixed(2)
@@ -17,6 +17,6 @@ export const formatPrice = (amount, currency) => {
  *
  * @return {string} Sanitized string
  */
-export const sanitize = (content) => {
-	return process.browser ? DOMPurify.sanitize(content) : content
+export const sanitize = content => {
+  return process.browser ? DOMPurify.sanitize(content) : content
 }
