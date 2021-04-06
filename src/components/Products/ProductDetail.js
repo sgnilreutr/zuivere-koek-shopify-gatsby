@@ -2,11 +2,16 @@ import React from 'react'
 import { isEmpty } from 'lodash'
 import { connect } from 'react-redux'
 import { addItemBasket } from '../../store/app'
-
 import { formatPrice, sanitize } from '../../utils/index'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
 import { IoCartOutline } from 'react-icons/io5'
+import {
+  AddToCart,
+  ProductImage,
+  ProductWrapper,
+  ProductDesc,
+} from './ProductDetailStyles'
 
 const ProductDetail = ({ product, dispatch }) => {
   const addItemToBasket = async product => {
@@ -43,31 +48,27 @@ const ProductDetail = ({ product, dispatch }) => {
   }
 
   return !isEmpty(product) ? (
-    <div className="single-product-page container py-5">
-      <div className="row">
-        <div className="col-lg-5 col-md-6 mb-5 product-image-wrap">
-          <div className="product-image">{displayProductImages()}</div>
-        </div>
-        <div className="col-lg-7 col-md-6 mb-5">
-          <div className="single-product-desc">
-            <h3>
-              {product.node.product.name ? product.node.product.name : ''}
-            </h3>
-            {!isEmpty(product.node.product.description) ? (
-              <p>{parse(product.node.product.description)}</p>
-            ) : null}
-            <div className="single-product-add-to-cart">
-              <h6 className="card-subtitle mb-3">
-                {formatPrice(product.node.unit_amount, product.node.currency)}
-              </h6>
-              <button onClick={() => addItemToBasket(product.node)}>
-                <IoCartOutline />
-              </button>
-            </div>
-          </div>
-        </div>
+    <ProductWrapper>
+      <div className="col-lg-5 col-md-6 mb-5 product-image-wrap">
+        <ProductImage>{displayProductImages()}</ProductImage>
       </div>
-    </div>
+      <ProductDesc>
+        <div className="single-product-desc">
+          <h3>{product.node.product.name ? product.node.product.name : ''}</h3>
+          {!isEmpty(product.node.product.description) ? (
+            <p>{parse(product.node.product.description)}</p>
+          ) : null}
+          <AddToCart>
+            <h6 className="card-subtitle mb-3">
+              {formatPrice(product.node.unit_amount, product.node.currency)}
+            </h6>
+            <button onClick={() => addItemToBasket(product.node)}>
+              <IoCartOutline />
+            </button>
+          </AddToCart>
+        </div>
+      </ProductDesc>
+    </ProductWrapper>
   ) : null
 }
 
