@@ -28,29 +28,25 @@ const Shop = props => {
   } = props
 
   console.log(props.pageContext)
+  console.log(pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData)
 
-  //   const heroImage = {
-  //     img: hero.gatsbyImageData,
-  //     // alt: homepageACF.heroImage?.altText || ``,
-  //   }
-
-  // const servicesImage = {
-  //   img: homepageACF.servicesImage?.localFile?.childImageSharp?.gatsbyImageData,
-  //   alt: homepageACF.servicesImage?.altText || ``,
-  // }
+    const headerImage = {
+      img: pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData,
+      // alt: homepageACF.heroImage?.altText || ``,
+    }
 
   return (
     <Layout>
       <SEO title="Home" />
       {props.pageContext.page ? (
         <>
-          {/* {heroImage?.img && (
+          {headerImage?.img && (
             <GatsbyImage
-              image={heroImage.img}
+              image={headerImage.img}
               alt=""
-              className="hero-image full-bleed"
+              className="header-image--height full-bleed"
             />
-          )} */}
+          )}
           <HeaderTextContainer>
             <h1 className="page-title page-title--shop">
               {parse(pageHeaderText1)}

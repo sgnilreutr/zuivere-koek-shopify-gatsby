@@ -589,4 +589,8 @@ pre tt:after {
   max-width: 1920px;
   margin: 0 auto;
 }
+
+.header-image--height {
+  max-height: 600px;
+}
 /*# sourceMappingURL=layout.css.map */
