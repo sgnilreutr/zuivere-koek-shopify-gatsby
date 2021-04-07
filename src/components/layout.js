@@ -12,6 +12,7 @@ import styled from '@emotion/styled'
 
 import Header from './header'
 import './layout.css'
+import '../styles/text.css'
 
 const FooterWrapper = styled.footer`
   background-color: hsl(234, 47%, 31%);

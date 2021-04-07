@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800|Playfair+Display:400");
+
+//colors
+$color-title-blue: hsl(234, 47%, 31%);
+$color-title-pink: hsl(351, 81%, 94%);
+
+//Font variables
+$playfair: "Playfair Display", serif;
+$work-sans: "Work Sans", sans-serif;
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: hsla(0, 0%, 0%, 0.8);
+  font-family: $work-sans;
+  font-weight: 400;
+  line-height: 1.75;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: $playfair;
+  font-weight: 400;
+  line-height: 1.3;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+small,
+.text_small {
+  font-size: 0.8rem;
+}
+
+.page-title {
+  color: $color-title-pink;
+  text-align: center;
+  span {
+    color: $color-title-blue;
+  }
+}
+
+.page-title--shop {
+  max-width: 580px;
+}
+
+.product-title--overview {
+  color: $color-title-blue;
+  font-family: $work-sans;
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.product-price--overview {
+  color: $color-title-blue;
+  font-family: $work-sans;
+}

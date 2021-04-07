@@ -1,41 +1,16 @@
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
-
 import { IoCartOutline } from 'react-icons/io5'
 import { connect } from 'react-redux'
-
 import { addItemBasket } from '../../store/app'
 import { formatPrice } from '../../utils'
-
-const cardStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
-  alignItems: 'flex-start',
-  padding: '1rem',
-  marginBottom: '1rem',
-  boxShadow: '5px 5px 25px 0 rgba(46,61,73,.2)',
-  backgroundColor: '#fff',
-  borderRadius: '6px',
-  maxWidth: '300px',
-}
-const buttonStyles = {
-  display: 'block',
-  fontSize: '13px',
-  textAlign: 'center',
-  color: '#000',
-  padding: '12px',
-  boxShadow: '2px 5px 10px rgba(0,0,0,.1)',
-  backgroundColor: 'rgb(255, 178, 56)',
-  borderRadius: '6px',
-  letterSpacing: '1.5px',
-}
-
-const buttonDisabledStyles = {
-  opacity: '0.5',
-  cursor: 'not-allowed',
-}
+import {
+  AddToCart,
+  ProductCardWrapper,
+  ProductPhoto,
+  ProductInfo,
+} from './ProductCardStyles'
 
 const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
@@ -60,43 +35,36 @@ const ProductCard = ({ product, dispatch }) => {
   }
 
   return (
-    <div style={cardStyles}>
+    <ProductCardWrapper>
       <form onSubmit={handleSubmit}>
-        <fieldset style={{ border: 'none' }}>
-          {productImage.img ? (
-            <Link to={`${productInfo.id}`}>
-              <figure>
-                <GatsbyImage
-                  image={productImage.img}
-                  alt=""
-                  className="blog-preview-image"
-                />
-              </figure>
-            </Link>
-          ) : null}
-          <legend>
-            <h4>{product.name}</h4>
-          </legend>
-          <label>
-            {product.prices.map(price => (
-              <option key={price.id} value={price.id}>
-                {formatPrice(price.unit_amount, price.currency)}
-              </option>
-            ))}
-          </label>
-        </fieldset>
-        <button
-          disabled={loading}
-          style={
-            loading
-              ? { ...buttonStyles, ...buttonDisabledStyles }
-              : buttonStyles
-          }
-        >
-          <IoCartOutline />
-        </button>
+        {productImage.img ? (
+          <Link to={`${productInfo.id}`}>
+            <ProductPhoto>
+              <GatsbyImage
+                image={productImage.img}
+                alt=""
+                className="blog-preview-image"
+              />
+            </ProductPhoto>
+          </Link>
+        ) : null}
+        <ProductInfo>
+          <h4 className="product-title--overview">{product.name}</h4>
+          {product.prices.map(price => (
+            <span
+              className="product-price--overview"
+              key={price.id}
+              value={price.id}
+            >
+              {formatPrice(price.unit_amount, price.currency)}
+            </span>
+          ))}
+          <AddToCart disabled={loading}>
+            <IoCartOutline size={30} color={`#f8d8d9`} />
+          </AddToCart>
+        </ProductInfo>
       </form>
-    </div>
+    </ProductCardWrapper>
   )
 }
 
