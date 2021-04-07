@@ -10,7 +10,11 @@ query GET_SHOP_PAGE {
     pageHeaderText1
     pageHeaderText2
     pageHeaderImage {
-      gatsbyImageData
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
   }
 }

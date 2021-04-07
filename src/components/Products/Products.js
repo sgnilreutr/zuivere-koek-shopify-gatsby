@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import ProductCard from './ProductCard'
+import { ProductGrid } from './ProductsStyles'
 
 const containerStyles = {
   display: 'flex',
@@ -52,11 +53,11 @@ const Products = () => {
         }
 
         return (
-          <div style={containerStyles}>
+          <ProductGrid>
             {Object.keys(products).map(key => (
               <ProductCard key={products[key].id} product={products[key]} />
             ))}
-          </div>
+          </ProductGrid>
         )
       }}
     />
