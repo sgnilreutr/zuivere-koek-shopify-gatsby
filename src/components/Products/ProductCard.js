@@ -10,6 +10,7 @@ import {
   ProductCardWrapper,
   ProductPhoto,
   ProductInfo,
+  ProductInnerInfo
 } from './ProductCardStyles'
 
 const ProductCard = ({ product, dispatch }) => {
@@ -49,6 +50,7 @@ const ProductCard = ({ product, dispatch }) => {
           </Link>
         ) : null}
         <ProductInfo>
+          <ProductInnerInfo to={`${productInfo.id}`}>
           <h4 className="product-title--overview">{product.name}</h4>
           {product.prices.map(price => (
             <span
@@ -59,6 +61,7 @@ const ProductCard = ({ product, dispatch }) => {
               {formatPrice(price.unit_amount, price.currency)}
             </span>
           ))}
+          </ProductInnerInfo>
           <AddToCart disabled={loading}>
             <IoCartOutline size={30} color={`#f8d8d9`} />
           </AddToCart>

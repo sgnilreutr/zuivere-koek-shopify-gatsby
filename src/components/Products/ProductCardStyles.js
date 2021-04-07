@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 
 export const ProductCardWrapper = styled.div`
   width: 340px;
@@ -19,6 +20,11 @@ export const ProductPhoto = styled.figure`
 export const ProductInfo = styled.div`
   display: grid;
   justify-items: center;
+`
+
+export const ProductInnerInfo = styled(Link)`
+    text-align: center;
+    text-decoration: none;
 `
 
 export const AddToCart = styled.button`
