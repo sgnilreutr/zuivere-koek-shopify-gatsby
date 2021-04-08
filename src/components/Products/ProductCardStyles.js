@@ -5,10 +5,11 @@ export const ProductCardWrapper = styled.div`
   width: 340px;
   display: grid;
   justify-content: center;
-  transition: ease-in-out 0.4s;
+  transition: box-shadow .15s ease-in-out,transform .15s ease-in-out;
 
   &:hover {
-    transform: translateY(-0.3rem);
+    transform: scale(1.04);
+    box-shadow: 0 6px 30px -5px rgba(0,0,0,.2);
   }
 `
 
