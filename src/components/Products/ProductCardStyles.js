@@ -5,11 +5,11 @@ export const ProductCardWrapper = styled.div`
   width: 340px;
   display: grid;
   justify-content: center;
-  transition: box-shadow .15s ease-in-out,transform .15s ease-in-out;
+  transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 
   &:hover {
     transform: scale(1.04);
-    box-shadow: 0 6px 30px -5px rgba(0,0,0,.2);
+    box-shadow: 0 6px 30px -5px rgba(0, 0, 0, 0.2);
   }
 `
 
@@ -24,11 +24,11 @@ export const ProductInfo = styled.div`
 `
 
 export const ProductInnerInfo = styled(Link)`
-    text-align: center;
-    text-decoration: none;
+  text-align: center;
+  text-decoration: none;
 `
 
-export const AddToCart = styled.button`
+export const AddToCartButton = styled.button`
   margin-top: 1rem;
   border: solid 1px hsl(0, 0%, 44%);
   border-radius: 4px;

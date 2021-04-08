@@ -6,16 +6,18 @@ import { connect } from 'react-redux'
 import { addItemBasket } from '../../store/app'
 import { formatPrice } from '../../utils'
 import {
-  AddToCart,
+  AddToCartButton,
   ProductCardWrapper,
   ProductPhoto,
   ProductInfo,
-  ProductInnerInfo
+  ProductInnerInfo,
 } from './ProductCardStyles'
+import { toast } from 'react-toastify'
 
 const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
   const productInfo = product ? product : null
+  const TOASTER_TEXT = "is toegevoegd aan je winkelmand."
 
   const productImage = {
     img: productInfo?.localFiles[0]?.childImageSharp?.gatsbyImageData,
@@ -51,20 +53,23 @@ const ProductCard = ({ product, dispatch }) => {
         ) : null}
         <ProductInfo>
           <ProductInnerInfo to={`${productInfo.id}`}>
-          <h4 className="product-title--overview">{product.name}</h4>
-          {product.prices.map(price => (
-            <span
-              className="product-price--overview"
-              key={price.id}
-              value={price.id}
-            >
-              {formatPrice(price.unit_amount, price.currency)}
-            </span>
-          ))}
+            <h4 className="product-title--overview">{product.name}</h4>
+            {product.prices.map(price => (
+              <span
+                className="product-price--overview"
+                key={price.id}
+                value={price.id}
+              >
+                {formatPrice(price.unit_amount, price.currency)}
+              </span>
+            ))}
           </ProductInnerInfo>
-          <AddToCart disabled={loading}>
+          <AddToCartButton
+            disabled={loading}
+            onClick={() => toast.dark(`${product.name} ${TOASTER_TEXT}`)}
+          >
             <IoCartOutline size={30} color={`#f8d8d9`} />
-          </AddToCart>
+          </AddToCartButton>
         </ProductInfo>
       </form>
     </ProductCardWrapper>
