@@ -7,6 +7,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 import Products from '../../components/Products/Products'
 import { HeaderTextContainer } from '../../styles/globalStyles'
+import Toaster from '../../components/Toaster'
 
 const DesktopWrapper = styled.div`
   @media only screen and (max-width: 480px) {
@@ -27,13 +28,13 @@ const Shop = props => {
     },
   } = props
 
-  console.log(props.pageContext)
-  console.log(pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData)
+  // console.log(props.pageContext)
+  // console.log(pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData)
 
-    const headerImage = {
-      img: pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData,
-      // alt: homepageACF.heroImage?.altText || ``,
-    }
+  const headerImage = {
+    img: pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData,
+    // alt: homepageACF.heroImage?.altText || ``,
+  }
 
   return (
     <Layout>
@@ -53,6 +54,7 @@ const Shop = props => {
             </h1>
           </HeaderTextContainer>
           <Products />
+          <Toaster />
         </>
       ) : (
         <div>Something went wrong</div>
