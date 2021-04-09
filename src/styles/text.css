@@ -56,6 +56,11 @@ small,
   font-size: 0.8rem;
 }
 
+.site-title {
+  color: #fce3e7;
+  text-decoration: none;
+}
+
 .page-title {
   color: #fce3e7;
   text-align: center;
