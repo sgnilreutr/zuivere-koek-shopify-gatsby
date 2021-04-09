@@ -3,7 +3,7 @@ import Layout from '../../components/layout'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
-// import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 
 const DesktopWrapper = styled.div`
@@ -43,7 +43,7 @@ const Homepage = props => {
       page: {
         title,
         uri,
-        hero,
+        heroImage,
         heroHeader,
         reasonHeader,
         introductionHeader,
@@ -69,8 +69,10 @@ const Homepage = props => {
     },
   } = props
 
-  const heroImage = {
-    img: hero.gatsbyImageData,
+  const heroImageFile = {
+    img:
+      props.pageContext.page.heroImage?.localFile.childImageSharp
+        .gatsbyImageData,
     // alt: homepageACF.heroImage?.altText || ``,
   }
 
@@ -79,20 +81,18 @@ const Homepage = props => {
   //   alt: homepageACF.servicesImage?.altText || ``,
   // }
 
-  // console.log(props.pageContext.page)
-
   return (
     <Layout>
       <SEO title="Home" />
       {props.pageContext.page ? (
         <>
-          {/* {heroImage?.img && (
+          {heroImageFile?.img && (
             <GatsbyImage
-              image={heroImage.img}
+              image={heroImageFile.img}
               alt=""
               className="hero-image full-bleed"
             />
-          )} */}
+          )}
           <DiscoverContainer className="full-bleed">
             <h2>{parse(introductionHeader)}</h2>
           </DiscoverContainer>

@@ -24,12 +24,9 @@ const MobileWrapper = styled.div`
 const Shop = props => {
   const {
     pageContext: {
-      page: { pageHeaderText1, pageHeaderText2, pageHeaderImage },
+      page: { pageHeaderText, pageHeaderText2, pageHeaderImage },
     },
   } = props
-
-  // console.log(props.pageContext)
-  // console.log(pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData)
 
   const headerImage = {
     img: pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData,
@@ -50,7 +47,7 @@ const Shop = props => {
           )}
           <HeaderTextContainer>
             <h1 className="page-title page-title--shop">
-              {parse(pageHeaderText1)}
+              {parse(pageHeaderText)}
             </h1>
           </HeaderTextContainer>
           <Products />
