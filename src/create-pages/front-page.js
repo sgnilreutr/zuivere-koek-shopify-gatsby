@@ -6,50 +6,78 @@ const frontPageTemplate = require.resolve(`../templates/front-page/index.js`)
 // Get all the front page data.
 const GET_FRONT_PAGE = `
 query GET_FRONT_PAGE {
-  page: contentfulHomepage {
+  page: contentfulComponentHomepage {
     heroHeader
     reasonHeader
     introductionHeader
-    hero {
-      gatsbyImageData
+    heroImage {
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
     duurzaamBody
     duurzaamHeader
     duurzaamImage {
-      gatsbyImageData
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
     lowImpactBody
     lowImpactHeader
     lowImpactImage {
-      gatsbyImageData
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
     metLiefdeBody
     metLiefdeHeader
     metLiefdeImage {
-      gatsbyImageData
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
     opBestellingBody
     opBestellingHeader
     opBestellingImage {
-      gatsbyImageData
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
     socialHeader
-    timEnRuthHeader
+    timEnRuthBody
     transparantBody
     transparantHeader
     transparantImage {
-      gatsbyImageData
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
-    usp1body
-    usp1header
-    usp2body
-    usp2header
-    usp3body
-    usp3header
+    usp1Body
+    usp1Header
+    usp2Body
+    usp2Header
+    usp3Body
+    usp3Header
     verassingBody
     verassingHeader
     verassingImage {
-      gatsbyImageData
+      localFile {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
     }
   }
 }

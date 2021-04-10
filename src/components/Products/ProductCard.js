@@ -17,7 +17,7 @@ import { toast } from 'react-toastify'
 const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
   const productInfo = product ? product : null
-  const TOASTER_TEXT = "is toegevoegd aan je winkelmand."
+  const TOASTER_TEXT = 'is toegevoegd aan je winkelmand.'
 
   const productImage = {
     img: productInfo?.localFiles[0]?.childImageSharp?.gatsbyImageData,

@@ -1,19 +1,43 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { useHistory } from 'react-router-dom'
 import { IoCartOutline } from 'react-icons/io5'
+import { MenuItem, MenuWrapper } from './MenuStyles'
+import Badge from '@material-ui/core/Badge'
+import { connect } from 'react-redux'
 
-const Menu = () => {
+const Menu = ({ totalCount }) => {
+  const MenuOptions = [
+    { link: '/shop', name: 'Shop' },
+    { link: '/over-ons', name: 'Over ons' },
+    { link: '/faq', name: 'FAQ' },
+    { link: '/contact', name: 'Contact' },
+    {
+      link: '/cart',
+      name: (
+        <Badge badgeContent={totalCount} color="primary">
+          <IoCartOutline size={30} />
+        </Badge>
+      ),
+    },
+  ]
+
   return (
-    <>
-      <Link to={'/shop'} style={{ color: 'white' }}>
-        Shop
-      </Link>
-      <Link to={'/cart'}>
-        <IoCartOutline size={30} style={{ color: 'white' }} />
-      </Link>
-    </>
+    <MenuWrapper>
+      {MenuOptions &&
+        MenuOptions.map((item, index) => {
+          return (
+            <MenuItem key={index} to={item.link}>
+              {item.name}
+            </MenuItem>
+          )
+        })}
+    </MenuWrapper>
   )
 }
 
-export default Menu
+export default connect(
+  state => ({
+    totalCount: state.app.totalCount,
+    isLoading: state.app.isLoading,
+  }),
+  null
+)(Menu)

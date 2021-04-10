@@ -5,22 +5,12 @@ import getStripe from '../../utils/stripejs'
 import { removeItemBasket } from '../../store/app'
 import SingleLine from './single-line'
 import { IoTrashOutline } from 'react-icons/io5'
-import styled from '@emotion/styled'
 import { formatPrice } from '../../utils'
+import { CartRow, Delete } from './cartStyles'
 
 const REMOVE_TEXT = 'Verwijder'
 const CHECKOUT_TEXT = 'Verder naar bestellen'
-
-const CartRow = styled.div`
-  display: grid;
-  grid-template-columns: auto 70px;
-  align-items: center;
-`
-
-const Delete = styled.span`
-  display: flex;
-  cursor: pointer;
-`
+const TOTAL_TEXT = 'Estimated Total'
 
 const Cart = ({ basketItems, dispatch, isLoading, total }) => {
   const [loading, setLoading] = React.useState(isLoading)
@@ -61,7 +51,7 @@ const Cart = ({ basketItems, dispatch, isLoading, total }) => {
           </CartRow>
         ))}
       <p>
-        Estimated Total
+        {TOTAL_TEXT}
         {basketItems.length > 0 && formatPrice(total, basketItems[0].currency)}
       </p>
       <button
