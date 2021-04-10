@@ -1,6 +1,7 @@
 const initialState = {
   basketItems: [],
   total: 0,
+  totalCount: 0,
   isLoading: false,
 }
 
@@ -50,15 +51,19 @@ export default (state = initialState, action) => {
         return {
           ...state,
           total: state.total + existingItem.price,
+          totalCount: (state.totalCount += 1),
         }
       } else {
         newBasketItem.quantity = 1
         let newTotal = state.total + newBasketItem.price
 
+        let newTotalCount = state.totalCount + newBasketItem.quantity
+
         return {
           ...state,
           basketItems: [...state.basketItems, newBasketItem],
           total: newTotal,
+          totalCount: newTotalCount,
         }
       }
     }
@@ -72,10 +77,13 @@ export default (state = initialState, action) => {
 
       let newTotal =
         state.total - removeBasketItem.price * removeBasketItem.quantity
+
+      let newTotalCount = state.totalCount - removeBasketItem.quantity
       return {
         ...state,
         basketItems: updatedBasketItems,
         total: newTotal,
+        totalCount: newTotalCount,
       }
     }
     case ACTION_TYPE.ADD_QUANTITY: {
@@ -84,9 +92,11 @@ export default (state = initialState, action) => {
       )
       basketItem.quantity += 1
       let newTotal = state.total + basketItem.price
+      let newTotalCount = (state.totalCount += 1)
       return {
         ...state,
         total: newTotal,
+        totalCount: newTotalCount,
       }
     }
     case ACTION_TYPE.SUB_QUANTITY: {
@@ -98,17 +108,21 @@ export default (state = initialState, action) => {
           item => item.id !== action.basketItems.id
         )
         let newTotal = state.total - basketItem.price
+        let newTotalCount = state.totalCount - basketItem.quantity
         return {
           ...state,
           basketItems: updatedBasketItems,
           total: newTotal,
+          totalCount: newTotalCount,
         }
       } else {
         basketItem.quantity -= 1
         let newTotal = state.total - basketItem.price
+        let newTotalCount = (state.totalCount -= 1)
         return {
           ...state,
           total: newTotal,
+          totalCount: newTotalCount,
         }
       }
     }
