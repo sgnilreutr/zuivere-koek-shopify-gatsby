@@ -2,8 +2,8 @@ const LOCAL_STORAGE_KEYS = ['cartData', 'priceTotal', 'totalCount']
 
 const INITIAL_STATE = {
   basketItems: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS[0])) ?? [],
-  total: localStorage.getItem(LOCAL_STORAGE_KEYS[1]) ?? 0,
-  totalCount: localStorage.getItem(LOCAL_STORAGE_KEYS[2]) ?? 0,
+  total: Number(localStorage.getItem(LOCAL_STORAGE_KEYS[1])) ?? 0,
+  totalCount: Number(localStorage.getItem(LOCAL_STORAGE_KEYS[2])) ?? 0,
   isLoading: false,
 }
 
