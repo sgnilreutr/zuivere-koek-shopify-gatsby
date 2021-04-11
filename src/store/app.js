@@ -1,11 +1,11 @@
 const LOCAL_STORAGE_KEYS = ['cartData', 'priceTotal', 'totalCount']
 
-const INITIAL_STATE = {
+const INITIAL_STATE = typeof window !== 'undefined' ? {
   basketItems: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS[0])) ?? [],
   total: Number(localStorage.getItem(LOCAL_STORAGE_KEYS[1])) ?? 0,
   totalCount: Number(localStorage.getItem(LOCAL_STORAGE_KEYS[2])) ?? 0,
   isLoading: false,
-}
+} : null
 
 const ACTION_TYPE = {
   ADD_ITEM_BASKET: 'ADD_ITEM_BASKET',
