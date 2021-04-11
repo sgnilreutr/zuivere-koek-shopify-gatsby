@@ -51,7 +51,9 @@ const ProductCard = ({ product, dispatch }) => {
         ) : null}
         <ProductInfo>
           <ProductInnerInfo to={`${productInfo.id}`}>
-            <h4 className="product-title--overview">{product.name}</h4>
+            <h4 className="product-title product-title--overview">
+              {product.name}
+            </h4>
             {product.prices.map(price => (
               <span
                 className="product-price--overview"
