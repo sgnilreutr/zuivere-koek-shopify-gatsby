@@ -41,35 +41,20 @@ const BlogWrapper = styled.div`
 const CartPage = props => {
   const {
     pageContext: {
-      page: { pageHeaderText1, pageHeaderText2, pageHeaderImage },
+      page: { pageHeaderText },
     },
   } = props
 
-  //   const heroImage = {
-  //     img: hero.gatsbyImageData,
-  //     // alt: homepageACF.heroImage?.altText || ``,
-  //   }
-
-  // const servicesImage = {
-  //   img: homepageACF.servicesImage?.localFile?.childImageSharp?.gatsbyImageData,
-  //   alt: homepageACF.servicesImage?.altText || ``,
-  // }
-
-  // console.log(props.pageContext.page)
+  const pageData =
+    props.pageContext.page && props.pageContext.page.pageHeaderText
+  // console.log(props.pageContext.page.pageHeaderText )
 
   return (
     <Layout>
       <SEO title="Home" />
       {props.pageContext.page ? (
         <>
-          {/* {heroImage?.img && (
-            <GatsbyImage
-              image={heroImage.img}
-              alt=""
-              className="hero-image full-bleed"
-            />
-          )} */}
-          <Cart />
+          <Cart pageText={pageData} />
         </>
       ) : (
         <div>Something went wrong</div>

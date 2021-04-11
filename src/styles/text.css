@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800|Playfair+Display:400");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -56,6 +56,10 @@ small,
   font-size: 0.8rem;
 }
 
+.text-align-right {
+  text-align: right;
+}
+
 .site-title {
   color: #fce3e7;
   text-decoration: none;
@@ -64,27 +68,63 @@ small,
 .page-title {
   color: #fce3e7;
   text-align: center;
+  font-weight: 900;
 }
 
 .page-title span {
   color: #2a3174;
 }
 
+.page-title-alternative {
+  color: #2a3174;
+  font-weight: 900;
+  text-align: center;
+}
+
 .page-title--shop {
   max-width: 580px;
 }
 
-.product-title--overview {
+.product-title {
   color: #2a3174;
   font-family: "Work Sans", sans-serif;
   margin: 0 0 0.5rem 0;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.product-title--overview {
   text-align: center;
 }
 
 .product-price--overview {
   color: #2a3174;
   font-family: "Work Sans", sans-serif;
+}
+
+.product-price--cart {
+  color: #2a3174;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+  text-align: right;
+  margin: 0;
+}
+
+.qty-controls--cart {
+  color: #2a3174;
+}
+
+.check-out--service-delivery {
+  color: #2a3174;
+}
+
+.check-out--ship-total {
+  color: #2a3174;
+  font-weight: bold;
+}
+
+.check-out--checkout-button {
+  font-family: "Playfair Display", serif;
+  color: #fce3e7;
 }
 /*# sourceMappingURL=text.css.map */

@@ -593,4 +593,10 @@ pre tt:after {
 .header-image--height {
   max-height: 600px;
 }
+
+.cart-image--height {
+  height: 187.5px;
+  max-height: 187.5px;
+  max-width: 132.7px;
+}
 /*# sourceMappingURL=layout.css.map */

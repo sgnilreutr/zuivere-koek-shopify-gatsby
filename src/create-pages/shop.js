@@ -6,7 +6,7 @@ const shopPageTemplate = require.resolve(`../templates/shop/index.js`)
 // Get all the shop page data.
 const GET_SHOP_PAGE = `
 query GET_SHOP_PAGE {
-  page: contentfulContentpageHeader {
+  page: contentfulContentpageHeader(pageTitle: {eq: "Shop"}) {
     pageTitle
     pageHeaderText
     pageHeaderSubtext
