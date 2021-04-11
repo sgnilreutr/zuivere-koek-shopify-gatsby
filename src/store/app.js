@@ -1,7 +1,9 @@
-const initialState = {
-  basketItems: [],
-  total: 0,
-  totalCount: 0,
+const LOCAL_STORAGE_KEYS = ['cartData', 'priceTotal', 'totalCount']
+
+const INITIAL_STATE = {
+  basketItems: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS[0])) ?? [],
+  total: localStorage.getItem(LOCAL_STORAGE_KEYS[1]) ?? 0,
+  totalCount: localStorage.getItem(LOCAL_STORAGE_KEYS[2]) ?? 0,
   isLoading: false,
 }
 
@@ -32,7 +34,7 @@ export const subtractQuantity = selectedProduct => ({
   basketItems: selectedProduct,
 })
 
-export default (state = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ACTION_TYPE.ADD_ITEM_BASKET: {
       let newBasketItem =
@@ -48,16 +50,28 @@ export default (state = initialState, action) => {
       )
       if (existingItem) {
         newBasketItem.quantity += 1
+        let cartData = [...state.basketItems]
+        let newTotalCount = state.totalCount += 1
+
+        localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(cartData))
+        localStorage.setItem(LOCAL_STORAGE_KEYS[1], state.total + existingItem.price)
+        localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
+
         return {
           ...state,
           total: state.total + existingItem.price,
-          totalCount: (state.totalCount += 1),
+          totalCount: newTotalCount,
         }
       } else {
         newBasketItem.quantity = 1
         let newTotal = state.total + newBasketItem.price
 
         let newTotalCount = state.totalCount + newBasketItem.quantity
+        let cartData = [...state.basketItems, newBasketItem]
+
+        localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(cartData))
+        localStorage.setItem(LOCAL_STORAGE_KEYS[1], newTotal)
+        localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
 
         return {
           ...state,
@@ -79,6 +93,11 @@ export default (state = initialState, action) => {
         state.total - removeBasketItem.price * removeBasketItem.quantity
 
       let newTotalCount = state.totalCount - removeBasketItem.quantity
+
+      localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(updatedBasketItems))
+      localStorage.setItem(LOCAL_STORAGE_KEYS[1], newTotal)
+      localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
+
       return {
         ...state,
         basketItems: updatedBasketItems,
@@ -93,6 +112,12 @@ export default (state = initialState, action) => {
       basketItem.quantity += 1
       let newTotal = state.total + basketItem.price
       let newTotalCount = (state.totalCount += 1)
+      let cartData = [...state.basketItems]
+
+      localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(cartData))
+      localStorage.setItem(LOCAL_STORAGE_KEYS[1], newTotal)
+      localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
+
       return {
         ...state,
         total: newTotal,
@@ -106,9 +131,16 @@ export default (state = initialState, action) => {
       if (basketItem.quantity === 1) {
         let updatedBasketItems = state.basketItems.find(
           item => item.id !== action.basketItems.id
-        )
+        ) ?? []
+        
+
         let newTotal = state.total - basketItem.price
         let newTotalCount = state.totalCount - basketItem.quantity
+
+        localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(updatedBasketItems))
+        localStorage.setItem(LOCAL_STORAGE_KEYS[1], newTotal)
+        localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
+        
         return {
           ...state,
           basketItems: updatedBasketItems,
@@ -119,6 +151,12 @@ export default (state = initialState, action) => {
         basketItem.quantity -= 1
         let newTotal = state.total - basketItem.price
         let newTotalCount = (state.totalCount -= 1)
+        let cartData = [...state.basketItems]
+
+        localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(cartData))
+        localStorage.setItem(LOCAL_STORAGE_KEYS[1], newTotal)
+        localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
+
         return {
           ...state,
           total: newTotal,

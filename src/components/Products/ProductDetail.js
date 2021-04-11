@@ -17,8 +17,6 @@ const ProductDetail = ({ product, dispatch }) => {
   const addItemToBasket = async product => {
     const selectedProduct = {
       id: product.product.id,
-      name: product.product.name,
-      image: productImage.img,
       priceID: product.id,
       price: product.unit_amount,
       currency: product.currency,

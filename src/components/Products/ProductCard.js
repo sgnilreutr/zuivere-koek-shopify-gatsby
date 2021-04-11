@@ -28,8 +28,6 @@ const ProductCard = ({ product, dispatch }) => {
     event.preventDefault()
     const selectedProduct = {
       id: product.id,
-      name: product.name,
-      image: productImage.img,
       priceID: product.prices[0].id,
       price: product.prices[0].unit_amount,
       currency: product.prices[0].currency,

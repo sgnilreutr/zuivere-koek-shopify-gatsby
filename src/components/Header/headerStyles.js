@@ -3,6 +3,9 @@ import styled from '@emotion/styled'
 export const HeaderWrapper = styled.header`
   background-color: hsl(234, 47%, 31%);
   /* position: absolute; */
+  position: sticky;
+  top: 0;
+  z-index: 10;
 `
 
 export const NavWrapper = styled.nav`
