@@ -1,11 +1,15 @@
 const LOCAL_STORAGE_KEYS = ['cartData', 'priceTotal', 'totalCount']
 
-const INITIAL_STATE = {
-  basketItems: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS[0])) ?? [],
-  total: localStorage.getItem(LOCAL_STORAGE_KEYS[1]) ?? 0,
-  totalCount: localStorage.getItem(LOCAL_STORAGE_KEYS[2]) ?? 0,
-  isLoading: false,
-}
+const INITIAL_STATE =
+  typeof window !== 'undefined'
+    ? {
+        basketItems:
+          JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS[0])) ?? [],
+        total: Number(localStorage.getItem(LOCAL_STORAGE_KEYS[1])) ?? 0,
+        totalCount: Number(localStorage.getItem(LOCAL_STORAGE_KEYS[2])) ?? 0,
+        isLoading: false,
+      }
+    : { basketItems: [], total: 0, totalCount: 0, isLoading: false }
 
 const ACTION_TYPE = {
   ADD_ITEM_BASKET: 'ADD_ITEM_BASKET',
@@ -51,10 +55,13 @@ export default (state = INITIAL_STATE, action) => {
       if (existingItem) {
         newBasketItem.quantity += 1
         let cartData = [...state.basketItems]
-        let newTotalCount = state.totalCount += 1
+        let newTotalCount = (state.totalCount += 1)
 
         localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(cartData))
-        localStorage.setItem(LOCAL_STORAGE_KEYS[1], state.total + existingItem.price)
+        localStorage.setItem(
+          LOCAL_STORAGE_KEYS[1],
+          state.total + existingItem.price
+        )
         localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
 
         return {
@@ -94,7 +101,10 @@ export default (state = INITIAL_STATE, action) => {
 
       let newTotalCount = state.totalCount - removeBasketItem.quantity
 
-      localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(updatedBasketItems))
+      localStorage.setItem(
+        LOCAL_STORAGE_KEYS[0],
+        JSON.stringify(updatedBasketItems)
+      )
       localStorage.setItem(LOCAL_STORAGE_KEYS[1], newTotal)
       localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
 
@@ -129,18 +139,20 @@ export default (state = INITIAL_STATE, action) => {
         item => item.id === action.basketItems.id
       )
       if (basketItem.quantity === 1) {
-        let updatedBasketItems = state.basketItems.find(
-          item => item.id !== action.basketItems.id
-        ) ?? []
-        
+        let updatedBasketItems =
+          state.basketItems.find(item => item.id !== action.basketItems.id) ??
+          []
 
         let newTotal = state.total - basketItem.price
         let newTotalCount = state.totalCount - basketItem.quantity
 
-        localStorage.setItem(LOCAL_STORAGE_KEYS[0], JSON.stringify(updatedBasketItems))
+        localStorage.setItem(
+          LOCAL_STORAGE_KEYS[0],
+          JSON.stringify(updatedBasketItems)
+        )
         localStorage.setItem(LOCAL_STORAGE_KEYS[1], newTotal)
         localStorage.setItem(LOCAL_STORAGE_KEYS[2], newTotalCount)
-        
+
         return {
           ...state,
           basketItems: updatedBasketItems,
