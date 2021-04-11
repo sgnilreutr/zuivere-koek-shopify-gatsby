@@ -73,7 +73,7 @@ const Cart = ({ pageText, basketItems, isLoading, total }) => {
       {basketItems.length > 0 &&
         cartData &&
         basketItems.map((basketItem, index) => (
-          <CartRow id={index}>
+          <CartRow key={index}>
             <SingleLine product={basketItem} addData={cartData} />
           </CartRow>
         ))}

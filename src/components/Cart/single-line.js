@@ -63,7 +63,7 @@ const SingleLine = ({ product, addData, dispatch }) => {
             </QtyAdjust>
           </QtyAdjustContainer>
           <Delete onClick={() => removeItem(product)}>
-            <IoTrashOutline size={'1.2rem'} />
+            <IoTrashOutline size={20} />
           </Delete>
         </QtyDeleteContainer>
       </NameQtyContainer>
