@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 export const CartWrapper = styled.div`
   background-color: hsl(351, 81%, 94%);
   padding: 5% 20%;
+  margin: 5% 0;
 `
 
 export const CartRow = styled.div`

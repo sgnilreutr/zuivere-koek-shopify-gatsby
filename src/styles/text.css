@@ -74,6 +74,11 @@ small,
   color: #2a3174;
 }
 
+.page-title-alternative {
+  color: #2a3174;
+  text-align: center;
+}
+
 .page-title--shop {
   max-width: 580px;
 }

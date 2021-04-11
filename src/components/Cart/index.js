@@ -22,7 +22,7 @@ const SHIPPING_FEE_TEXT = 'Gratis'
 const TOTAL_TEXT = 'Totaalbedrag'
 const BUTTON_TEXT = 'ik ga bestellen'
 
-const Cart = ({ basketItems, dispatch, isLoading, total }) => {
+const Cart = ({ pageText, basketItems, isLoading, total }) => {
   const [loading, setLoading] = React.useState(isLoading)
 
   const cartData = useStaticQuery(graphql`
@@ -47,14 +47,6 @@ const Cart = ({ basketItems, dispatch, isLoading, total }) => {
     }
   `)
 
-  // const productImageData = productData && productData.prices.edges.filter(item => item.node.product.id === basketItems.map(item => item.id))
-
-  // console.log(productImageData)
-
-  // console.log(productData.prices.edges)
-  // console.log(productData.prices.edges[0].node.product.id)
-  // console.log(basketItems.map(item => item.id))
-
   const checkoutBasket = async basketItems => {
     setLoading(true)
     const lineItems = basketItems.map(item => ({
@@ -77,6 +69,7 @@ const Cart = ({ basketItems, dispatch, isLoading, total }) => {
 
   return (
     <CartWrapper>
+      <h1 className="page-title-alternative">{pageText}</h1>
       {basketItems.length > 0 &&
         cartData &&
         basketItems.map((basketItem, index) => (
