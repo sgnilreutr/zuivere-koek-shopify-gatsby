@@ -29,7 +29,7 @@ const Cart = ({ basketItems, dispatch, isLoading, total }) => {
     const { error } = await stripe.redirectToCheckout({
       mode: 'payment',
       lineItems: lineItems,
-      successUrl: `${window.location.origin}/shop/`,
+      successUrl: `${window.location.origin}/thank-you/`,
       cancelUrl: `${window.location.origin}/shop`,
     })
 
