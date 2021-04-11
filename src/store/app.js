@@ -9,7 +9,7 @@ const INITIAL_STATE =
         totalCount: Number(localStorage.getItem(LOCAL_STORAGE_KEYS[2])) ?? 0,
         isLoading: false,
       }
-    : { basketItems: 0, total: 0, totalCount: 0, isLoading: false }
+    : { basketItems: [], total: 0, totalCount: 0, isLoading: false }
 
 const ACTION_TYPE = {
   ADD_ITEM_BASKET: 'ADD_ITEM_BASKET',
