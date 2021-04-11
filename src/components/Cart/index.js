@@ -83,7 +83,9 @@ const Cart = ({ pageText, basketItems, isLoading, total }) => {
         <TotalAndButton>
           <Shipping>
             <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
-            <p className="check-out--ship-total text-align-right">{SHIPPING_FEE_TEXT}</p>
+            <p className="check-out--ship-total text-align-right">
+              {SHIPPING_FEE_TEXT}
+            </p>
           </Shipping>
           <Total>
             <p className="check-out--ship-total">{TOTAL_TEXT}</p>

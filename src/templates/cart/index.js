@@ -45,7 +45,8 @@ const CartPage = props => {
     },
   } = props
 
-  const pageData = props.pageContext.page && props.pageContext.page.pageHeaderText
+  const pageData =
+    props.pageContext.page && props.pageContext.page.pageHeaderText
   // console.log(props.pageContext.page.pageHeaderText )
 
   return (
@@ -53,7 +54,7 @@ const CartPage = props => {
       <SEO title="Home" />
       {props.pageContext.page ? (
         <>
-          <Cart pageText={pageData}/>
+          <Cart pageText={pageData} />
         </>
       ) : (
         <div>Something went wrong</div>

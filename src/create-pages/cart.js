@@ -18,7 +18,6 @@ module.exports = async ({ actions, graphql }) => {
   const fetchPosts = async () => {
     // Do query to get cart page data.
     return await graphql(GET_CART_PAGE).then(({ data }) => {
-
       const { page } = data
 
       return { page }
