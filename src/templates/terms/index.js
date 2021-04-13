@@ -1,29 +1,23 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import { Link } from 'gatsby'
-import parse from 'html-react-parser'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
-import Cart from '../../components/Cart'
-
+import LandingPage from '../../components/Landing'
+import Hero from '../../components/Landing/Hero'
 
 const TermsPage = props => {
   const {
     pageContext: {
-      page: { pageHeaderText },
+      page: { name, hero, sections },
     },
   } = props
 
-  const pageData =
-    props.pageContext.page && props.pageContext.page.pageHeaderText
-  // console.log(props.pageContext.page.pageHeaderText )
-
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={name} />
       {props.pageContext.page ? (
         <>
-          <Cart pageText={pageData} />
+          <Hero hero={hero} />
+          <LandingPage page={sections} />
         </>
       ) : (
         <div>Something went wrong</div>
