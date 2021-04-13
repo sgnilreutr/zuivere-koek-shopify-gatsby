@@ -1,7 +1,5 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
@@ -9,22 +7,10 @@ import Products from '../../components/Products/Products'
 import { HeaderTextContainer } from '../../styles/globalStyles'
 import Toaster from '../../components/Toaster'
 
-const DesktopWrapper = styled.div`
-  @media only screen and (max-width: 480px) {
-    display: none;
-  }
-`
-
-const MobileWrapper = styled.div`
-  @media only screen and (min-width: 481px) {
-    display: none;
-  }
-`
-
 const Shop = props => {
   const {
     pageContext: {
-      page: { pageHeaderText, pageHeaderText2, pageHeaderImage },
+      page: { pageHeaderText, pageHeaderImage },
     },
   } = props
 

@@ -505,6 +505,10 @@ pre tt:after {
   margin: 0 auto;
 }
 
+.header-image--no-constrained {
+  display: inherit;
+}
+
 .header-image--height {
   max-height: 600px;
 }

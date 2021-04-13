@@ -127,4 +127,13 @@ small,
   font-family: "Playfair Display", serif;
   color: #fce3e7;
 }
+
+.landingpage-p {
+  color: #2a3174;
+}
+
+.landingpage-h2 {
+  color: #fce3e7;
+  font-weight: bold;
+}
 /*# sourceMappingURL=text.css.map */
