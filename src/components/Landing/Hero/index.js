@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper } from './heroStyles'
+import { HeaderTextContainer } from '../../../styles/globalStyles'
 import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -10,25 +10,25 @@ const Hero = ({ hero }) => {
     // alt: homepageACF.heroImage?.altText || ``,
   }
 
-  console.log(hero)
-
   return (
-    <Wrapper>
+    <>
       {hero ? (
         <div className="full-bleed">
           {heroImageFile?.img && (
             <GatsbyImage
               image={heroImageFile.img}
               alt=""
-              className="hero-image full-bleed"
+              className="header-image--no-constrained header-image--height full-bleed"
             />
           )}
-          <h1 className="page-title-alternative">{parse(hero.pageTitle)}</h1>
+          <HeaderTextContainer>
+            <h1 className="page-title-alternative">{parse(hero.pageTitle)}</h1>
+          </HeaderTextContainer>
         </div>
       ) : (
         <div>Something went wrong</div>
       )}
-    </Wrapper>
+    </>
   )
 }
 

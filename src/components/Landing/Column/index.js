@@ -7,8 +7,8 @@ const Column = ({ content }) => {
 
   return (
     <Wrapper>
-      <h2>{title}</h2>
-      <p>{parse(text.text)}</p>
+      <h2 className="landingpage-h2">{title}</h2>
+      <p className="landingpage-p">{parse(text.text)}</p>
     </Wrapper>
   )
 }

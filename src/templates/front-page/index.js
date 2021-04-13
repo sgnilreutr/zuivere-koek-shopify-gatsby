@@ -90,7 +90,7 @@ const Homepage = props => {
             <GatsbyImage
               image={heroImageFile.img}
               alt=""
-              className="hero-image full-bleed"
+              className="full-bleed"
             />
           )}
           <DiscoverContainer className="full-bleed">
