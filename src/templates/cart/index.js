@@ -6,7 +6,7 @@ import Cart from '../../components/Cart'
 const CartPage = props => {
   const {
     pageContext: {
-      page: { pageHeaderText },
+      page: { pageTitle },
     },
   } = props
 
@@ -14,7 +14,7 @@ const CartPage = props => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={pageTitle} />
       {props.pageContext.page ? (
         <>
           <Cart pageText={pageData} />
