@@ -1,5 +1,6 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import React, { useContext, useState } from 'react'
+import StoreContext from '~/context/StoreContext'
+// import { useStaticQuery, graphql } from 'gatsby'
 import SingleLine from './single-line'
 import { formatPrice } from '../../utils'
 import {
@@ -20,8 +21,12 @@ const SHIPPING_FEE_TEXT = 'Gratis'
 const TOTAL_TEXT = 'Totaalbedrag'
 const BUTTON_TEXT = 'ik ga bestellen'
 
-const Cart = ({ pageText, basketItems, isLoading, total }) => {
-  const [loading, setLoading] = React.useState(isLoading)
+const Cart = ({ pageText, isLoading }) => {
+  const {
+    store: { checkout },
+  } = useContext(StoreContext)
+
+  const [loading, setLoading] = useState(isLoading)
 
   // const cartData = useStaticQuery(graphql`
   //   query ProductPricesCart {
@@ -65,45 +70,41 @@ const Cart = ({ pageText, basketItems, isLoading, total }) => {
   //   }
   // }
 
-  //   return (
-  //     <CartWrapper>
-  //       <h1 className="page-title-alternative">{pageText}</h1>
-  //       {basketItems.length > 0 &&
-  //         cartData &&
-  //         basketItems.map((basketItem, index) => (
-  //           <CartRow key={index}>
-  //             <SingleLine product={basketItem} addData={cartData} />
-  //           </CartRow>
-  //         ))}
-  //       <HR />
-  //       <CartBottomGrid>
-  //         <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
-  //         <TotalAndButton>
-  //           <Shipping>
-  //             <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
-  //             <p className="check-out--ship-total text-align-right">
-  //               {SHIPPING_FEE_TEXT}
-  //             </p>
-  //           </Shipping>
-  //           <Total>
-  //             <p className="check-out--ship-total">{TOTAL_TEXT}</p>
-  //             <p className="check-out--ship-total text-align-right">
-  //               {basketItems.length > 0 &&
-  //                 formatPrice(total, basketItems[0].currency)}
-  //             </p>
-  //           </Total>
-  //           <OrderButton
-  //             onClick={() => checkoutBasket(basketItems)}
-  //             disabled={loading || basketItems.length < 1}
-  //           >
-  //             <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
-  //           </OrderButton>
-  //         </TotalAndButton>
-  //       </CartBottomGrid>
-  //     </CartWrapper>
-  //   )
-  // }
-  return <>Test</>
-}
+    return (
+      <CartWrapper>
+        <h1 className="page-title-alternative">{pageText}</h1>
+        {checkout &&
+          checkout.lineItems.map((item, index) => (
+            <CartRow key={index}>
+              <SingleLine product={item} />
+            </CartRow>
+          ))}
+        <HR />
+        <CartBottomGrid>
+          <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
+          <TotalAndButton>
+            <Shipping>
+              <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
+              <p className="check-out--ship-total text-align-right">
+                {SHIPPING_FEE_TEXT}
+              </p>
+            </Shipping>
+            <Total>
+              <p className="check-out--ship-total">{TOTAL_TEXT}</p>
+              {/* <p className="check-out--ship-total text-align-right">
+                  {formatPrice(total, basketItems[0].currency)}
+              </p> */}
+            </Total>
+            <OrderButton
+              // onClick={() => checkoutBasket(basketItems)}
+              disabled={loading || checkout.lineItems.length === 0}
+            >
+              <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
+            </OrderButton>
+          </TotalAndButton>
+        </CartBottomGrid>
+      </CartWrapper>
+    )
+  }
 
 export default Cart

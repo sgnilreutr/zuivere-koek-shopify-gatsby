@@ -15,6 +15,7 @@ const useQuantity = () => {
   return [total !== 0, total]
 }
 
+
 const Menu = () => {
   const [hasItems, quantity] = useQuantity()
 

@@ -15,7 +15,6 @@ import {
 } from './ProductDetailStyles'
 
 const ProductDetail = ({ product }) => {
-  console.log(product)
   const {
     options,
     variants,
