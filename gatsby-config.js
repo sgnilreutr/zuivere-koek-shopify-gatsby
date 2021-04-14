@@ -1,7 +1,7 @@
 const path = require('path')
 
 require('dotenv').config({
-  path: `.env`,
+  path: `.env.${process.env.NODE_ENV}`
 })
 
 module.exports = {
@@ -14,7 +14,6 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        // spaceId: `qyxj595mgdfb`,
         spaceId: `p4ywkzwxur37`,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         downloadLocal: true,
