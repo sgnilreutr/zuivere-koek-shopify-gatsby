@@ -110,6 +110,13 @@ const ProductDetail = ({ product }) => {
     }
   }
 
+  const variantPrice = product.priceRange ? (
+    formatPrice(product.priceRange.minVariantPrice.amount, product.priceRange.minVariantPrice.currencyCode)
+  ) : null
+  // const variantPrice = product.variant.priceV2 ? (
+  //   formatPrice(product.variant.priceV2.amount, product.variant.priceV2.currencyCode)
+  // ) : null
+
   return !isEmpty(product) ? (
     <ProductWrapper>
       <div className="col-lg-5 col-md-6 mb-5 product-image-wrap">
@@ -123,10 +130,7 @@ const ProductDetail = ({ product }) => {
           ) : null}
           <AddToCart>
             <h6 className="card-subtitle mb-3">
-              {formatPrice(
-                product.priceRange.minVariantPrice.amount,
-                product.priceRange.minVariantPrice.currencyCode
-              )}
+              {variantPrice}
             </h6>
             <button
               type="submit"

@@ -31,22 +31,12 @@ const SingleLine = ({ product }) => {
   ) : null
 
   const variantPrice = product.variant.priceV2 ? (
-    formatPrice(product.variant.priceV2.amount, product.variant.priceV2.currencyCode)
+    formatPrice((product.variant.priceV2.amount * product.quantity), product.variant.priceV2.currencyCode)
   ) : null
 
   const handleRemove = () => {
     removeLineItem(client, checkout.id, product.id)
   }
-  // const [itemQty, setItemQty] = React.useState(product.quantity)
-
-  // const productArray =
-  //   addData && addData.prices.edges.map(item => item.node.product)
-  // const matchedProduct =
-  //   productArray && productArray.filter(item => item.id === product.id)
-  // const singleImage =
-  //   matchedProduct &&
-  //   matchedProduct[0].localFiles[0].childImageSharp.gatsbyImageData
-  // const singleName = matchedProduct && matchedProduct[0].name
 
   const subtractQuantityItem = basketItem => {
     updateLineItem(client, checkout.id, product.id, quantity - 1)
@@ -56,8 +46,6 @@ const SingleLine = ({ product }) => {
     updateLineItem(client, checkout.id, product.id, quantity + 1)
     setQuantity(quantity + 1)
   }
-
-  // let ProductPrice = product.price * product.quantity
 
   return (
     <ProductRow>
