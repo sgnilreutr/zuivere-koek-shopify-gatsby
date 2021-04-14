@@ -1,9 +1,6 @@
 import React from 'react'
 import Layout from '../../components/layout'
 import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import parse from 'html-react-parser'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 import Cart from '../../components/Cart'
 
@@ -19,29 +16,10 @@ const MobileWrapper = styled.div`
   }
 `
 
-const DiscoverContainer = styled.div`
-  background-color: hsl(358, 71%, 91%);
-`
-
-const WhyContainer = styled.div``
-
-const OverOnsWrapper = styled.div``
-
-const OverOnsContent = styled.div``
-
-const BlogWrapper = styled.div`
-  @media only screen and (min-width: 481px) {
-    margin-top: 160px;
-    margin-bottom: 100px;
-    display: flex;
-    place-content: center;
-  }
-`
-
 const CartPage = props => {
   const {
     pageContext: {
-      page: { pageHeaderText },
+      page: { pageTitle },
     },
   } = props
 
@@ -51,7 +29,7 @@ const CartPage = props => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={pageTitle} />
       {props.pageContext.page ? (
         <>
           <Cart pageText={pageData} />

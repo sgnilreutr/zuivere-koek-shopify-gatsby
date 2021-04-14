@@ -58,7 +58,7 @@ const Cart = ({ pageText, basketItems, isLoading, total }) => {
       mode: 'payment',
       lineItems: lineItems,
       successUrl: `${window.location.origin}/thank-you/`,
-      cancelUrl: `${window.location.origin}/shop`,
+      cancelUrl: `${window.location.origin}/cart`,
     })
 
     if (error) {
