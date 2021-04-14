@@ -16,11 +16,11 @@ import { toast } from 'react-toastify'
 
 const ProductCard = ({ product, dispatch }) => {
   const [loading, setLoading] = useState(false)
-  const productInfo = product ? product : null
+  const productInfo = product ? product.node : null
   const TOASTER_TEXT = 'is toegevoegd aan je winkelmand.'
 
   const productImage = {
-    img: productInfo?.localFiles[0]?.childImageSharp?.gatsbyImageData,
+    img: productInfo?.images[0].localFile?.childImageSharp?.gatsbyImageData,
     // alt: productInfo?.image?.altText || `featured-image`,
   }
 
@@ -39,7 +39,7 @@ const ProductCard = ({ product, dispatch }) => {
     <ProductCardWrapper>
       <form onSubmit={handleSubmit}>
         {productImage.img ? (
-          <Link to={`${productInfo.id}`}>
+          <Link to={`${productInfo.handle}`}>
             <ProductPhoto>
               <GatsbyImage
                 image={productImage.img}
@@ -52,17 +52,16 @@ const ProductCard = ({ product, dispatch }) => {
         <ProductInfo>
           <ProductInnerInfo to={`${productInfo.id}`}>
             <h4 className="product-title product-title--overview">
-              {product.name}
+              {productInfo.title}
             </h4>
-            {product.prices.map(price => (
+            {productInfo.priceRange.minVariantPrice &&
               <span
                 className="product-price--overview"
-                key={price.id}
-                value={price.id}
+                // value={price.id}
               >
-                {formatPrice(price.unit_amount, price.currency)}
+                {formatPrice(productInfo.priceRange.minVariantPrice.amount, productInfo.priceRange.currencyCode)}
               </span>
-            ))}
+            }
           </ProductInnerInfo>
           <AddToCartButton
             disabled={loading}

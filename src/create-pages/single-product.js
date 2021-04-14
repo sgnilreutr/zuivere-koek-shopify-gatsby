@@ -5,24 +5,34 @@ const singleProductTemplate = require.resolve(
 // const { ImageFragment } = require('./fragments/image/index.js');
 // const { SeoFragment } = require('./fragments/seo/index.js');
 
-// Get all the shop page data.
+// Get all the product data.
 const GET_ALL_PRODUCTS = `
 query GET_ALL_PRODUCTS {
-  products: allStripePrice(filter: {active: {eq: true}}) {
+  products: allShopifyProduct(filter: {availableForSale: {eq: true}}) {
     edges {
       node {
         id
-        active
-        currency
-        unit_amount
-        product {
-          id
-          name
-          description
-          localFiles {
+        title
+        handle
+        availableForSale
+        description
+        descriptionHtml
+        shopifyId
+        images {
+          localFile {
             childImageSharp {
               gatsbyImageData
             }
+          }
+        }
+        priceRange {
+          maxVariantPrice {
+            amount
+            currencyCode
+          }
+          minVariantPrice {
+            amount
+            currencyCode
           }
         }
       }
@@ -35,7 +45,7 @@ module.exports = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   const fetchPosts = async () => {
-    // Do query to get home page data.
+    // Do query to get product data.
     return await graphql(GET_ALL_PRODUCTS).then(({ data }) => {
       const { products } = data
 
@@ -54,7 +64,7 @@ module.exports = async ({ actions, graphql }) => {
     allProducts.length &&
       allProducts.map(product => {
         createPage({
-          path: `shop/${product.node.product.id}`,
+          path: `/shop/${product.node.handle}`,
           // path: page.uri,
           component: slash(singleProductTemplate),
           context: { product },
