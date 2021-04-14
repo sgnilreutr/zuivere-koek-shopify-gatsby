@@ -28,7 +28,6 @@ module.exports = async ({ actions, graphql }) => {
   await fetchPosts().then(({ page }) => {
     createPage({
       path: `cart`,
-      // path: page.uri,
       component: slash(cartPageTemplate),
       context: {
         page,

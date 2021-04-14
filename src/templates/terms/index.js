@@ -1,23 +1,23 @@
 import React from 'react'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
-import Cart from '../../components/Cart'
+import LandingPage from '../../components/Landing'
+import Hero from '../../components/Landing/Hero'
 
-const CartPage = props => {
+const TermsPage = props => {
   const {
     pageContext: {
-      page: { pageTitle },
+      page: { name, hero, sections },
     },
   } = props
 
-  const pageData = props.pageContext.page && pageHeaderText
-
   return (
     <Layout>
-      <SEO title={pageTitle} />
+      <SEO title={name} />
       {props.pageContext.page ? (
         <>
-          <Cart pageText={pageData} />
+          <Hero hero={hero} />
+          <LandingPage page={sections} />
         </>
       ) : (
         <div>Something went wrong</div>
@@ -26,4 +26,4 @@ const CartPage = props => {
   )
 }
 
-export default CartPage
+export default TermsPage
