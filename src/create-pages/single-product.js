@@ -25,6 +25,17 @@ query GET_ALL_PRODUCTS {
             }
           }
         }
+        variants {
+					id
+          title
+          price
+          availableForSale
+          shopifyId
+          selectedOptions {
+						name
+            value
+          }
+        }
         priceRange {
           maxVariantPrice {
             amount

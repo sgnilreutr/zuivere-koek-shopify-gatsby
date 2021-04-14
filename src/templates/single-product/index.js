@@ -11,6 +11,8 @@ const SingleProductPage = props => {
     product: { name, link, seo },
   } = props.pageContext
 
+  // console.log(product.node)
+
   return (
     <Layout>
       {!isEmpty(props.pageContext) ? (
@@ -22,7 +24,7 @@ const SingleProductPage = props => {
               header={{ siteTitle: 'Gatsby WooCommerce Theme' }}
               openGraphImage={getOgImage(seo)}
             /> */}
-          <ProductDetail product={product} />
+          <ProductDetail product={product.node} />
         </>
       ) : (
         <div>Something went wrong</div>
