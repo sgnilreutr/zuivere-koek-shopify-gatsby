@@ -1,7 +1,5 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
-import { connect } from 'react-redux'
-import { addItemBasket } from '../../store/app'
 import { formatPrice, sanitize } from '../../utils/index'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import parse from 'html-react-parser'
@@ -13,16 +11,16 @@ import {
   ProductDesc,
 } from './ProductDetailStyles'
 
-const ProductDetail = ({ product, dispatch }) => {
-  const addItemToBasket = async product => {
-    const selectedProduct = {
-      id: product.product.id,
-      priceID: product.id,
-      price: product.unit_amount,
-      currency: product.currency,
-    }
-    dispatch(addItemBasket(selectedProduct))
-  }
+const ProductDetail = ({ product }) => {
+  // const addItemToBasket = async product => {
+  //   const selectedProduct = {
+  //     id: product.product.id,
+  //     priceID: product.id,
+  //     price: product.unit_amount,
+  //     currency: product.currency,
+  //   }
+  //   dispatch(addItemBasket(selectedProduct))
+  // }
 
   const productImage = {
     img:
@@ -60,9 +58,9 @@ const ProductDetail = ({ product, dispatch }) => {
             <h6 className="card-subtitle mb-3">
               {formatPrice(product.node.unit_amount, product.node.currency)}
             </h6>
-            <button onClick={() => addItemToBasket(product.node)}>
+            {/* <button onClick={() => addItemToBasket(product.node)}>
               <IoCartOutline />
-            </button>
+            </button> */}
           </AddToCart>
         </div>
       </ProductDesc>
@@ -70,9 +68,4 @@ const ProductDetail = ({ product, dispatch }) => {
   ) : null
 }
 
-export default connect(
-  state => ({
-    basketItems: state.app.basketItems,
-  }),
-  null
-)(ProductDetail)
+export default ProductDetail

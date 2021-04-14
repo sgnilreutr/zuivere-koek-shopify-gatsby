@@ -1,11 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import {
-  addQuantity,
-  removeItemBasket,
-  subtractQuantity,
-} from '../../store/app'
 import { formatPrice } from '../../utils'
 import { IoTrashOutline } from 'react-icons/io5'
 import {
@@ -18,36 +12,36 @@ import {
   QtyDeleteContainer,
 } from './cartStyles'
 
-const SingleLine = ({ product, addData, dispatch }) => {
-  const [itemQty, setItemQty] = React.useState(product.quantity)
+const SingleLine = ({ product }) => {
+  // const [itemQty, setItemQty] = React.useState(product.quantity)
 
-  const productArray =
-    addData && addData.prices.edges.map(item => item.node.product)
-  const matchedProduct =
-    productArray && productArray.filter(item => item.id === product.id)
-  const singleImage =
-    matchedProduct &&
-    matchedProduct[0].localFiles[0].childImageSharp.gatsbyImageData
-  const singleName = matchedProduct && matchedProduct[0].name
+  // const productArray =
+  //   addData && addData.prices.edges.map(item => item.node.product)
+  // const matchedProduct =
+  //   productArray && productArray.filter(item => item.id === product.id)
+  // const singleImage =
+  //   matchedProduct &&
+  //   matchedProduct[0].localFiles[0].childImageSharp.gatsbyImageData
+  // const singleName = matchedProduct && matchedProduct[0].name
 
-  const subtractQuantityItem = basketItem => {
-    dispatch(subtractQuantity(basketItem))
-    setItemQty(itemQty - 1)
-  }
-  const addQuantityItem = basketItem => {
-    dispatch(addQuantity(basketItem))
-    setItemQty(itemQty + 1)
-  }
+  // const subtractQuantityItem = basketItem => {
+  //   dispatch(subtractQuantity(basketItem))
+  //   setItemQty(itemQty - 1)
+  // }
+  // const addQuantityItem = basketItem => {
+  //   dispatch(addQuantity(basketItem))
+  //   setItemQty(itemQty + 1)
+  // }
 
-  const removeItem = basketItem => {
-    dispatch(removeItemBasket(basketItem))
-  }
+  // const removeItem = basketItem => {
+  //   dispatch(removeItemBasket(basketItem))
+  // }
 
-  let ProductPrice = product.price * product.quantity
+  // let ProductPrice = product.price * product.quantity
 
   return (
     <ProductRow>
-      <GatsbyImage image={singleImage} alt="" className="cart-image--height" />
+      {/* <GatsbyImage image={singleImage} alt="" className="cart-image--height" />
       <NameQtyContainer>
         <NameContainer>
           <p className="product-title">{singleName}</p>
@@ -69,14 +63,9 @@ const SingleLine = ({ product, addData, dispatch }) => {
       </NameQtyContainer>
       <p className="product-price--cart">
         {formatPrice(ProductPrice, product.currency)}
-      </p>
+      </p> */}
     </ProductRow>
   )
 }
 
-export default connect(
-  state => ({
-    basketItems: state.app.basketItems,
-  }),
-  null
-)(SingleLine)
+export default SingleLine

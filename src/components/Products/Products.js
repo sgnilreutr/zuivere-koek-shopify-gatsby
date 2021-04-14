@@ -8,40 +8,51 @@ const Products = () => {
     <StaticQuery
       query={graphql`
         query Products {
-            allProducts: allShopifyProduct(
-    filter: {availableForSale: {eq: true}}
-    sort: {fields: createdAt, order: DESC}
-  ) {
-    edges {
-      node {
-        id
-        title
-        handle
-        availableForSale
-        description
-        descriptionHtml
-        shopifyId
-        images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
+          allProducts: allShopifyProduct(
+            filter: { availableForSale: { eq: true } }
+            sort: { fields: createdAt, order: DESC }
+          ) {
+            edges {
+              node {
+                id
+                title
+                handle
+                availableForSale
+                description
+                descriptionHtml
+                shopifyId
+                images {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                }
+                variants {
+                  id
+                  title
+                  price
+                  availableForSale
+                  shopifyId
+                  selectedOptions {
+                    name
+                    value
+                  }
+                }
+                priceRange {
+                  maxVariantPrice {
+                    amount
+                    currencyCode
+                  }
+                  minVariantPrice {
+                    amount
+                    currencyCode
+                  }
+                }
+              }
             }
           }
         }
-        priceRange {
-          maxVariantPrice {
-            amount
-            currencyCode
-          }
-          minVariantPrice {
-            amount
-            currencyCode
-          }
-        }
-      }
-    }
-  }
-}
       `}
       render={({ allProducts }) => {
         // // Group prices by product
@@ -58,10 +69,11 @@ const Products = () => {
         const products = allProducts.edges
 
         console.log(products)
+
         return (
           <ProductGrid>
-            {Object.keys(products).map(key => (
-              <ProductCard key={products[key].id} product={products[key]} />
+            {products.map((product, index) => (
+              <ProductCard key={index} product={product.node} />
             ))}
           </ProductGrid>
         )

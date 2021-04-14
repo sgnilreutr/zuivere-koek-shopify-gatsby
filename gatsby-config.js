@@ -1,3 +1,5 @@
+const path = require('path')
+
 require('dotenv').config({
   path: `.env`,
 })
@@ -51,11 +53,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-stripe`,
+      resolve: 'gatsby-plugin-root-import',
       options: {
-        objects: ['Product',  'Price'],
-        secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFiles: true,
+        '~': path.join(__dirname, 'src/'),
       },
     },
     `gatsby-transformer-sharp`,

@@ -2,7 +2,6 @@ import React from 'react'
 import { IoCartOutline } from 'react-icons/io5'
 import { MenuItem, MenuWrapper } from './MenuStyles'
 import Badge from '@material-ui/core/Badge'
-import { connect } from 'react-redux'
 
 const Menu = ({ totalCount }) => {
   const MenuOptions = [
@@ -34,10 +33,4 @@ const Menu = ({ totalCount }) => {
   )
 }
 
-export default connect(
-  state => ({
-    totalCount: state.app.totalCount,
-    isLoading: state.app.isLoading,
-  }),
-  null
-)(Menu)
+export default Menu
