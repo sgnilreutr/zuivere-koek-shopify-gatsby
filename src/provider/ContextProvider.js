@@ -21,8 +21,6 @@ const ContextProvider = ({ children }) => {
     shop: {},
   }
 
-  console.log(process.env.SHOP_NAME)
-
   const [store, updateStore] = useState(initialStoreState)
   const isRemoved = useRef(false)
 

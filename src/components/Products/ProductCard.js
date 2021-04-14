@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(false)
   const productInfo = product ? product : null
   const QUICKBUY_QTY = 1
-  // const TOASTER_TEXT = 'is toegevoegd aan je winkelmand.'
+  const TOASTER_TEXT = 'is toegevoegd aan je winkelmand.'
 
   const {
     addVariantToCart,
@@ -62,13 +62,6 @@ const ProductCard = ({ product }) => {
   const handleSubmit = async event => {
     event.preventDefault()
     setLoading(true)
-    // const selectedProduct = {
-    //   id: product.id,
-    //   priceID: product.prices[0].id,
-    //   price: product.prices[0].unit_amount,
-    //   currency: product.prices[0].currency,
-    // }
-    // dispatch(addItemBasket(selectedProduct))
 
     addVariantToCart(productVariant.shopifyId, QUICKBUY_QTY)
     setLoading(false)
@@ -107,7 +100,7 @@ const ProductCard = ({ product }) => {
           </ProductInnerInfo>
           <AddToCartButton
             disabled={loading || adding || !available}
-            // onClick={() => toast.dark(`${product.name} ${TOASTER_TEXT}`)}
+            onClick={() => toast.dark(`${productInfo.title} ${TOASTER_TEXT}`)}
           >
             <IoCartOutline size={30} color={`#f8d8d9`} />
           </AddToCartButton>
