@@ -30,26 +30,28 @@ const SingleLine = ({ product }) => {
     />
   ) : null
 
-  const variantPrice = product.variant.priceV2 ? (
-    formatPrice((product.variant.priceV2.amount * product.quantity), product.variant.priceV2.currencyCode)
-  ) : null
+  const variantPrice = product.variant.priceV2
+    ? formatPrice(
+        product.variant.priceV2.amount * product.quantity,
+        product.variant.priceV2.currencyCode
+      )
+    : null
 
   const handleRemove = () => {
     removeLineItem(client, checkout.id, product.id)
   }
 
-  const subtractQuantityItem = basketItem => {
+  const subtractQuantityItem = () => {
     updateLineItem(client, checkout.id, product.id, quantity - 1)
     setQuantity(quantity - 1)
   }
-  const addQuantityItem = basketItem => {
+  const addQuantityItem = () => {
     updateLineItem(client, checkout.id, product.id, quantity + 1)
     setQuantity(quantity + 1)
   }
 
   return (
     <ProductRow>
-      {console.log(product)}
       <Link to={`/shop/${product.variant.product.handle}/`}>
         {variantImage}
       </Link>
@@ -59,11 +61,11 @@ const SingleLine = ({ product }) => {
         </NameContainer>
         <QtyDeleteContainer>
           <QtyAdjustContainer>
-            <QtyAdjust onClick={() => subtractQuantityItem(product)}>
+            <QtyAdjust onClick={subtractQuantityItem}>
               <span className="qty-controls--cart">-</span>
             </QtyAdjust>
             <span className="qty-controls--cart">{quantity}</span>
-            <QtyAdjust onClick={() => addQuantityItem(product)}>
+            <QtyAdjust onClick={addQuantityItem}>
               <span className="qty-controls--cart">+</span>
             </QtyAdjust>
           </QtyAdjustContainer>
@@ -72,9 +74,7 @@ const SingleLine = ({ product }) => {
           </Delete>
         </QtyDeleteContainer>
       </NameQtyContainer>
-      <p className="product-price--cart">
-        {variantPrice}
-      </p>
+      <p className="product-price--cart">{variantPrice}</p>
     </ProductRow>
   )
 }

@@ -28,7 +28,6 @@ const ProductDetail = ({ product }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
-
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
     // alt: product.node.image.altText || ``,
@@ -110,9 +109,12 @@ const ProductDetail = ({ product }) => {
     }
   }
 
-  const variantPrice = product.priceRange ? (
-    formatPrice(product.priceRange.minVariantPrice.amount, product.priceRange.minVariantPrice.currencyCode)
-  ) : null
+  const variantPrice = product.priceRange
+    ? formatPrice(
+        product.priceRange.minVariantPrice.amount,
+        product.priceRange.minVariantPrice.currencyCode
+      )
+    : null
   // const variantPrice = product.variant.priceV2 ? (
   //   formatPrice(product.variant.priceV2.amount, product.variant.priceV2.currencyCode)
   // ) : null
@@ -129,9 +131,7 @@ const ProductDetail = ({ product }) => {
             <p>{parse(product.description)}</p>
           ) : null}
           <AddToCart>
-            <h6 className="card-subtitle mb-3">
-              {variantPrice}
-            </h6>
+            <h6 className="card-subtitle mb-3">{variantPrice}</h6>
             <button
               type="submit"
               onClick={handleAddToCart}

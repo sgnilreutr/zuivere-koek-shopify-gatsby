@@ -114,7 +114,7 @@ const ContextProvider = ({ children }) => {
           const lineItemsToUpdate = [
             { id: lineItemID, quantity: parseInt(quantity, 10) },
           ]
-          console.log('triggered',lineItemsToUpdate)
+          console.log('triggered', lineItemsToUpdate)
 
           return client.checkout
             .updateLineItems(checkoutID, lineItemsToUpdate)

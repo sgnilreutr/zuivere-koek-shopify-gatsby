@@ -16,7 +16,9 @@ const CartPage = props => {
     <Layout>
       <SEO title={pageTitle} />
       {props.pageContext.page ? (
-        <><Cart pageText={pageTitle} /></>
+        <>
+          <Cart pageText={pageTitle} />
+        </>
       ) : (
         <div>Something went wrong</div>
       )}

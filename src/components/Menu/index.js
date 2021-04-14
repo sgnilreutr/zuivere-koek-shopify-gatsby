@@ -5,7 +5,6 @@ import Badge from '@material-ui/core/Badge'
 import StoreContext from '~/context/StoreContext'
 import reduce from 'lodash/reduce'
 
-
 const useQuantity = () => {
   const {
     store: { checkout },
@@ -14,7 +13,6 @@ const useQuantity = () => {
   const total = reduce(items, (acc, item) => acc + item.quantity, 0)
   return [total !== 0, total]
 }
-
 
 const Menu = () => {
   const [hasItems, quantity] = useQuantity()
