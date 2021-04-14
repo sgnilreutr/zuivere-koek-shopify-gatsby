@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import StoreContext from '~/context/StoreContext'
+import LinearProgress from '@material-ui/core/LinearProgress'
 // import { useStaticQuery, graphql } from 'gatsby'
 import SingleLine from './single-line'
 import { formatPrice } from '../../utils'
 import {
   CartBottomGrid,
+  CartLoader,
   CartRow,
   CartWrapper,
   HR,
@@ -28,28 +30,31 @@ const Cart = ({ pageText, isLoading }) => {
 
   const [loading, setLoading] = useState(isLoading)
 
+  const lineItems = checkout.totalPrice ? (
+    checkout.lineItems.map((item, index) => (
+      <CartRow key={index}>
+        <SingleLine product={item} />
+      </CartRow>
+    ))
+  ) : (
+    <CartLoader>
+      <LinearProgress />
+    </CartLoader>
+  )
 
   const totalPrice = checkout.totalPrice
-  ? formatPrice(
-      checkout.totalPrice,
-      checkout.currencyCode
-    )
+    ? formatPrice(checkout.totalPrice, checkout.currencyCode)
     : null
-  
+
   const handleCheckout = () => {
     window.open(checkout.webUrl, '_self')
   }
-  
+
   return (
     <CartWrapper>
       {console.log(checkout)}
       <h1 className="page-title-alternative">{pageText}</h1>
-      {checkout &&
-        checkout.lineItems.map((item, index) => (
-          <CartRow key={index}>
-            <SingleLine product={item} />
-          </CartRow>
-        ))}
+      {lineItems}
       <HR />
       <CartBottomGrid>
         <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
@@ -60,12 +65,14 @@ const Cart = ({ pageText, isLoading }) => {
               {SHIPPING_FEE_TEXT}
             </p>
           </Shipping>
-          <Total>
-            <p className="check-out--ship-total">{TOTAL_TEXT}</p>
-            <p className="check-out--ship-total text-align-right">
-                  {totalPrice}
+          {totalPrice && (
+            <Total>
+              <p className="check-out--ship-total">{TOTAL_TEXT}</p>
+              <p className="check-out--ship-total text-align-right">
+                {totalPrice}
               </p>
-          </Total>
+            </Total>
+          )}
           <OrderButton
             onClick={handleCheckout}
             disabled={loading || checkout.lineItems.length === 0}
