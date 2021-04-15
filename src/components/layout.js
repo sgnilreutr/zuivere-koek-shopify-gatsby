@@ -9,6 +9,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
+import ContextProvider from '~/provider/ContextProvider'
 
 import Header from './Header/header'
 import './layout.css'
@@ -31,7 +32,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <ContextProvider>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main>{children}</main>
       <FooterWrapper>
@@ -39,7 +40,7 @@ const Layout = ({ children }) => {
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </FooterWrapper>
-    </>
+    </ContextProvider>
   )
 }
 

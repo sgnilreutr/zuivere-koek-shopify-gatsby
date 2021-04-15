@@ -10,14 +10,14 @@ const CartPage = props => {
     },
   } = props
 
-  const pageData = props.pageContext.page && pageHeaderText
+  // const pageData = props.pageContext.page && pageHeaderText
 
   return (
     <Layout>
       <SEO title={pageTitle} />
       {props.pageContext.page ? (
         <>
-          <Cart pageText={pageData} />
+          <Cart pageText={pageTitle} />
         </>
       ) : (
         <div>Something went wrong</div>

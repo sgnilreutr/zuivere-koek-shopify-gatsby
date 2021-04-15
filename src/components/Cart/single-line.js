@@ -1,11 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useContext, useState } from 'react'
+import StoreContext from '~/context/StoreContext'
+import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import {
-  addQuantity,
-  removeItemBasket,
-  subtractQuantity,
-} from '../../store/app'
 import { formatPrice } from '../../utils'
 import { IoTrashOutline } from 'react-icons/io5'
 import {
@@ -18,65 +14,69 @@ import {
   QtyDeleteContainer,
 } from './cartStyles'
 
-const SingleLine = ({ product, addData, dispatch }) => {
-  const [itemQty, setItemQty] = React.useState(product.quantity)
+const SingleLine = ({ product }) => {
+  const {
+    removeLineItem,
+    updateLineItem,
+    store: { client, checkout },
+  } = useContext(StoreContext)
+  const [quantity, setQuantity] = useState(product.quantity)
 
-  const productArray =
-    addData && addData.prices.edges.map(item => item.node.product)
-  const matchedProduct =
-    productArray && productArray.filter(item => item.id === product.id)
-  const singleImage =
-    matchedProduct &&
-    matchedProduct[0].localFiles[0].childImageSharp.gatsbyImageData
-  const singleName = matchedProduct && matchedProduct[0].name
+  const variantImage = product.variant.image ? (
+    <img
+      src={product.variant.image.src}
+      alt={`${product.title} product shot`}
+      className="cart-image--height"
+    />
+  ) : null
 
-  const subtractQuantityItem = basketItem => {
-    dispatch(subtractQuantity(basketItem))
-    setItemQty(itemQty - 1)
+  const variantPrice = product.variant.priceV2
+    ? formatPrice(
+        product.variant.priceV2.amount * product.quantity,
+        product.variant.priceV2.currencyCode
+      )
+    : null
+
+  const handleRemove = () => {
+    removeLineItem(client, checkout.id, product.id)
   }
-  const addQuantityItem = basketItem => {
-    dispatch(addQuantity(basketItem))
-    setItemQty(itemQty + 1)
-  }
 
-  const removeItem = basketItem => {
-    dispatch(removeItemBasket(basketItem))
+  const subtractQuantityItem = () => {
+    updateLineItem(client, checkout.id, product.id, quantity - 1)
+    setQuantity(quantity - 1)
   }
-
-  let ProductPrice = product.price * product.quantity
+  const addQuantityItem = () => {
+    updateLineItem(client, checkout.id, product.id, quantity + 1)
+    setQuantity(quantity + 1)
+  }
 
   return (
     <ProductRow>
-      <GatsbyImage image={singleImage} alt="" className="cart-image--height" />
+      <Link to={`/shop/${product.variant.product.handle}/`}>
+        {variantImage}
+      </Link>
       <NameQtyContainer>
         <NameContainer>
-          <p className="product-title">{singleName}</p>
+          <p className="product-title">{product.title}</p>
         </NameContainer>
         <QtyDeleteContainer>
           <QtyAdjustContainer>
-            <QtyAdjust onClick={() => subtractQuantityItem(product)}>
+            <QtyAdjust onClick={subtractQuantityItem}>
               <span className="qty-controls--cart">-</span>
             </QtyAdjust>
-            <span className="qty-controls--cart">{product.quantity}</span>
-            <QtyAdjust onClick={() => addQuantityItem(product)}>
+            <span className="qty-controls--cart">{quantity}</span>
+            <QtyAdjust onClick={addQuantityItem}>
               <span className="qty-controls--cart">+</span>
             </QtyAdjust>
           </QtyAdjustContainer>
-          <Delete onClick={() => removeItem(product)}>
+          <Delete onClick={handleRemove}>
             <IoTrashOutline size={20} />
           </Delete>
         </QtyDeleteContainer>
       </NameQtyContainer>
-      <p className="product-price--cart">
-        {formatPrice(ProductPrice, product.currency)}
-      </p>
+      <p className="product-price--cart">{variantPrice}</p>
     </ProductRow>
   )
 }
 
-export default connect(
-  state => ({
-    basketItems: state.app.basketItems,
-  }),
-  null
-)(SingleLine)
+export default SingleLine

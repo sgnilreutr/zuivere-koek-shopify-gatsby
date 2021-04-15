@@ -1,11 +1,12 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import getStripe from '../../utils/stripejs'
-import { useStaticQuery, graphql } from 'gatsby'
+import React, { useContext, useState } from 'react'
+import StoreContext from '~/context/StoreContext'
+import LinearProgress from '@material-ui/core/LinearProgress'
+// import { useStaticQuery, graphql } from 'gatsby'
 import SingleLine from './single-line'
 import { formatPrice } from '../../utils'
 import {
   CartBottomGrid,
+  CartLoader,
   CartRow,
   CartWrapper,
   HR,
@@ -22,61 +23,38 @@ const SHIPPING_FEE_TEXT = 'Gratis'
 const TOTAL_TEXT = 'Totaalbedrag'
 const BUTTON_TEXT = 'ik ga bestellen'
 
-const Cart = ({ pageText, basketItems, isLoading, total }) => {
-  const [loading, setLoading] = React.useState(isLoading)
+const Cart = ({ pageText, isLoading }) => {
+  const {
+    store: { checkout },
+  } = useContext(StoreContext)
 
-  const cartData = useStaticQuery(graphql`
-    query ProductPricesCart {
-      prices: allStripePrice(filter: { active: { eq: true } }) {
-        edges {
-          node {
-            id
-            active
-            product {
-              id
-              name
-              localFiles {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
+  const [loading, setLoading] = useState(isLoading)
 
-  const checkoutBasket = async basketItems => {
-    setLoading(true)
-    const lineItems = basketItems.map(item => ({
-      price: item.priceID,
-      quantity: item.quantity,
-    }))
-    const stripe = await getStripe()
-    const { error } = await stripe.redirectToCheckout({
-      mode: 'payment',
-      lineItems: lineItems,
-      successUrl: `${window.location.origin}/thank-you/`,
-      cancelUrl: `${window.location.origin}/cart`,
-    })
+  const lineItems = checkout.totalPrice ? (
+    checkout.lineItems.map((item, index) => (
+      <CartRow key={index}>
+        <SingleLine product={item} />
+      </CartRow>
+    ))
+  ) : (
+    <CartLoader>
+      <LinearProgress />
+    </CartLoader>
+  )
 
-    if (error) {
-      console.warn('Error:', error)
-      setLoading(false)
-    }
+  const totalPrice = checkout.totalPrice
+    ? formatPrice(checkout.totalPrice, checkout.currencyCode)
+    : null
+
+  const handleCheckout = () => {
+    window.open(checkout.webUrl, '_self')
   }
 
   return (
     <CartWrapper>
+      {console.log(checkout)}
       <h1 className="page-title-alternative">{pageText}</h1>
-      {basketItems.length > 0 &&
-        cartData &&
-        basketItems.map((basketItem, index) => (
-          <CartRow key={index}>
-            <SingleLine product={basketItem} addData={cartData} />
-          </CartRow>
-        ))}
+      {lineItems}
       <HR />
       <CartBottomGrid>
         <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
@@ -87,16 +65,17 @@ const Cart = ({ pageText, basketItems, isLoading, total }) => {
               {SHIPPING_FEE_TEXT}
             </p>
           </Shipping>
-          <Total>
-            <p className="check-out--ship-total">{TOTAL_TEXT}</p>
-            <p className="check-out--ship-total text-align-right">
-              {basketItems.length > 0 &&
-                formatPrice(total, basketItems[0].currency)}
-            </p>
-          </Total>
+          {totalPrice && (
+            <Total>
+              <p className="check-out--ship-total">{TOTAL_TEXT}</p>
+              <p className="check-out--ship-total text-align-right">
+                {totalPrice}
+              </p>
+            </Total>
+          )}
           <OrderButton
-            onClick={() => checkoutBasket(basketItems)}
-            disabled={loading || basketItems.length < 1}
+            onClick={handleCheckout}
+            disabled={loading || checkout.lineItems.length === 0}
           >
             <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
           </OrderButton>
@@ -106,11 +85,4 @@ const Cart = ({ pageText, basketItems, isLoading, total }) => {
   )
 }
 
-export default connect(
-  state => ({
-    basketItems: state.app.basketItems,
-    total: state.app.total,
-    isLoading: state.app.isLoading,
-  }),
-  null
-)(Cart)
+export default Cart

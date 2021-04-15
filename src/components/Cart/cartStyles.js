@@ -6,6 +6,10 @@ export const CartWrapper = styled.div`
   margin: 5% 0;
 `
 
+export const CartLoader = styled.div`
+  padding: 10%;
+`
+
 export const CartRow = styled.div`
   margin: 2rem 0;
 `

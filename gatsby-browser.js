@@ -9,4 +9,4 @@
 
 // import wrapWithProvider from "./wrap-with-provider"
 // export const wrapRootElement = wrapWithProvider
-export { default as wrapRootElement } from './src/store/ReduxWrapper';
+// export { default as wrapRootElement } from './src/store/ReduxWrapper';

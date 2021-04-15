@@ -1,13 +1,12 @@
 import DOMPurify from 'dompurify'
 
-export const formatPrice = (amount, currency) => {
-  let price = (amount / 100).toFixed(2)
-  let numberFormat = new Intl.NumberFormat(['en-US'], {
+export const formatPrice = (amount, currencyCode) => {
+  let numberFormat = new Intl.NumberFormat(undefined, {
     style: 'currency',
-    currency: currency,
+    currency: currencyCode ? currencyCode : 'EUR',
     currencyDisplay: 'symbol',
   })
-  return numberFormat.format(price)
+  return numberFormat.format(amount)
 }
 
 /**
