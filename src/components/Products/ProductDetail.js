@@ -32,8 +32,6 @@ const ProductDetail = ({ product }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
-  console.log(product)
-
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
     // alt: product.node.image.altText || ``,
@@ -111,25 +109,27 @@ const ProductDetail = ({ product }) => {
 
   return !isEmpty(product) ? (
     <ProductWrapper>
-      <div className="col-lg-5 col-md-6 mb-5 product-image-wrap">
+      <div>
         <ProductImage>{displayProductImages()}</ProductImage>
       </div>
       <ProductDesc>
-        <div className="single-product-desc">
-          <h3 className="product-title">{product.title ? product.title : ''}</h3>
+        <div style={{textAlign: `center`}}>
+          <h3 className="product-title">
+            {product.title ? product.title : ''}
+          </h3>
           {!isEmpty(product.description) ? (
             <p className="landingpage-p">{parse(product.description)}</p>
           ) : null}
           <AddToCart>
             <h4 className="product-price--detail">{variantPrice}</h4>
             <QtyAdjustContainer>
-            <QtyAdjust onClick={subtractQuantityItem}>
-              <span className="qty-controls--cart">-</span>
-            </QtyAdjust>
-            <span className="qty-controls--cart">{quantity}</span>
-            <QtyAdjust onClick={addQuantityItem}>
-              <span className="qty-controls--cart">+</span>
-            </QtyAdjust>
+              <QtyAdjust onClick={subtractQuantityItem}>
+                <span className="qty-controls--cart">-</span>
+              </QtyAdjust>
+              <span className="qty-controls--cart">{quantity}</span>
+              <QtyAdjust onClick={addQuantityItem}>
+                <span className="qty-controls--cart">+</span>
+              </QtyAdjust>
             </QtyAdjustContainer>
             <AddToCartButton
               type="submit"
@@ -149,12 +149,12 @@ export const query = graphql`
   query($title: String!) {
     contentfulProductAdditionalDescription(productTitle: { eq: $title }) {
       description {
-      text {
-        text
+        text {
+          text
+        }
       }
     }
   }
-}
 `
 
 export default ProductDetail

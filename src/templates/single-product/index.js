@@ -4,6 +4,7 @@ import Layout from '../../components/layout'
 // import SEO from "../../components/seo";
 // import { getOgImage } from "../../utils/functions";
 import ProductDetail from '../../components/Products/ProductDetail'
+import Relatedproduct from '../../components/Products/RelatedProduct'
 
 const SingleProductPage = props => {
   const {
@@ -11,7 +12,7 @@ const SingleProductPage = props => {
     product: { name, link, seo },
   } = props.pageContext
 
-  // console.log(product.node)
+  console.log(props.pageContext)
 
   return (
     <Layout>
@@ -25,6 +26,7 @@ const SingleProductPage = props => {
               openGraphImage={getOgImage(seo)}
             /> */}
           <ProductDetail product={product.node} />
+          <Relatedproduct currentProduct={product.node.shopifyId} />
         </>
       ) : (
         <div>Something went wrong</div>

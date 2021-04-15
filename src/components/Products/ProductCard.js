@@ -71,7 +71,7 @@ const ProductCard = ({ product }) => {
     <ProductCardWrapper>
       <form onSubmit={handleSubmit}>
         {productImage.img ? (
-          <Link to={`${productInfo.handle}`}>
+          <Link to={`/shop/${productInfo.handle}`}>
             <ProductPhoto>
               <GatsbyImage
                 image={productImage.img}

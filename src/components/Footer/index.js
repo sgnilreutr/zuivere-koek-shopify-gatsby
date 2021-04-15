@@ -1,6 +1,13 @@
 import React from 'react'
 import parse from 'html-react-parser'
-import { FooterContainer, FooterWrapper, LeftFooter, MenuItem, MenuWrapper, RightFooter } from './footerStyles'
+import {
+  FooterContainer,
+  FooterWrapper,
+  LeftFooter,
+  MenuItem,
+  MenuWrapper,
+  RightFooter,
+} from './footerStyles'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
@@ -28,7 +35,12 @@ const Footer = () => {
       }
     }
   `)
-  const { footerMenu, logo, footerDetailsRight, footerDetailsLeft } = FooterData.footer
+  const {
+    footerMenu,
+    logo,
+    footerDetailsRight,
+    footerDetailsLeft,
+  } = FooterData.footer
 
   const footerImage = {
     img: logo.localFile?.childImageSharp?.gatsbyImageData,
@@ -41,20 +53,28 @@ const Footer = () => {
             <span>{parse(item.navigationTitle)}</span>
           </MenuItem>
         ))
-          : null
-    
+      : null
+
   return (
-      <FooterWrapper>
-        <FooterContainer>
-      <GatsbyImage
-        image={footerImage.img}
-        alt=""
-        className="footer-image--height"
-          />
-          <LeftFooter><p className="footer-text">{parse(footerDetailsLeft.footerDetailsLeft)}</p></LeftFooter>
-          <RightFooter><p className="footer-text">{parse(footerDetailsRight.footerDetailsRight)}</p></RightFooter>
-              <MenuWrapper>{menu}</MenuWrapper>
-            </FooterContainer>
+    <FooterWrapper>
+      <FooterContainer>
+        <GatsbyImage
+          image={footerImage.img}
+          alt=""
+          className="footer-image--height"
+        />
+        <LeftFooter>
+          <p className="footer-text">
+            {parse(footerDetailsLeft.footerDetailsLeft)}
+          </p>
+        </LeftFooter>
+        <RightFooter>
+          <p className="footer-text">
+            {parse(footerDetailsRight.footerDetailsRight)}
+          </p>
+        </RightFooter>
+        <MenuWrapper>{menu}</MenuWrapper>
+      </FooterContainer>
     </FooterWrapper>
   )
 }

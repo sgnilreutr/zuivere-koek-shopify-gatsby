@@ -144,6 +144,11 @@ small,
   font-weight: bold;
 }
 
+.related-product--header {
+  color: white;
+  font-weight: 900;
+}
+
 .footer-text {
   color: white;
 }

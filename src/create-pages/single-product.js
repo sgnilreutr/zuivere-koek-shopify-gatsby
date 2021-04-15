@@ -26,13 +26,13 @@ query GET_ALL_PRODUCTS {
           }
         }
         variants {
-					id
+          id
           title
           price
           availableForSale
           shopifyId
           selectedOptions {
-						name
+            name
             value
           }
         }
@@ -46,6 +46,14 @@ query GET_ALL_PRODUCTS {
             currencyCode
           }
         }
+      }
+    }
+  }
+  contentfulProductAdditionalDescription {
+    productTitle
+    description {
+      text {
+        text
       }
     }
   }
