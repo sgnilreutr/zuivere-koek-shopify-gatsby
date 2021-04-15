@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import StoreContext from '~/context/StoreContext'
+import { graphql } from 'gatsby'
 import find from 'lodash/find'
 import isEqual from 'lodash/isEqual'
 import isEmpty from 'lodash/isEmpty'
@@ -9,9 +10,12 @@ import parse from 'html-react-parser'
 import { IoCartOutline } from 'react-icons/io5'
 import {
   AddToCart,
+  AddToCartButton,
   ProductImage,
   ProductWrapper,
   ProductDesc,
+  QtyAdjust,
+  QtyAdjustContainer,
 } from './ProductDetailStyles'
 
 const ProductDetail = ({ product }) => {
@@ -27,6 +31,8 @@ const ProductDetail = ({ product }) => {
     addVariantToCart,
     store: { client, adding },
   } = useContext(StoreContext)
+
+  console.log(product)
 
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
@@ -56,25 +62,34 @@ const ProductDetail = ({ product }) => {
     checkAvailability(product.shopifyId)
   }, [productVariant, checkAvailability, product.shopifyId])
 
-  const handleQuantityChange = ({ target }) => {
-    setQuantity(target.value)
+  // const handleQuantityChange = ({ target }) => {
+  //   setQuantity(target.value)
+  // }
+
+  const subtractQuantityItem = () => {
+    // updateLineItem(client, checkout.id, product.id, quantity - 1)
+    setQuantity(quantity - 1)
+  }
+  const addQuantityItem = () => {
+    // updateLineItem(client, checkout.id, product.id, quantity + 1)
+    setQuantity(quantity + 1)
   }
 
-  const handleOptionChange = (optionIndex, { target }) => {
-    const { value } = target
-    const currentOptions = [...variant.selectedOptions]
+  // const handleOptionChange = (optionIndex, { target }) => {
+  //   const { value } = target
+  //   const currentOptions = [...variant.selectedOptions]
 
-    currentOptions[optionIndex] = {
-      ...currentOptions[optionIndex],
-      value,
-    }
+  //   currentOptions[optionIndex] = {
+  //     ...currentOptions[optionIndex],
+  //     value,
+  //   }
 
-    const selectedVariant = find(variants, ({ selectedOptions }) =>
-      isEqual(currentOptions, selectedOptions)
-    )
+  //   const selectedVariant = find(variants, ({ selectedOptions }) =>
+  //     isEqual(currentOptions, selectedOptions)
+  //   )
 
-    setVariant({ ...selectedVariant })
-  }
+  //   setVariant({ ...selectedVariant })
+  // }
 
   const handleAddToCart = () => {
     addVariantToCart(productVariant.shopifyId, quantity)
@@ -115,9 +130,6 @@ const ProductDetail = ({ product }) => {
         product.priceRange.minVariantPrice.currencyCode
       )
     : null
-  // const variantPrice = product.variant.priceV2 ? (
-  //   formatPrice(product.variant.priceV2.amount, product.variant.priceV2.currencyCode)
-  // ) : null
 
   return !isEmpty(product) ? (
     <ProductWrapper>
@@ -126,24 +138,45 @@ const ProductDetail = ({ product }) => {
       </div>
       <ProductDesc>
         <div className="single-product-desc">
-          <h3>{product.name ? product.name : ''}</h3>
+          <h3>{product.title ? product.title : ''}</h3>
           {!isEmpty(product.description) ? (
             <p>{parse(product.description)}</p>
           ) : null}
           <AddToCart>
             <h6 className="card-subtitle mb-3">{variantPrice}</h6>
-            <button
+            <QtyAdjustContainer>
+            <QtyAdjust onClick={subtractQuantityItem}>
+              <span className="qty-controls--cart">-</span>
+            </QtyAdjust>
+            <span className="qty-controls--cart">{quantity}</span>
+            <QtyAdjust onClick={addQuantityItem}>
+              <span className="qty-controls--cart">+</span>
+            </QtyAdjust>
+            </QtyAdjustContainer>
+            <AddToCartButton
               type="submit"
               onClick={handleAddToCart}
               disabled={!available || adding}
             >
-              <IoCartOutline />
-            </button>
+              <IoCartOutline size={30} color={`#f8d8d9`} />
+            </AddToCartButton>
           </AddToCart>
         </div>
       </ProductDesc>
     </ProductWrapper>
   ) : null
 }
+
+export const query = graphql`
+  query($title: String!) {
+    contentfulProductAdditionalDescription(productTitle: { eq: $title }) {
+      description {
+      text {
+        text
+      }
+    }
+  }
+}
+`
 
 export default ProductDetail
