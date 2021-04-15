@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 export const FooterWrapper = styled.footer`
   background-color: hsl(234, 47%, 31%);
   /* position: relative; */
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   bottom: 0;
   width: 100%;
