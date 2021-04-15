@@ -52,7 +52,7 @@ const Cart = ({ pageText, isLoading }) => {
 
   return (
     <CartWrapper>
-      {console.log(checkout)}
+      {/* {console.log(checkout)} */}
       <h1 className="page-title-alternative">{pageText}</h1>
       {lineItems}
       <HR />
