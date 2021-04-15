@@ -62,34 +62,12 @@ const ProductDetail = ({ product }) => {
     checkAvailability(product.shopifyId)
   }, [productVariant, checkAvailability, product.shopifyId])
 
-  // const handleQuantityChange = ({ target }) => {
-  //   setQuantity(target.value)
-  // }
-
   const subtractQuantityItem = () => {
-    // updateLineItem(client, checkout.id, product.id, quantity - 1)
     setQuantity(quantity - 1)
   }
   const addQuantityItem = () => {
-    // updateLineItem(client, checkout.id, product.id, quantity + 1)
     setQuantity(quantity + 1)
   }
-
-  // const handleOptionChange = (optionIndex, { target }) => {
-  //   const { value } = target
-  //   const currentOptions = [...variant.selectedOptions]
-
-  //   currentOptions[optionIndex] = {
-  //     ...currentOptions[optionIndex],
-  //     value,
-  //   }
-
-  //   const selectedVariant = find(variants, ({ selectedOptions }) =>
-  //     isEqual(currentOptions, selectedOptions)
-  //   )
-
-  //   setVariant({ ...selectedVariant })
-  // }
 
   const handleAddToCart = () => {
     addVariantToCart(productVariant.shopifyId, quantity)
@@ -138,12 +116,12 @@ const ProductDetail = ({ product }) => {
       </div>
       <ProductDesc>
         <div className="single-product-desc">
-          <h3>{product.title ? product.title : ''}</h3>
+          <h3 className="product-title">{product.title ? product.title : ''}</h3>
           {!isEmpty(product.description) ? (
-            <p>{parse(product.description)}</p>
+            <p className="landingpage-p">{parse(product.description)}</p>
           ) : null}
           <AddToCart>
-            <h6 className="card-subtitle mb-3">{variantPrice}</h6>
+            <h4 className="product-price--detail">{variantPrice}</h4>
             <QtyAdjustContainer>
             <QtyAdjust onClick={subtractQuantityItem}>
               <span className="qty-controls--cart">-</span>

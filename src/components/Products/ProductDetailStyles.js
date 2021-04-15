@@ -34,9 +34,8 @@ export const QtyAdjust = styled.div`
 `
 
 export const AddToCart = styled.div`
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
 `
 export const AddToCartButton = styled.button`
   margin-top: 1rem;
