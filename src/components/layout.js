@@ -8,17 +8,12 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import styled from '@emotion/styled'
 import ContextProvider from '~/provider/ContextProvider'
 
 import Header from './Header/header'
+import Footer from './Footer'
 import './layout.css'
 import '../styles/text.css'
-
-const FooterWrapper = styled.footer`
-  background-color: hsl(234, 47%, 31%);
-  color: white;
-`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,11 +30,7 @@ const Layout = ({ children }) => {
     <ContextProvider>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main>{children}</main>
-      <FooterWrapper>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </FooterWrapper>
+      <Footer />
     </ContextProvider>
   )
 }

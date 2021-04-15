@@ -68,7 +68,7 @@ const Products = () => {
 
         const products = allProducts.edges
 
-        console.log(products)
+        // console.log(products)
 
         return (
           <ProductGrid>
