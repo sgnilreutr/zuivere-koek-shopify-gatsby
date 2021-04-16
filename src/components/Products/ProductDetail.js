@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import StoreContext from '~/context/StoreContext'
-import { graphql } from 'gatsby'
 import find from 'lodash/find'
 import isEqual from 'lodash/isEqual'
 import isEmpty from 'lodash/isEmpty'
@@ -11,6 +10,7 @@ import { IoCartOutline } from 'react-icons/io5'
 import {
   AddToCart,
   AddToCartButton,
+  ProductContentful,
   ProductImage,
   ProductWrapper,
   ProductDesc,
@@ -18,19 +18,24 @@ import {
   QtyAdjustContainer,
 } from './ProductDetailStyles'
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, extraDescription }) => {
   const {
     options,
     variants,
     variants: [initialVariant],
     priceRange: { minVariantPrice },
   } = product
+  const {
+    text,
+  } = extraDescription
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
   const {
     addVariantToCart,
     store: { client, adding },
   } = useContext(StoreContext)
+
+  console.log(text)
 
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
@@ -111,9 +116,12 @@ const ProductDetail = ({ product }) => {
     <ProductWrapper>
       <div>
         <ProductImage>{displayProductImages()}</ProductImage>
+        <ProductContentful>
+          <p>{text}</p>
+        </ProductContentful>
       </div>
       <ProductDesc>
-        <div style={{textAlign: `center`}}>
+        <div style={{ textAlign: `center` }}>
           <h3 className="product-title">
             {product.title ? product.title : ''}
           </h3>
@@ -144,17 +152,5 @@ const ProductDetail = ({ product }) => {
     </ProductWrapper>
   ) : null
 }
-
-export const query = graphql`
-  query($title: String!) {
-    contentfulProductAdditionalDescription(productTitle: { eq: $title }) {
-      description {
-        text {
-          text
-        }
-      }
-    }
-  }
-`
 
 export default ProductDetail

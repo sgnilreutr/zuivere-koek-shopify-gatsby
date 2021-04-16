@@ -10,7 +10,10 @@ export const ProductWrapper = styled.div`
 `
 
 export const ProductImage = styled.div`
-  width: 579.2px;
+  /* width: 579.2px; */
+`
+
+export const ProductContentful = styled.div`
 `
 
 export const ProductDesc = styled.div`
