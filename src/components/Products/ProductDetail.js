@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import StoreContext from '~/context/StoreContext'
 import find from 'lodash/find'
+import ReactMarkdown from 'react-markdown'
 import isEqual from 'lodash/isEqual'
 import isEmpty from 'lodash/isEmpty'
 import { formatPrice, sanitize } from '../../utils/index'
@@ -117,7 +118,7 @@ const ProductDetail = ({ product, extraDescription }) => {
       <div>
         <ProductImage>{displayProductImages()}</ProductImage>
         <ProductContentful>
-          <p>{text}</p>
+          <ReactMarkdown>{text}</ReactMarkdown>
         </ProductContentful>
       </div>
       <ProductDesc>

@@ -14,6 +14,9 @@ export const ProductImage = styled.div`
 `
 
 export const ProductContentful = styled.div`
+  * {
+    color: #2a3174;
+  }
 `
 
 export const ProductDesc = styled.div`
