@@ -103,6 +103,12 @@ small,
   font-family: "Work Sans", sans-serif;
 }
 
+.product-price--detail {
+  color: white;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+}
+
 .product-price--cart {
   color: #2a3174;
   font-family: "Work Sans", sans-serif;
@@ -136,6 +142,11 @@ small,
 .landingpage-h2 {
   color: #fce3e7;
   font-weight: bold;
+}
+
+.related-product--header {
+  color: white;
+  font-weight: 900;
 }
 
 .footer-text {

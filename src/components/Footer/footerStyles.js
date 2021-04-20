@@ -12,15 +12,15 @@ export const FooterWrapper = styled.footer`
 `
 
 export const FooterContainer = styled.div`
-margin: 0 auto;
-max-width: 83.4rem;
-display: grid;
+  margin: 0 auto;
+  max-width: 83.4rem;
+  display: grid;
   grid-template-columns: repeat(4, auto);
   grid-column-gap: 10%;
 `
 
 export const LeftFooter = styled.div`
-text-align: right;
+  text-align: right;
 `
 
 export const RightFooter = styled.div``

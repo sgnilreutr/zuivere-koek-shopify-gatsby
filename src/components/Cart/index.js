@@ -19,8 +19,8 @@ import {
 const CHECKOUT_TEXT =
   'Bezorging en service XXX besteld? XXXX in huis! Vragen? Je kunt ons mailen via: tim@zuiverekoek-shop.nl ruth@zuiverekoek-shop.nl'
 const SHIPPING_TEXT = 'Verzendkosten'
-const SHIPPING_FEE_TEXT = 'Gratis'
-const TOTAL_TEXT = 'Totaalbedrag'
+const SHIPPING_FEE_TEXT = 'Worden op de volgende pagina berekend'
+const TOTAL_TEXT = 'Totaalbedrag winkelwagen'
 const BUTTON_TEXT = 'ik ga bestellen'
 
 const Cart = ({ pageText, isLoading }) => {

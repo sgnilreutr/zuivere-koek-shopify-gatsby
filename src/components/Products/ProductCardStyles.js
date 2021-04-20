@@ -6,6 +6,7 @@ export const ProductCardWrapper = styled.div`
   display: grid;
   justify-content: center;
   transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+  background-color: white;
 
   &:hover {
     transform: scale(1.04);

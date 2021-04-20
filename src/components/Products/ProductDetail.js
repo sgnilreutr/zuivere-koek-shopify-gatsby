@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import StoreContext from '~/context/StoreContext'
 import find from 'lodash/find'
+import ReactMarkdown from 'react-markdown'
 import isEqual from 'lodash/isEqual'
 import isEmpty from 'lodash/isEmpty'
 import { formatPrice, sanitize } from '../../utils/index'
@@ -9,24 +10,33 @@ import parse from 'html-react-parser'
 import { IoCartOutline } from 'react-icons/io5'
 import {
   AddToCart,
+  AddToCartButton,
+  ProductContentful,
   ProductImage,
   ProductWrapper,
   ProductDesc,
+  QtyAdjust,
+  QtyAdjustContainer,
 } from './ProductDetailStyles'
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, extraDescription }) => {
   const {
     options,
     variants,
     variants: [initialVariant],
     priceRange: { minVariantPrice },
   } = product
+  const {
+    text,
+  } = extraDescription
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
   const {
     addVariantToCart,
     store: { client, adding },
   } = useContext(StoreContext)
+
+  console.log(text)
 
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
@@ -56,24 +66,11 @@ const ProductDetail = ({ product }) => {
     checkAvailability(product.shopifyId)
   }, [productVariant, checkAvailability, product.shopifyId])
 
-  const handleQuantityChange = ({ target }) => {
-    setQuantity(target.value)
+  const subtractQuantityItem = () => {
+    setQuantity(quantity - 1)
   }
-
-  const handleOptionChange = (optionIndex, { target }) => {
-    const { value } = target
-    const currentOptions = [...variant.selectedOptions]
-
-    currentOptions[optionIndex] = {
-      ...currentOptions[optionIndex],
-      value,
-    }
-
-    const selectedVariant = find(variants, ({ selectedOptions }) =>
-      isEqual(currentOptions, selectedOptions)
-    )
-
-    setVariant({ ...selectedVariant })
+  const addQuantityItem = () => {
+    setQuantity(quantity + 1)
   }
 
   const handleAddToCart = () => {
@@ -115,30 +112,41 @@ const ProductDetail = ({ product }) => {
         product.priceRange.minVariantPrice.currencyCode
       )
     : null
-  // const variantPrice = product.variant.priceV2 ? (
-  //   formatPrice(product.variant.priceV2.amount, product.variant.priceV2.currencyCode)
-  // ) : null
 
   return !isEmpty(product) ? (
     <ProductWrapper>
-      <div className="col-lg-5 col-md-6 mb-5 product-image-wrap">
+      <div>
         <ProductImage>{displayProductImages()}</ProductImage>
+        <ProductContentful>
+          <ReactMarkdown>{text}</ReactMarkdown>
+        </ProductContentful>
       </div>
       <ProductDesc>
-        <div className="single-product-desc">
-          <h3>{product.name ? product.name : ''}</h3>
+        <div style={{ textAlign: `center` }}>
+          <h3 className="product-title">
+            {product.title ? product.title : ''}
+          </h3>
           {!isEmpty(product.description) ? (
-            <p>{parse(product.description)}</p>
+            <p className="landingpage-p">{parse(product.description)}</p>
           ) : null}
           <AddToCart>
-            <h6 className="card-subtitle mb-3">{variantPrice}</h6>
-            <button
+            <h4 className="product-price--detail">{variantPrice}</h4>
+            <QtyAdjustContainer>
+              <QtyAdjust onClick={subtractQuantityItem}>
+                <span className="qty-controls--cart">-</span>
+              </QtyAdjust>
+              <span className="qty-controls--cart">{quantity}</span>
+              <QtyAdjust onClick={addQuantityItem}>
+                <span className="qty-controls--cart">+</span>
+              </QtyAdjust>
+            </QtyAdjustContainer>
+            <AddToCartButton
               type="submit"
               onClick={handleAddToCart}
               disabled={!available || adding}
             >
-              <IoCartOutline />
-            </button>
+              <IoCartOutline size={30} color={`#f8d8d9`} />
+            </AddToCartButton>
           </AddToCart>
         </div>
       </ProductDesc>

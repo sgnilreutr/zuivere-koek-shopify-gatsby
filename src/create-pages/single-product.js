@@ -11,41 +11,8 @@ query GET_ALL_PRODUCTS {
   products: allShopifyProduct(filter: {availableForSale: {eq: true}}) {
     edges {
       node {
-        id
         title
         handle
-        availableForSale
-        description
-        descriptionHtml
-        shopifyId
-        images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
-        variants {
-					id
-          title
-          price
-          availableForSale
-          shopifyId
-          selectedOptions {
-						name
-            value
-          }
-        }
-        priceRange {
-          maxVariantPrice {
-            amount
-            currencyCode
-          }
-          minVariantPrice {
-            amount
-            currencyCode
-          }
-        }
       }
     }
   }
@@ -73,12 +40,12 @@ module.exports = async ({ actions, graphql }) => {
   // When the above fetchPosts is resolved, then create page and pass the data as pageContext to the page template.
   await fetchPosts().then(({ allProducts }) => {
     allProducts.length &&
-      allProducts.map(product => {
+      allProducts.forEach((product) => {
+        {console.log(product)}
         createPage({
           path: `/shop/${product.node.handle}`,
-          // path: page.uri,
           component: slash(singleProductTemplate),
-          context: { product },
+          context: { handle: product.node.handle, title: product.node.title },
         })
       })
   })
