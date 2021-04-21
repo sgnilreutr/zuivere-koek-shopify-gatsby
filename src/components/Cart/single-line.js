@@ -43,11 +43,11 @@ const SingleLine = ({ product }) => {
 
   const subtractQuantityItem = () => {
     updateLineItem(client, checkout.id, product.id, quantity - 1)
-    setQuantity(quantity - 1)
+    setQuantity(currQuantity => currQuantity - 1)
   }
   const addQuantityItem = () => {
     updateLineItem(client, checkout.id, product.id, quantity + 1)
-    setQuantity(quantity + 1)
+    setQuantity(currQuantity => currQuantity + 1)
   }
 
   return (
