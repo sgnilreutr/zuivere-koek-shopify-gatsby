@@ -152,4 +152,14 @@ small,
 .footer-text {
   color: white;
 }
+
+.usp-header {
+  font-family: "Work Sans", sans-serif;
+  color: #fce3e7;
+  margin: 0;
+}
+
+.usp-body {
+  color: #2a3174;
+}
 /*# sourceMappingURL=text.css.map */

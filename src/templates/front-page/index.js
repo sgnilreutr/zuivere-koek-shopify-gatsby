@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
+import Uspgrid from '../../components/Homepage/UspGrid'
 
 const DesktopWrapper = styled.div`
   @media only screen and (max-width: 480px) {
@@ -24,10 +25,6 @@ const DiscoverContainer = styled.div`
 
 const WhyContainer = styled.div``
 
-const OverOnsWrapper = styled.div``
-
-const OverOnsContent = styled.div``
-
 const BlogWrapper = styled.div`
   @media only screen and (min-width: 481px) {
     margin-top: 160px;
@@ -40,38 +37,21 @@ const BlogWrapper = styled.div`
 const Homepage = props => {
   const {
     pageContext: {
+      page,
       page: {
         title,
-        uri,
-        heroImage,
-        heroHeader,
-        reasonHeader,
-        introductionHeader,
-        duurzaamImage,
-        duurzaamHeader,
-        duurzaamBody,
-        metLiefdeImage,
-        metLiefdeHeader,
-        metLiefdeBody,
-        opBestellingImage,
-        opBestellingHeader,
-        opBestellingBody,
-        lowImpactHeader,
-        lowImpactBody,
-        lowImpactImage,
-        transparantImage,
-        transparantHeader,
-        transparantBody,
-        verassingImage,
-        verassingHeader,
-        verassingBody,
+        hero: { ctaLink, ctaText, image, text },
+        sections,
       },
     },
   } = props
 
+  console.log(props.pageContext.page)
+  console.log(sections[0].name)
+
   const heroImageFile = {
     img:
-      props.pageContext.page.heroImage?.localFile.childImageSharp
+      props.pageContext.page.hero?.image.localFile.childImageSharp
         .gatsbyImageData,
     // alt: homepageACF.heroImage?.altText || ``,
   }
@@ -93,34 +73,11 @@ const Homepage = props => {
               className="full-bleed"
             />
           )}
-          <DiscoverContainer className="full-bleed">
-            <h2>{parse(introductionHeader)}</h2>
-          </DiscoverContainer>
+          {/* <DiscoverContainer className="full-bleed">
+            <h2 className="page-title">{parse(introductionHeader)}</h2>
+          </DiscoverContainer> */}
           <WhyContainer>
-            <h2>{parse(reasonHeader)}</h2>
-            <div>
-              <div>
-                {/* <GatsbyImage image={duurzaamImage} alt="" className="" /> */}
-                <div>
-                  <h3>{parse(duurzaamHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(metLiefdeHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(opBestellingHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(lowImpactHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(transparantHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(verassingHeader)}</h3>
-                </div>
-              </div>
-            </div>
+            <Uspgrid content={sections} />
           </WhyContainer>
         </>
       ) : (
