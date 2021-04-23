@@ -1,15 +1,16 @@
 import styled from '@emotion/styled'
 
 export const HeaderContainer = styled.div`
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
 `
 
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   max-width: 1000px;
   margin: 0 auto;
   grid-gap: 2.5rem;
+  padding-bottom: 6rem;
 `
 
 export const GridCell = styled.div`

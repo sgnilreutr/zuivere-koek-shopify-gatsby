@@ -1,42 +1,49 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { CellText, Grid, GridCell, HeaderContainer } from './UspGridStyles'
+import {
+  CellImage,
+  CellText,
+  DataCell,
+  Grid,
+  OrderWrapper,
+} from './OrderStyles'
 
-const Uspgrid = ({ content }) => {
+const Order = ({ content }) => {
   const { name, columns } = content[0]
+  console.log(content)
 
   const GridImage = ({ image, alt }) => {
     return image && alt ? (
-      <GatsbyImage
-        image={image.localFile.childImageSharp.gatsbyImageData}
-        alt={alt}
-      />
+      <CellImage>
+        <GatsbyImage
+          image={image.localFile.childImageSharp.gatsbyImageData}
+          alt={alt}
+        />
+      </CellImage>
     ) : null
   }
 
   const grid =
     columns && columns.length > 0 ? (
       columns.map((item, index) => (
-        <GridCell key={index}>
+        <DataCell key={index}>
           <GridImage image={item.uspImage} alt={item.title} />
           <CellText>
             <h5 className="usp-header">{item.title}</h5> <br />{' '}
             <p className="usp-body text_small">{item.text.text}</p>
           </CellText>
-        </GridCell>
+        </DataCell>
       ))
     ) : (
       <p>Something went wrong.</p>
     )
 
   return (
-    <>
-      <HeaderContainer>
-        <h2 className="page-title">{name}</h2>
-      </HeaderContainer>
+    <OrderWrapper>
+      <h2 className="page-title">{name}</h2>
       <Grid>{grid}</Grid>
-    </>
+    </OrderWrapper>
   )
 }
 
-export default Uspgrid
+export default Order

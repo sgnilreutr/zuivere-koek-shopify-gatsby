@@ -6,6 +6,9 @@ import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 import Uspgrid from '../../components/Homepage/UspGrid'
+import Discover from '../../components/Homepage/Discover'
+import People from '../../components/Homepage/People'
+import Order from '../../components/Homepage/Order'
 
 const DesktopWrapper = styled.div`
   @media only screen and (max-width: 480px) {
@@ -18,12 +21,6 @@ const MobileWrapper = styled.div`
     display: none;
   }
 `
-
-const DiscoverContainer = styled.div`
-  background-color: hsl(358, 71%, 91%);
-`
-
-const WhyContainer = styled.div``
 
 const BlogWrapper = styled.div`
   @media only screen and (min-width: 481px) {
@@ -47,7 +44,25 @@ const Homepage = props => {
   } = props
 
   console.log(props.pageContext.page)
-  console.log(sections[0].name)
+  console.log(sections)
+
+  const DISCOVER_BLOCK_TITLE = 'ontdek onze Zuivere Koek'
+  const DiscoverBlockData = sections.filter(
+    item => item.name === DISCOVER_BLOCK_TITLE
+  )
+
+  const USP_BLOCK_TITLE = 'waarom zuiver&koek?'
+  const UspGridData = sections.filter(item => item.name === USP_BLOCK_TITLE)
+
+  const PEOPLE_BLOCK_TITLE = 'Tim & Ruth'
+  const PeopleBlockData = sections.filter(
+    item => item.name === PEOPLE_BLOCK_TITLE
+  )
+
+  const ORDER_BLOCK_TITLE = 'bestellen & genieten'
+  const OrderBlockData = sections.filter(
+    item => item.name === ORDER_BLOCK_TITLE
+  )
 
   const heroImageFile = {
     img:
@@ -73,12 +88,18 @@ const Homepage = props => {
               className="full-bleed"
             />
           )}
-          {/* <DiscoverContainer className="full-bleed">
-            <h2 className="page-title">{parse(introductionHeader)}</h2>
-          </DiscoverContainer> */}
-          <WhyContainer>
-            <Uspgrid content={sections} />
-          </WhyContainer>
+          <div className="full-bleed">
+            <Discover content={DiscoverBlockData} />
+          </div>
+          <div>
+            <Uspgrid content={UspGridData} />
+          </div>
+          <div className="full-bleed">
+            <People content={PeopleBlockData} />
+          </div>
+          <div className="full-bleed">
+            <Order content={OrderBlockData} />
+          </div>
         </>
       ) : (
         <div>Something went wrong</div>

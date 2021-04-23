@@ -6,8 +6,11 @@ const frontPageTemplate = require.resolve(`../templates/front-page/index.js`)
 // Get all the front page data.
 const GET_FRONT_PAGE = `
 query GET_FRONT_PAGE {
-  page: contentfulLandingPage(slug: {eq: "/"}) {
+  page: contentfulLandingPage(slug: {eq: "frontpage"}) {
     hero {
+      text {
+        text
+      }
       ctaText
       ctaLink
       image {
@@ -17,25 +20,52 @@ query GET_FRONT_PAGE {
           }
         }
       }
-      text {
-        text
-      }
     }
     sections {
       ... on ContentfulComponentSection {
         id
         name
         columns {
-          uspImage {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
+          ... on ContentfulComponentText {
+            id
+            title
+            text {
+              text
+            }
+          }
+          ... on ContentfulComponentImage {
+            id
+            title
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
               }
             }
           }
-          title
-          text {
-            text
+          ... on ContentfulComponentUsp {
+            id
+            text {
+              text
+            }
+            title
+            uspImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+          ... on ContentfulComponentNewsItem {
+            id
+            ctaText
+            ctaLink
+            title
+            text {
+              text
+            }
           }
         }
       }
