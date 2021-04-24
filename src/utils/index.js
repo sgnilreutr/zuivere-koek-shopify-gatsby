@@ -1,5 +1,7 @@
 import DOMPurify from 'dompurify'
 
+export const ERROR_MESSAGE = 'Er is iets mis gegaan'
+
 export const formatPrice = (amount, currencyCode) => {
   let numberFormat = new Intl.NumberFormat(undefined, {
     style: 'currency',

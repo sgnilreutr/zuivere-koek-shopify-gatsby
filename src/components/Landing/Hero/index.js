@@ -1,13 +1,14 @@
 import React from 'react'
-import { HeaderTextContainer } from '../../../styles/globalStyles'
-import { Link } from 'gatsby'
-import parse from 'html-react-parser'
+import { ERROR_MESSAGE } from '../../../utils'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { HeaderTextContainer } from '../../../styles/globalStyles'
 
 const Hero = ({ hero }) => {
+  const { title, pageHeaderText, pageHeaderSubtext, header_image } = hero
+
   const heroImageFile = {
-    img: hero.pageHeaderImage?.localFile.childImageSharp.gatsbyImageData,
-    // alt: homepageACF.heroImage?.altText || ``,
+    img: header_image?.localFile.childImageSharp.gatsbyImageData,
+    alt: title || ``,
   }
 
   return (
@@ -17,16 +18,19 @@ const Hero = ({ hero }) => {
           {heroImageFile?.img && (
             <GatsbyImage
               image={heroImageFile.img}
-              alt=""
-              className="header-image--no-constrained header-image--height full-bleed"
+              alt={heroImageFile.alt}
+              className="header-image--no-constrained header-image--height-small full-bleed"
             />
           )}
           <HeaderTextContainer>
-            <h1 className="page-title-alternative">{parse(hero.pageTitle)}</h1>
+            <h1 className="page-title page-title--shop">
+              {pageHeaderText} <br />
+              <span>{pageHeaderSubtext}</span>
+            </h1>
           </HeaderTextContainer>
         </div>
       ) : (
-        <div>Something went wrong</div>
+        <div>{ERROR_MESSAGE}</div>
       )}
     </>
   )

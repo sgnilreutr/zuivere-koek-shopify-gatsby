@@ -8,17 +8,20 @@ const GET_FRONT_PAGE = `
 query GET_FRONT_PAGE {
   page: contentfulLandingPage(slug: {eq: "frontpage"}) {
     hero {
-      text {
-        text
-      }
-      ctaText
-      ctaLink
-      image {
-        localFile {
-          childImageSharp {
-            gatsbyImageData
+      ... on ContentfulComponentHero {
+        id
+        image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
+        text {
+          text
+        }
+        ctaText
+        ctaLink
       }
     }
     sections {

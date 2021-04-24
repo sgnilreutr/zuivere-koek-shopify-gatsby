@@ -81,7 +81,7 @@ const Homepage = props => {
           </div>
         </>
       ) : (
-        <div>Something went wrong</div>
+        <div>{ERROR_MESSAGE}</div>
       )}
     </Layout>
   )

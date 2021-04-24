@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import StoreContext from '~/context/StoreContext'
 import LinearProgress from '@material-ui/core/LinearProgress'
-// import { useStaticQuery, graphql } from 'gatsby'
 import SingleLine from './single-line'
 import { formatPrice } from '../../utils'
 import {
@@ -52,7 +51,6 @@ const Cart = ({ pageText, isLoading }) => {
 
   return (
     <CartWrapper>
-      {/* {console.log(checkout)} */}
       <h1 className="page-title-alternative">{pageText}</h1>
       {lineItems}
       <HR />

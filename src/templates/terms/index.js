@@ -20,7 +20,7 @@ const TermsPage = props => {
           <LandingPage page={sections} />
         </>
       ) : (
-        <div>Something went wrong</div>
+        <div>{ERROR_MESSAGE}</div>
       )}
     </Layout>
   )
