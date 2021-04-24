@@ -3,13 +3,15 @@ import { ERROR_MESSAGE } from '../../../utils'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { HeaderTextContainer } from '../../../styles/globalStyles'
 
-const Hero = ({ hero }) => {
+const LandingPageHero = ({ hero }) => {
   const { title, pageHeaderText, pageHeaderSubtext, header_image } = hero
 
   const heroImageFile = {
     img: header_image?.localFile.childImageSharp.gatsbyImageData,
     alt: title || ``,
   }
+
+  console.log("@@@TITLE", hero.title)
 
   return (
     <>
@@ -36,4 +38,4 @@ const Hero = ({ hero }) => {
   )
 }
 
-export default Hero
+export default LandingPageHero

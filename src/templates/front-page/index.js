@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../../components/layout'
+import { ERROR_MESSAGE } from '../../utils'
 import { GoToShopButton, HeroGrid } from '../../components/Homepage/HeroStyles'
-import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 import Uspgrid from '../../components/Homepage/UspGrid'
