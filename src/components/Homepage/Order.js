@@ -39,7 +39,7 @@ const Order = ({ content }) => {
 
   return (
     <OrderWrapper>
-      <h2 className="order-header">{name}</h2>
+      <h2 className="block-header--blue">{name}</h2>
       <Grid>{grid}</Grid>
     </OrderWrapper>
   )

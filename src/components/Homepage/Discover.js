@@ -1,6 +1,7 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import {
+  DiscoverButton,
   DiscoverContainer,
   Grid,
   GridNewsContainer,
@@ -10,6 +11,10 @@ import {
 
 const Discover = ({ content }) => {
   const { name, columns } = content[0]
+
+  const firstItem = columns && columns.length > 0 ? content[0].columns[0] : null
+  const secondItem = columns && columns.length > 0 ? content[0].columns[1] : null
+  const thirdItem = columns && columns.length > 0 ? content[0].columns[2] : null
 
   const GridImage = ({ image, alt }) => {
     return (
@@ -27,32 +32,24 @@ const Discover = ({ content }) => {
     return (
       <GridNewsContainer>
         <NewsInnerContainer>
-          <p>{item.title}</p>
-          <p>{item.text.text}</p>
+          <p className="product-title">{item.title}</p>
+          <p className="landingpage-p">{item.text.text}</p>
+          <DiscoverButton to={`/${item.ctaLink}`}><span>{item.ctaText}</span></DiscoverButton>
         </NewsInnerContainer>
       </GridNewsContainer>
     )
   }
 
-  const grid =
-    columns && columns.length > 0 ? (
-      columns.map((item, index) =>
-        item.image ? (
-          <GridImage image={item.image} alt={item.title} key={index} />
-        ) : (
-          <GridNews item={item} key={index} />
-        )
-      )
-    ) : (
-      <p>Something went wrong.</p>
-    )
-
   return (
     <>
       <DiscoverContainer>
-        <h2 className="page-title">{name}</h2>
+        <h2 className="block-header--blue">{name}</h2>
       </DiscoverContainer>
-      <Grid>{grid}</Grid>
+      <Grid>
+        <GridImage image={firstItem.image} alt={firstItem.title} />
+        <GridNews item={thirdItem} />
+        <GridImage image={secondItem.image} alt={secondItem.title} />
+      </Grid>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 
 export const DiscoverContainer = styled.div`
   background-color: hsl(358, 71%, 91%);
@@ -32,6 +33,31 @@ export const GridNewsContainer = styled.div`
 
 export const NewsInnerContainer = styled.div`
   display: grid;
-  justify-content: center;
+  justify-items: center;
   background-color: white;
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+`
+export const DiscoverButton = styled(Link)`
+  border: solid 1px hsl(0, 0%, 44%);
+  border-radius: 4px;
+  background-color: hsl(234, 47%, 31%);
+  padding: 5px 35px;
+  margin: 2rem 0;
+  display: flex;
+  cursor: pointer;
+  max-width: max-content;
+  height: max-content;
+  text-decoration: none;
+
+  :hover {
+    opacity: 0.8;
+  }
+
+  span {
+    color: #f8d8d9;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+  }
 `

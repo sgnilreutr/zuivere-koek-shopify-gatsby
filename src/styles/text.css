@@ -66,6 +66,13 @@ small,
   font-weight: 900;
 }
 
+.hero-title {
+  color: white;
+  font-weight: 900;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  font-family: "Work Sans", sans-serif;
+}
+
 .page-title {
   color: #fce3e7;
   text-align: center;
@@ -163,7 +170,7 @@ small,
   color: #2a3174;
 }
 
-.order-header {
+.block-header--blue {
   color: #2a3174;
   text-align: center;
   font-weight: 900;

@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import { HeroGrid } from '../../components/Homepage/HeroStyles'
+import { GoToShopButton, HeroGrid } from '../../components/Homepage/HeroStyles'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
@@ -14,14 +14,11 @@ const Homepage = props => {
     pageContext: {
       page,
       page: {
-        title,
         hero: { ctaLink, ctaText, image, text },
         sections,
       },
     },
   } = props
-
-  console.log(props.pageContext.page)
 
   const DISCOVER_BLOCK_TITLE = 'ontdek onze Zuivere Koek'
   const DiscoverBlockData = sections.filter(
@@ -59,13 +56,15 @@ const Homepage = props => {
                 <GatsbyImage
                   image={heroImageFile.img}
                   alt=""
-                  // className="full-bleed header-image--height-big"
                   className="banner-image-div"
                 />
               )}
-              <button className="banner-text-div">
-                <Link to={ctaLink}>{ctaText}</Link>
-              </button>
+              <div className="banner-text-div">
+                <h1 className="hero-title">{text.text}</h1>
+                <GoToShopButton to={ctaLink}>
+                  <span>{ctaText}</span>
+                </GoToShopButton>
+              </div>
             </HeroGrid>
           </div>
           <div className="full-bleed">
