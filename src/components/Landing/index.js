@@ -15,9 +15,9 @@ const LandingPage = ({ page }) => {
     } else if (content.image) {
       return (
         <ImageWrapper>
-        <GatsbyImage
-          image={content.image.localFile.childImageSharp.gatsbyImageData}
-          alt={content.title}
+          <GatsbyImage
+            image={content.image.localFile.childImageSharp.gatsbyImageData}
+            alt={content.title}
           />
         </ImageWrapper>
       )
@@ -34,9 +34,7 @@ const LandingPage = ({ page }) => {
     )
 
   return (
-    <Wrapper>
-      {page ? <>{pageContent}</> : <div>{ERROR_MESSAGE}</div>}
-    </Wrapper>
+    <Wrapper>{page ? <>{pageContent}</> : <div>{ERROR_MESSAGE}</div>}</Wrapper>
   )
 }
 
