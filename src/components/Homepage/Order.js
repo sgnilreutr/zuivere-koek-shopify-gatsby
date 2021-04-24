@@ -10,7 +10,6 @@ import {
 
 const Order = ({ content }) => {
   const { name, columns } = content[0]
-  console.log(content)
 
   const GridImage = ({ image, alt }) => {
     return image && alt ? (

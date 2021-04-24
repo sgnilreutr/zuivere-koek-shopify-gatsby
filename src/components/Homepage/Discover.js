@@ -11,8 +11,6 @@ import {
 const Discover = ({ content }) => {
   const { name, columns } = content[0]
 
-  //   console.log(columns)
-
   const GridImage = ({ image, alt }) => {
     return (
       <ProductPhoto>
@@ -42,7 +40,7 @@ const Discover = ({ content }) => {
         item.image ? (
           <GridImage image={item.image} alt={item.title} key={index} />
         ) : (
-          <GridNews item={item} />
+          <GridNews item={item} key={index} />
         )
       )
     ) : (

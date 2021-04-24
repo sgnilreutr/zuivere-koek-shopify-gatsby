@@ -7,23 +7,24 @@ export const HeaderContainer = styled.div`
   place-content: center;
 `
 
-export const ContentFlex = styled.div`
-  display: flex;
-  max-width: 1000px;
+export const ContentGrid = styled.div`
+  display: grid;
+  max-width: 1200px;
   margin: 0 auto;
   transform: translateY(-3rem);
-  /* flex-wrap: auto; */
+  grid-template-columns: auto auto;
+  /* grid-template-columns: repeat(auto-fill, minmax(780px, 1fr));; */
 `
 
 export const ImageContainer = styled.figure`
   width: 780px;
-  height: 463px;
-  margin-right: 6rem;
+  height: 460px;
+  /* margin-right: 6rem; */
 `
 
 export const TextContainer = styled.div`
   width: 340px;
-  height: 460px;
+  height: 440px;
   padding: 3rem 2rem 2rem;
   background-color: hsl(351, 81%, 94%);
 `

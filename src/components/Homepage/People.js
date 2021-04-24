@@ -2,7 +2,7 @@ import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import ReactMarkdown from 'react-markdown'
 import {
-  ContentFlex,
+  ContentGrid,
   HeaderContainer,
   ImageContainer,
   TextContainer,
@@ -11,7 +11,6 @@ import {
 
 const People = ({ content }) => {
   const { name, columns } = content[0]
-  console.log(content)
   const imageData = columns[0]
   const textData = columns[1]
 
@@ -41,10 +40,10 @@ const People = ({ content }) => {
       <HeaderContainer>
         <h2 className="page-title">{name}</h2>
       </HeaderContainer>
-      <ContentFlex>
+      <ContentGrid>
         <PeopleImage image={imageData.image} alt={imageData.title} />
         <PeopleText text={textData.text} />
-      </ContentFlex>
+      </ContentGrid>
     </div>
   )
 }

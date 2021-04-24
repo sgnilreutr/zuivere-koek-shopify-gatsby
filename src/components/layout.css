@@ -594,7 +594,7 @@ pre tt:after {
   display: inherit;
 }
 
-.header-image--height {
+.header-image--height-small {
   max-height: 600px;
 }
 
