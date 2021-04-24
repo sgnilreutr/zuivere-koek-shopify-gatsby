@@ -10,12 +10,12 @@ import Toaster from '../../components/Toaster'
 const Shop = props => {
   const {
     pageContext: {
-      page: { pageHeaderText, pageHeaderImage },
+      page: { pageHeaderText, pageHeaderSubtext, header_image },
     },
   } = props
 
   const headerImage = {
-    img: pageHeaderImage.localFile?.childImageSharp?.gatsbyImageData,
+    img: header_image.localFile?.childImageSharp?.gatsbyImageData,
     // alt: homepageACF.heroImage?.altText || ``,
   }
 
@@ -28,12 +28,13 @@ const Shop = props => {
             <GatsbyImage
               image={headerImage.img}
               alt=""
-              className="header-image--height full-bleed"
+              className="header-image--height-small full-bleed"
             />
           )}
           <HeaderTextContainer>
             <h1 className="page-title page-title--shop">
-              {parse(pageHeaderText)}
+              {pageHeaderText} <br />
+              <span>{pageHeaderSubtext}</span>
             </h1>
           </HeaderTextContainer>
           <Products />
