@@ -6,76 +6,67 @@ const frontPageTemplate = require.resolve(`../templates/front-page/index.js`)
 // Get all the front page data.
 const GET_FRONT_PAGE = `
 query GET_FRONT_PAGE {
-  page: contentfulComponentHomepage {
-    heroHeader
-    reasonHeader
-    introductionHeader
-    heroImage {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
+  page: contentfulLandingPage(slug: {eq: "frontpage"}) {
+    hero {
+      text {
+        text
+      }
+      ctaText
+      ctaLink
+      image {
+        localFile {
+          childImageSharp {
+            gatsbyImageData
+          }
         }
       }
     }
-    duurzaamBody
-    duurzaamHeader
-    duurzaamImage {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-    lowImpactBody
-    lowImpactHeader
-    lowImpactImage {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-    metLiefdeBody
-    metLiefdeHeader
-    metLiefdeImage {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-    opBestellingBody
-    opBestellingHeader
-    opBestellingImage {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-    socialHeader
-    timEnRuthBody
-    transparantBody
-    transparantHeader
-    transparantImage {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-    usp1Body
-    usp1Header
-    usp2Body
-    usp2Header
-    usp3Body
-    usp3Header
-    verassingBody
-    verassingHeader
-    verassingImage {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
+    sections {
+      ... on ContentfulComponentSection {
+        id
+        name
+        columns {
+          ... on ContentfulComponentText {
+            id
+            title
+            text {
+              text
+            }
+          }
+          ... on ContentfulComponentImage {
+            id
+            title
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+          ... on ContentfulComponentUsp {
+            id
+            text {
+              text
+            }
+            title
+            uspImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+          ... on ContentfulComponentNewsItem {
+            id
+            ctaText
+            ctaLink
+            title
+            text {
+              text
+            }
+          }
         }
       }
     }

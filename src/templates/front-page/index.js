@@ -1,127 +1,84 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import styled from '@emotion/styled'
+import { GoToShopButton, HeroGrid } from '../../components/Homepage/HeroStyles'
 import { Link } from 'gatsby'
-import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
-
-const DesktopWrapper = styled.div`
-  @media only screen and (max-width: 480px) {
-    display: none;
-  }
-`
-
-const MobileWrapper = styled.div`
-  @media only screen and (min-width: 481px) {
-    display: none;
-  }
-`
-
-const DiscoverContainer = styled.div`
-  background-color: hsl(358, 71%, 91%);
-`
-
-const WhyContainer = styled.div``
-
-const OverOnsWrapper = styled.div``
-
-const OverOnsContent = styled.div``
-
-const BlogWrapper = styled.div`
-  @media only screen and (min-width: 481px) {
-    margin-top: 160px;
-    margin-bottom: 100px;
-    display: flex;
-    place-content: center;
-  }
-`
+import Uspgrid from '../../components/Homepage/UspGrid'
+import Discover from '../../components/Homepage/Discover'
+import People from '../../components/Homepage/People'
+import Order from '../../components/Homepage/Order'
 
 const Homepage = props => {
   const {
     pageContext: {
+      page,
       page: {
-        title,
-        uri,
-        heroImage,
-        heroHeader,
-        reasonHeader,
-        introductionHeader,
-        duurzaamImage,
-        duurzaamHeader,
-        duurzaamBody,
-        metLiefdeImage,
-        metLiefdeHeader,
-        metLiefdeBody,
-        opBestellingImage,
-        opBestellingHeader,
-        opBestellingBody,
-        lowImpactHeader,
-        lowImpactBody,
-        lowImpactImage,
-        transparantImage,
-        transparantHeader,
-        transparantBody,
-        verassingImage,
-        verassingHeader,
-        verassingBody,
+        hero: { ctaLink, ctaText, image, text },
+        sections,
       },
     },
   } = props
 
+  const DISCOVER_BLOCK_TITLE = 'ontdek onze Zuivere Koek'
+  const DiscoverBlockData = sections.filter(
+    item => item.name === DISCOVER_BLOCK_TITLE
+  )
+
+  const USP_BLOCK_TITLE = 'waarom zuiver&koek?'
+  const UspGridData = sections.filter(item => item.name === USP_BLOCK_TITLE)
+
+  const PEOPLE_BLOCK_TITLE = 'Tim & Ruth'
+  const PeopleBlockData = sections.filter(
+    item => item.name === PEOPLE_BLOCK_TITLE
+  )
+
+  const ORDER_BLOCK_TITLE = 'bestellen & genieten'
+  const OrderBlockData = sections.filter(
+    item => item.name === ORDER_BLOCK_TITLE
+  )
+
   const heroImageFile = {
     img:
-      props.pageContext.page.heroImage?.localFile.childImageSharp
+      props.pageContext.page.hero?.image.localFile.childImageSharp
         .gatsbyImageData,
     // alt: homepageACF.heroImage?.altText || ``,
   }
-
-  // const servicesImage = {
-  //   img: homepageACF.servicesImage?.localFile?.childImageSharp?.gatsbyImageData,
-  //   alt: homepageACF.servicesImage?.altText || ``,
-  // }
 
   return (
     <Layout>
       <SEO title="Home" />
       {props.pageContext.page ? (
         <>
-          {heroImageFile?.img && (
-            <GatsbyImage
-              image={heroImageFile.img}
-              alt=""
-              className="full-bleed"
-            />
-          )}
-          <DiscoverContainer className="full-bleed">
-            <h2>{parse(introductionHeader)}</h2>
-          </DiscoverContainer>
-          <WhyContainer>
-            <h2>{parse(reasonHeader)}</h2>
-            <div>
-              <div>
-                {/* <GatsbyImage image={duurzaamImage} alt="" className="" /> */}
-                <div>
-                  <h3>{parse(duurzaamHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(metLiefdeHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(opBestellingHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(lowImpactHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(transparantHeader)}</h3>
-                </div>
-                <div>
-                  <h3>{parse(verassingHeader)}</h3>
-                </div>
+          <div className="full-bleed">
+            <HeroGrid>
+              {heroImageFile?.img && (
+                <GatsbyImage
+                  image={heroImageFile.img}
+                  alt=""
+                  className="banner-image-div"
+                />
+              )}
+              <div className="banner-text-div">
+                <h1 className="hero-title">{text.text}</h1>
+                <GoToShopButton to={ctaLink}>
+                  <span>{ctaText}</span>
+                </GoToShopButton>
               </div>
-            </div>
-          </WhyContainer>
+            </HeroGrid>
+          </div>
+          <div className="full-bleed">
+            <Discover content={DiscoverBlockData} />
+          </div>
+          <div>
+            <Uspgrid content={UspGridData} />
+          </div>
+          <div className="full-bleed">
+            <People content={PeopleBlockData} />
+          </div>
+          <div className="full-bleed">
+            <Order content={OrderBlockData} />
+          </div>
         </>
       ) : (
         <div>Something went wrong</div>

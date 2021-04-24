@@ -15,7 +15,7 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `p4ywkzwxur37`,
+        spaceId: `v26fsvm3rd6t`,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         downloadLocal: true,
       },
@@ -63,13 +63,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `Zuiver&Koek Webshop`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/zuivere-koek-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,

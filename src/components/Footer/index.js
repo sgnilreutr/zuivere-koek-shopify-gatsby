@@ -22,10 +22,6 @@ const Footer = () => {
             }
           }
         }
-        footerMenu {
-          navigationLink
-          navigationTitle
-        }
         footerDetailsRight {
           footerDetailsRight
         }
@@ -47,7 +43,7 @@ const Footer = () => {
   }
 
   const menu =
-    footerMenu.length > 0
+    footerMenu && footerMenu.length > 0
       ? footerMenu.map((item, index) => (
           <MenuItem key={index} to={item.navigationLink}>
             <span>{parse(item.navigationTitle)}</span>
@@ -80,3 +76,26 @@ const Footer = () => {
 }
 
 export default Footer
+
+//backup
+// {
+//   footer: contentfulFooter {
+//     logo {
+//       localFile {
+//         childImageSharp {
+//           gatsbyImageData
+//         }
+//       }
+//     }
+//     footerMenu {
+//       navigationLink
+//       navigationTitle
+//     }
+//     footerDetailsRight {
+//       footerDetailsRight
+//     }
+//     footerDetailsLeft {
+//       footerDetailsLeft
+//     }
+//   }
+// }

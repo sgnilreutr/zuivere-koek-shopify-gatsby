@@ -6,11 +6,11 @@ const shopPageTemplate = require.resolve(`../templates/shop/index.js`)
 // Get all the shop page data.
 const GET_SHOP_PAGE = `
 query GET_SHOP_PAGE {
-  page: contentfulContentpageHeader(pageTitle: {eq: "Shop"}) {
-    pageTitle
+  page: contentfulComponentContentpageHeader(title: {eq: "Shop"}) {
+    title
     pageHeaderText
     pageHeaderSubtext
-    pageHeaderImage {
+    header_image {
       localFile {
         childImageSharp {
           gatsbyImageData

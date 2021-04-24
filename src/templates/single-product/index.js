@@ -35,7 +35,10 @@ const SingleProductPage = ({ data }) => {
               header={{ siteTitle: 'Gatsby WooCommerce Theme' }}
               openGraphImage={getOgImage(seo)}
             /> */}
-          <ProductDetail product={product} extraDescription={extraDescription}/>
+          <ProductDetail
+            product={product}
+            extraDescription={extraDescription}
+          />
           <Relatedproduct currentProduct={product.shopifyId} />
         </>
       ) : (

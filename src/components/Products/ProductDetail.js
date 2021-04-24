@@ -26,9 +26,7 @@ const ProductDetail = ({ product, extraDescription }) => {
     variants: [initialVariant],
     priceRange: { minVariantPrice },
   } = product
-  const {
-    text,
-  } = extraDescription
+  const { text } = extraDescription
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
   const {

@@ -5,8 +5,8 @@ const cartPageTemplate = require.resolve(`../templates/cart/index.js`)
 // Get all the shop page data.
 const GET_CART_PAGE = `
 query GET_CART_PAGE {
-  page: contentfulContentpageHeader(pageTitle: {eq: "Cart"}) {
-    pageTitle
+  page: contentfulComponentContentpageHeader(title: {eq: "Cart"}) {
+    title
     pageHeaderText
   }
 }
