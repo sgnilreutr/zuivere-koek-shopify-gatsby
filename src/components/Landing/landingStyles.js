@@ -8,3 +8,6 @@ export const Wrapper = styled.div`
 export const Paragraph = styled.section`
   padding: 1rem 0;
 `
+
+export const ImageWrapper = styled.figure`
+`

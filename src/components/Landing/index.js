@@ -1,7 +1,7 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { ERROR_MESSAGE } from '../../utils'
-import { Paragraph, Wrapper } from './landingStyles'
+import { ImageWrapper, Paragraph, Wrapper } from './landingStyles'
 import Column from './Column'
 
 const LandingPage = ({ page }) => {
@@ -14,10 +14,12 @@ const LandingPage = ({ page }) => {
       )
     } else if (content.image) {
       return (
+        <ImageWrapper>
         <GatsbyImage
           image={content.image.localFile.childImageSharp.gatsbyImageData}
-          alt=""
-        />
+          alt={content.title}
+          />
+        </ImageWrapper>
       )
     }
 
