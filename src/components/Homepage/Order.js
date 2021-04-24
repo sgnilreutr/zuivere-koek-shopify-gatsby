@@ -29,7 +29,7 @@ const Order = ({ content }) => {
         <DataCell key={index}>
           <GridImage image={item.uspImage} alt={item.title} />
           <CellText>
-            <h5 className="usp-header">{item.title}</h5> <br />{' '}
+            <h5 className="order-body--header">{item.title}</h5> <br />{' '}
             <p className="usp-body text_small">{item.text.text}</p>
           </CellText>
         </DataCell>
@@ -40,7 +40,7 @@ const Order = ({ content }) => {
 
   return (
     <OrderWrapper>
-      <h2 className="page-title">{name}</h2>
+      <h2 className="order-header">{name}</h2>
       <Grid>{grid}</Grid>
     </OrderWrapper>
   )

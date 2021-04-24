@@ -162,4 +162,17 @@ small,
 .usp-body {
   color: #2a3174;
 }
+
+.order-header {
+  color: #2a3174;
+  text-align: center;
+  font-weight: 900;
+}
+
+.order-body--header {
+  color: white;
+  font-weight: bold;
+  margin: 0 0 1rem;
+  font-family: "Work Sans", sans-serif;
+}
 /*# sourceMappingURL=text.css.map */

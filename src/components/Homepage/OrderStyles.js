@@ -7,10 +7,11 @@ export const OrderWrapper = styled.div`
 
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
   max-width: 1200px;
   margin: 0 auto;
-  grid-gap: 1rem;
+  grid-gap: 5%;
+  padding: 3rem 0;
 `
 
 export const DataCell = styled.div`
@@ -19,6 +20,7 @@ export const DataCell = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0 2.5rem;
   /* grid-template-rows: 110px 360px 100px;
   grid-column-gap: 1rem; */
 `
