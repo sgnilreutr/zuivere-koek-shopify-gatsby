@@ -3,11 +3,12 @@ import { Wrapper } from './landingStyles'
 import Column from './Column'
 
 const LandingPage = ({ page }) => {
-  const pageData = page[0]
+  // const pageData = page[0]
+  console.log(page)
 
   return (
     <Wrapper>
-      {pageData ? (
+      {/* {pageData ? (
         <>
           {pageData.columns &&
             pageData.columns.map((item, index) => (
@@ -16,7 +17,7 @@ const LandingPage = ({ page }) => {
         </>
       ) : (
         <div>Something went wrong</div>
-      )}
+      )} */}
     </Wrapper>
   )
 }

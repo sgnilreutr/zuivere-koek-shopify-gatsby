@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import parse from 'html-react-parser'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import SEO from '../../components/seo'
 import Products from '../../components/Products/Products'
