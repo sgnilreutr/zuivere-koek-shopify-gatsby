@@ -13,7 +13,8 @@ const Discover = ({ content }) => {
   const { name, columns } = content[0]
 
   const firstItem = columns && columns.length > 0 ? content[0].columns[0] : null
-  const secondItem = columns && columns.length > 0 ? content[0].columns[1] : null
+  const secondItem =
+    columns && columns.length > 0 ? content[0].columns[1] : null
   const thirdItem = columns && columns.length > 0 ? content[0].columns[2] : null
 
   const GridImage = ({ image, alt }) => {
@@ -34,7 +35,9 @@ const Discover = ({ content }) => {
         <NewsInnerContainer>
           <p className="product-title">{item.title}</p>
           <p className="landingpage-p">{item.text.text}</p>
-          <DiscoverButton to={`/${item.ctaLink}`}><span>{item.ctaText}</span></DiscoverButton>
+          <DiscoverButton to={`/${item.ctaLink}`}>
+            <span>{item.ctaText}</span>
+          </DiscoverButton>
         </NewsInnerContainer>
       </GridNewsContainer>
     )
