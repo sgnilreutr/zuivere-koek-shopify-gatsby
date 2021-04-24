@@ -1,6 +1,7 @@
 import React from 'react'
-import { HeaderTextContainer } from '../../../styles/globalStyles'
+import { ERROR_MESSAGE } from '../../../utils'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { HeaderTextContainer } from '../../../styles/globalStyles'
 
 const Hero = ({ hero }) => {
   const { title, pageHeaderText, pageHeaderSubtext, header_image } = hero
@@ -29,7 +30,7 @@ const Hero = ({ hero }) => {
           </HeaderTextContainer>
         </div>
       ) : (
-        <div>Something went wrong</div>
+        <div>{ERROR_MESSAGE}</div>
       )}
     </>
   )

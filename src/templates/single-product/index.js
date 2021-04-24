@@ -1,5 +1,6 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
+import { ERROR_MESSAGE } from '../../utils'
 import Layout from '../../components/layout'
 import { graphql } from 'gatsby'
 // import SEO from "../../components/seo";
@@ -42,7 +43,7 @@ const SingleProductPage = ({ data }) => {
           <Relatedproduct currentProduct={product.shopifyId} />
         </>
       ) : (
-        <div>Something went wrong</div>
+        <div>{ERROR_MESSAGE}</div>
       )}
     </Layout>
   )

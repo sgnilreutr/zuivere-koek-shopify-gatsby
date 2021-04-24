@@ -1,4 +1,5 @@
 import React from 'react'
+import { ERROR_MESSAGE } from '../../utils'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 import Cart from '../../components/Cart'
@@ -20,7 +21,7 @@ const CartPage = props => {
           <Cart pageText={pageTitle} />
         </>
       ) : (
-        <div>Something went wrong</div>
+        <div>{ERROR_MESSAGE}</div>
       )}
     </Layout>
   )

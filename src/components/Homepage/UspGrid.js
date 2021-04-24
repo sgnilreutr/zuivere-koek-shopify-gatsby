@@ -1,5 +1,6 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { ERROR_MESSAGE } from '../../utils'
 import { CellText, Grid, GridCell, HeaderContainer } from './UspGridStyles'
 
 const Uspgrid = ({ content }) => {
@@ -26,7 +27,7 @@ const Uspgrid = ({ content }) => {
         </GridCell>
       ))
     ) : (
-      <p>Something went wrong.</p>
+      <p>{ERROR_MESSAGE}.</p>
     )
 
   return (

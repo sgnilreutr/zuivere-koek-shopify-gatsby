@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../../components/layout'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { ERROR_MESSAGE } from '../../utils'
 import SEO from '../../components/seo'
 import Products from '../../components/Products/Products'
 import { HeaderTextContainer } from '../../styles/globalStyles'
@@ -40,7 +41,7 @@ const Shop = props => {
           <Toaster />
         </>
       ) : (
-        <div>Something went wrong</div>
+        <div>{ERROR_MESSAGE}</div>
       )}
     </Layout>
   )

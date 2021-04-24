@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import StoreContext from '~/context/StoreContext'
 import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import { formatPrice } from '../../utils'
 import { IoTrashOutline } from 'react-icons/io5'
 import {

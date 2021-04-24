@@ -34,7 +34,7 @@ const Order = ({ content }) => {
         </DataCell>
       ))
     ) : (
-      <p>Something went wrong.</p>
+      <p>{ERROR_MESSAGE}.</p>
     )
 
   return (
