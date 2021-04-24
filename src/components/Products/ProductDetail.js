@@ -34,8 +34,6 @@ const ProductDetail = ({ product, extraDescription }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
-  console.log(text)
-
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
     // alt: product.node.image.altText || ``,
