@@ -22,8 +22,8 @@ const NO_ITEMS = 'Nog geen items in winkelmandje'
 const BACK_TO_SHOP = 'Ga naar Shop'
 const CHECKOUT_TEXT =
   'Bezorging en service XXX besteld? XXXX in huis! Vragen? Je kunt ons mailen via: hallo@zuiverekoek.shop.nl'
-const SHIPPING_TEXT = 'Verzendkosten'
-const SHIPPING_FEE_TEXT = 'Worden op de volgende pagina berekend'
+// const SHIPPING_TEXT = 'Verzendkosten'
+// const SHIPPING_FEE_TEXT = 'Worden op de volgende pagina berekend'
 const TOTAL_TEXT = 'Totaal winkelmand'
 const BUTTON_TEXT = 'ik ga bestellen'
 
@@ -74,12 +74,6 @@ const Cart = ({ pageText, isLoading }) => {
         <CartBottomGrid>
           <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
           <TotalAndButton>
-            <Shipping>
-              <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
-              <p className="check-out--ship-total text-align-right">
-                {SHIPPING_FEE_TEXT}
-              </p>
-            </Shipping>
             {totalPrice && (
               <Total>
                 <p className="check-out--ship-total">{TOTAL_TEXT}</p>
