@@ -19,9 +19,70 @@ export const ProductPhoto = styled.figure`
   background-color: hsl(351, 81%, 94%);
 `
 
+export const ProductInfoContainer = styled(Link)`
+  width: 340px;
+  height: 460px;
+  padding: 1.5rem;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.4s ease-out;
+  background-color: hsl(351, 81%, 94%);
+  text-decoration: none;
+  /* box-shadow: 0px 7px 10px rgba(black, 0.5); */
+  &:hover {
+    /* transform: translateY(20px); */
+    &:before {
+      opacity: 1;
+    }
+    div {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    figure {
+      opacity: 0.3;
+    }
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* display: block; */
+    width: 100%;
+    height: 100%;
+    /* border-radius: 15px; */
+    /* background-color: rgba(black, 0.6); */
+    z-index: 2;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`
+
+export const ProductInfoContent = styled.div`
+  position: relative;
+  z-index: 3;
+  top: -60px;
+  color: hsl(234, 47%, 31%);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.5s;
+  text-align: center;
+`
+
 export const ProductInfo = styled.div`
   display: grid;
   justify-items: center;
+  margin-top: 2rem;
 `
 
 export const ProductInnerInfo = styled(Link)`

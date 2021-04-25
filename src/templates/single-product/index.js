@@ -10,7 +10,8 @@ import Relatedproduct from '../../components/Products/RelatedProduct'
 
 const SingleProductPage = ({ data }) => {
   const product = data.shopifyProduct
-  const extraDescription = data.desc && data.desc > 0 ? data.desc.description.text : ''
+  const extraDescription =
+    data.desc && data.desc > 0 ? data.desc.description.text : ''
 
   // const {
   //   product,

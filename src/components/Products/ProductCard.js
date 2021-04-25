@@ -10,6 +10,8 @@ import {
   ProductPhoto,
   ProductInfo,
   ProductInnerInfo,
+  ProductInfoContainer,
+  ProductInfoContent,
 } from './ProductCardStyles'
 import StoreContext from '~/context/StoreContext'
 import { toast } from 'react-toastify'
@@ -19,10 +21,15 @@ const ProductCard = ({ product }) => {
     options,
     variants,
     variants: [initialVariant],
+    handle,
+    id,
+    title,
+    priceRange,
+    images,
+    description,
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
   const [loading, setLoading] = useState(false)
-  const productInfo = product ? product : null
   const QUICKBUY_QTY = 1
   const TOASTER_TEXT = 'is toegevoegd aan je winkelmand.'
 
@@ -55,8 +62,8 @@ const ProductCard = ({ product }) => {
   }, [productVariant, checkAvailability, product.shopifyId])
 
   const productImage = {
-    img: productInfo?.images[0].localFile?.childImageSharp?.gatsbyImageData,
-    // alt: productInfo?.image?.altText || `featured-image`,
+    img: images[0].localFile?.childImageSharp?.gatsbyImageData,
+    alt: `${title}-featured-image` || `featured-image`,
   }
 
   const handleSubmit = async event => {
@@ -71,36 +78,35 @@ const ProductCard = ({ product }) => {
     <ProductCardWrapper>
       <form onSubmit={handleSubmit}>
         {productImage.img ? (
-          <Link to={`/shop/${productInfo.handle}`}>
+          <ProductInfoContainer to={`/shop/${handle}`}>
             <ProductPhoto>
               <GatsbyImage
                 image={productImage.img}
-                alt=""
+                alt={productImage.alt}
                 className="blog-preview-image"
               />
             </ProductPhoto>
-          </Link>
+            <ProductInfoContent><div><p>{description}</p></div></ProductInfoContent>
+          </ProductInfoContainer>
         ) : null}
         <ProductInfo>
-          <ProductInnerInfo to={`${productInfo.id}`}>
-            <h4 className="product-title product-title--overview">
-              {productInfo.title}
-            </h4>
-            {productInfo.priceRange.minVariantPrice && (
+          <ProductInnerInfo to={`${id}`}>
+            <h4 className="product-title product-title--overview">{title}</h4>
+            {priceRange.minVariantPrice && (
               <span
                 className="product-price--overview"
                 // value={price.id}
               >
                 {formatPrice(
-                  productInfo.priceRange.minVariantPrice.amount,
-                  productInfo.priceRange.currencyCode
+                  priceRange.minVariantPrice.amount,
+                  priceRange.currencyCode
                 )}
               </span>
             )}
           </ProductInnerInfo>
           <AddToCartButton
             disabled={loading || adding || !available}
-            onClick={() => toast.dark(`${productInfo.title} ${TOASTER_TEXT}`)}
+            onClick={() => toast.dark(`${title} ${TOASTER_TEXT}`)}
           >
             <IoCartOutline size={30} color={`#f8d8d9`} />
           </AddToCartButton>

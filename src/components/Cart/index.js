@@ -64,37 +64,37 @@ const Cart = ({ pageText, isLoading }) => {
   const handleCheckout = () => {
     window.open(checkout.webUrl, '_self')
   }
-  
+
   return (
     <CartWrapper>
       <CartInner>
-      <h1 className="page-title-alternative">{pageText}</h1>
-      {lineItems}
-      <HR />
-      <CartBottomGrid>
-        <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
-        <TotalAndButton>
-          <Shipping>
-            <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
-            <p className="check-out--ship-total text-align-right">
-              {SHIPPING_FEE_TEXT}
-            </p>
-          </Shipping>
-          {totalPrice && (
-            <Total>
-              <p className="check-out--ship-total">{TOTAL_TEXT}</p>
+        <h1 className="page-title-alternative">{pageText}</h1>
+        {lineItems}
+        <HR />
+        <CartBottomGrid>
+          <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
+          <TotalAndButton>
+            <Shipping>
+              <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
               <p className="check-out--ship-total text-align-right">
-                {totalPrice}
+                {SHIPPING_FEE_TEXT}
               </p>
-            </Total>
-          )}
-          <OrderButton
-            onClick={handleCheckout}
-            disabled={loading || checkout.lineItems.length === 0}
-          >
-            <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
-          </OrderButton>
-        </TotalAndButton>
+            </Shipping>
+            {totalPrice && (
+              <Total>
+                <p className="check-out--ship-total">{TOTAL_TEXT}</p>
+                <p className="check-out--ship-total text-align-right">
+                  {totalPrice}
+                </p>
+              </Total>
+            )}
+            <OrderButton
+              onClick={handleCheckout}
+              disabled={loading || checkout.lineItems.length === 0}
+            >
+              <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
+            </OrderButton>
+          </TotalAndButton>
         </CartBottomGrid>
       </CartInner>
     </CartWrapper>

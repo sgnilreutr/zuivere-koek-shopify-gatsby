@@ -138,6 +138,6 @@ export const NoItemsButton = styled(Link)`
   span {
     color: #2a3174;
     text-decoration: none;
-    font-family: "Playfair Display", serif;
+    font-family: 'Playfair Display', serif;
   }
 `
