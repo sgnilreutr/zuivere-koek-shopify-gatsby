@@ -29,13 +29,22 @@ summary {
 main {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 70% 1fr;
-      grid-template-columns: 1fr 70% 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
 }
 
-main > * {
-  -ms-grid-column: 2;
-  grid-column: 2;
+@media only screen and (min-width: 1025px) {
+  main {
+    -ms-grid-columns: 1fr 70% 1fr;
+        grid-template-columns: 1fr 70% 1fr;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  main > * {
+    -ms-grid-column: 2;
+    grid-column: 2;
+  }
 }
 
 audio,

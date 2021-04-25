@@ -1,6 +1,6 @@
 const { slash } = require(`gatsby-core-utils`)
 // const customTemplatesUris = [ '/'  ];
-const customTemplateSlugs = [ '/' ]
+const customTemplateSlugs = ['/']
 const singlePageTemplate = require.resolve(`../templates/single-page/index.js`)
 // const { ImageFragment } = require('./fragments/image/index');
 // const { SeoFragment } = require('./fragments/seo/index.js');
