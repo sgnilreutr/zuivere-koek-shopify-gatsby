@@ -7,18 +7,19 @@ import Cart from '../../components/Cart'
 const CartPage = props => {
   const {
     pageContext: {
-      page: { pageTitle },
+      page: { pageHeaderText },
     },
   } = props
 
+  console.log(props.pageContext.page)
   // const pageData = props.pageContext.page && pageHeaderText
 
   return (
     <Layout>
-      <SEO title={pageTitle} />
+      <SEO title={pageHeaderText} />
       {props.pageContext.page ? (
         <>
-          <Cart pageText={pageTitle} />
+          <Cart pageText={pageHeaderText} />
         </>
       ) : (
         <div>{ERROR_MESSAGE}</div>
