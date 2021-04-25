@@ -8,9 +8,13 @@ export const ProductGrid = styled.div`
   transform: translateY(-3rem);
   max-width: 1200px;
   margin: 0 auto;
+  @media screen and (max-width: 1370px) and (min-width: 1024px){
+    grid-template-columns: repeat(2, 340px);
+    margin: 0 auto;
+  }
   @media only screen and (max-width: 1024px) {
     grid-template-columns: repeat(2, 340px);
-    margin-left: 10px;
+    margin: 0 auto;
   }
   @media only screen and (max-width: 767px) {
     grid-template-columns: none;
