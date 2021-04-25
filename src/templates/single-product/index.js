@@ -11,21 +11,7 @@ import Relatedproduct from '../../components/Products/RelatedProduct'
 const SingleProductPage = ({ data }) => {
   const product = data.shopifyProduct
   const extraDescription =
-    data.desc && data.desc > 0 ? data.desc.description.text : ''
-
-  // const {
-  //   product,
-  //   product: { name, link, seo },
-  //   extraDescription
-  // } = props.pageContext
-
-  // console.log(props.pageContext)
-  // console.log(extraDescription)
-  // console.log(product.node)
-
-  // console.log(props.pageContext.handle)
-  // console.log(product)
-  // console.log(data.desc.description)
+    data.desc && !isEmpty(data.desc) ? data.desc.description.text : ''
 
   return (
     <Layout>

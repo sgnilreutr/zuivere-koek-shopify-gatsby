@@ -2,11 +2,25 @@ import styled from '@emotion/styled'
 
 export const ProductWrapper = styled.div`
   background-color: hsl(351, 81%, 94%);
-  display: flex;
-  flex-flow: row;
+  display: grid;
   padding: 2rem;
   max-width: 70%;
   margin: 10% auto;
+  grid-template-rows: auto auto;
+  @media only screen and (max-width: 767px) {
+    max-width: 100%;
+    margin: 10% 2rem;
+  }
+`
+
+export const ProductInner = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 1rem;
+  @media only screen and (max-width: 767px) {
+    grid-template-columns: none;
+    row-gap: 1rem;
+  }
 `
 
 export const ProductImage = styled.div`
@@ -14,15 +28,19 @@ export const ProductImage = styled.div`
 `
 
 export const ProductContentful = styled.div`
+  margin-top: 2rem;
+  max-width: 50%;
   * {
     color: #2a3174;
   }
+  @media only screen and (max-width: 767px) {
+    max-width: 100%;
+  }
 `
-
 export const ProductDesc = styled.div`
   display: flex;
   flex-flow: column;
-  margin-left: 2%;
+  /* margin-left: 2%; */
 `
 
 export const QtyAdjustContainer = styled.div`

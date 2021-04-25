@@ -31,7 +31,7 @@ export const FooterContainer = styled.div`
 `
 
 export const LeftFooter = styled.div`
-color: white;
+  color: white;
   text-align: right;
   @media only screen and (max-width: 768px) {
     text-align: center;
@@ -39,7 +39,7 @@ color: white;
 `
 
 export const RightFooter = styled.div`
-color: white;
+  color: white;
   @media only screen and (max-width: 768px) {
     text-align: center;
   }

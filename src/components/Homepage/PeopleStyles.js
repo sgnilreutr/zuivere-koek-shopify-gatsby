@@ -6,10 +6,10 @@ export const HeaderContainer = styled.div`
   display: grid;
   place-content: center;
   @media only screen and (max-width: 767px) {
-     height: 100px;
-     h2 {
-       margin: 0;
-     }
+    height: 100px;
+    h2 {
+      margin: 0;
+    }
   }
 `
 

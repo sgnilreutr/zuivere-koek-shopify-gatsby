@@ -1,7 +1,14 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { ERROR_MESSAGE } from '../../utils'
-import { CellImage, CellText, Grid, GridCell, HeaderContainer, UspContainer } from './UspGridStyles'
+import {
+  CellImage,
+  CellText,
+  Grid,
+  GridCell,
+  HeaderContainer,
+  UspContainer,
+} from './UspGridStyles'
 
 const Uspgrid = ({ content }) => {
   const { name, columns } = content[0]
@@ -9,8 +16,8 @@ const Uspgrid = ({ content }) => {
   const GridImage = ({ image, alt }) => {
     return image && alt ? (
       <CellImage>
-      <GatsbyImage
-        image={image.localFile.childImageSharp.gatsbyImageData}
+        <GatsbyImage
+          image={image.localFile.childImageSharp.gatsbyImageData}
           alt={alt}
           className="usp-image--small"
         />

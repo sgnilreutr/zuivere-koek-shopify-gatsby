@@ -16,8 +16,8 @@ export const Grid = styled.div`
   grid-gap: 5%;
   padding: 3rem 0;
   @media only screen and (max-width: 767px) {
-      grid-template-columns: none;
-      grid-gap: 1rem;
+    grid-template-columns: none;
+    grid-gap: 1rem;
   }
 `
 

@@ -86,7 +86,11 @@ const ProductCard = ({ product }) => {
                 className="blog-preview-image"
               />
             </ProductPhoto>
-            <ProductInfoContent><div><p>{description}</p></div></ProductInfoContent>
+            <ProductInfoContent>
+              <div>
+                <p>{description}</p>
+              </div>
+            </ProductInfoContent>
           </ProductInfoContainer>
         ) : null}
         <ProductInfo>
