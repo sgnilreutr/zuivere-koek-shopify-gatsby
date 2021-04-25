@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import parse from 'html-react-parser'
 import {
   FooterContainer,
@@ -8,7 +9,7 @@ import {
   MenuWrapper,
   RightFooter,
 } from './footerStyles'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Footer = () => {
@@ -54,22 +55,19 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <FooterContainer>
-        <GatsbyImage
-          image={footerImage.img}
-          alt=""
-          className="footer-image--height"
-        />
+        <Link to="/" className="footer-link">
+          <GatsbyImage
+            image={footerImage.img}
+            alt=""
+            className="footer-image--height"
+          />
+        </Link>
         <LeftFooter>
-          <p className="footer-text">
-            {parse(footerDetailsLeft.footerDetailsLeft)}
-          </p>
+          <ReactMarkdown style={{color: 'white'}}>{footerDetailsLeft.footerDetailsLeft}</ReactMarkdown>
         </LeftFooter>
         <RightFooter>
-          <p className="footer-text">
-            {parse(footerDetailsRight.footerDetailsRight)}
-          </p>
+            <ReactMarkdown>{footerDetailsRight.footerDetailsRight}</ReactMarkdown>
         </RightFooter>
-        <MenuWrapper>{menu}</MenuWrapper>
       </FooterContainer>
     </FooterWrapper>
   )
