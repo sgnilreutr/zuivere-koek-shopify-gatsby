@@ -13,6 +13,7 @@ import {
   AddToCartButton,
   ProductContentful,
   ProductImage,
+  ProductInner,
   ProductWrapper,
   ProductDesc,
   QtyAdjust,
@@ -33,6 +34,8 @@ const ProductDetail = ({ product, extraDescription }) => {
     addVariantToCart,
     store: { client, adding },
   } = useContext(StoreContext)
+
+  console.log(extraDescription)
 
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
@@ -111,12 +114,8 @@ const ProductDetail = ({ product, extraDescription }) => {
 
   return !isEmpty(product) ? (
     <ProductWrapper>
-      <div>
-        <ProductImage>{displayProductImages()}</ProductImage>
-        <ProductContentful>
-          <ReactMarkdown>{text}</ReactMarkdown>
-        </ProductContentful>
-      </div>
+      <ProductInner>
+      <ProductImage>{displayProductImages()}</ProductImage>
       <ProductDesc>
         <div style={{ textAlign: `center` }}>
           <h3 className="product-title">
@@ -145,7 +144,11 @@ const ProductDetail = ({ product, extraDescription }) => {
             </AddToCartButton>
           </AddToCart>
         </div>
-      </ProductDesc>
+        </ProductDesc>
+      </ProductInner>
+      <ProductContentful>
+        <ReactMarkdown>{text}</ReactMarkdown>
+      </ProductContentful>
     </ProductWrapper>
   ) : null
 }

@@ -63,10 +63,12 @@ const Footer = () => {
           />
         </Link>
         <LeftFooter>
-          <ReactMarkdown style={{color: 'white'}}>{footerDetailsLeft.footerDetailsLeft}</ReactMarkdown>
+          <ReactMarkdown style={{ color: 'white' }}>
+            {footerDetailsLeft.footerDetailsLeft}
+          </ReactMarkdown>
         </LeftFooter>
         <RightFooter>
-            <ReactMarkdown>{footerDetailsRight.footerDetailsRight}</ReactMarkdown>
+          <ReactMarkdown>{footerDetailsRight.footerDetailsRight}</ReactMarkdown>
         </RightFooter>
       </FooterContainer>
     </FooterWrapper>

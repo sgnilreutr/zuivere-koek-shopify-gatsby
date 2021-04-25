@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 export const UspContainer = styled.div`
   @media only screen and (max-width: 767px) {
-      margin: 0 2rem;
+    margin: 0 2rem;
   }
 `
 
@@ -18,8 +18,8 @@ export const Grid = styled.div`
   grid-gap: 2.5rem;
   padding-bottom: 6rem;
   @media only screen and (max-width: 767px) {
-      grid-template-columns: none;
-      grid-gap: 1rem;
+    grid-template-columns: none;
+    grid-gap: 1rem;
   }
 `
 

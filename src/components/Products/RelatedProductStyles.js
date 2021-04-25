@@ -9,6 +9,10 @@ export const HeaderContainer = styled.div`
   padding: 1rem 0 5rem;
   display: flex;
   place-content: center;
+  @media only screen and (max-width: 767px) {
+    max-width: 100%;
+    text-align: center;
+  }
 `
 
 export const ProductContainer = styled.div`
@@ -18,4 +22,9 @@ export const ProductContainer = styled.div`
   max-width: 65%;
   margin: 0 auto;
   transform: translateY(-3rem);
+  @media only screen and (max-width: 767px) {
+    grid-template-columns: none;
+    max-width: 100%;
+    place-items: center;
+  }
 `
