@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
 
 export const Paragraph = styled.section`
   padding: 1rem 0;
+  @media only screen and (max-width: 1023px) {
+    padding: 0 2rem;
+  }
 `
 
 export const ImageWrapper = styled.figure``
