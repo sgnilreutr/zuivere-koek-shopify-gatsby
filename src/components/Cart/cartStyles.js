@@ -1,9 +1,22 @@
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 
 export const CartWrapper = styled.div`
   background-color: hsl(351, 81%, 94%);
   padding: 5% 20%;
   margin: 5% 0;
+  @media only screen and (max-width: 768px) {
+    margin: 0;
+    padding: 5%;
+    grid-column: 1 / 4;
+  }
+`
+
+export const CartInner = styled.div`
+  max-width: 1000px;
+  margin: 5% auto;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
 `
 
 export const CartLoader = styled.div`
@@ -63,7 +76,10 @@ export const HR = styled.div`
 
 export const CartBottomGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 2rem auto 0;
+  max-width: 900px;
 `
 
 export const TotalAndButton = styled.div`
@@ -74,11 +90,13 @@ export const TotalAndButton = styled.div`
 export const Shipping = styled.div`
   display: grid;
   grid-template-columns: auto auto;
+  grid-column-gap: 4rem;
 `
 
 export const Total = styled.div`
   display: grid;
   grid-template-columns: auto auto;
+  grid-column-gap: 4rem;
 `
 
 export const OrderButton = styled.button`
@@ -86,8 +104,40 @@ export const OrderButton = styled.button`
   border: solid 1px hsl(0, 0%, 44%);
   background-color: hsl(234, 47%, 31%);
   cursor: pointer;
+  max-width: 320px;
+  display: inline-grid;
+  place-self: center;
+  padding: 0.1rem 3rem;
 
   &:hover {
     opacity: 0.7;
+  }
+`
+
+export const NoItemsContainer = styled.div`
+  text-align: center;
+  margin: 3rem 0;
+  display: grid;
+  justify-items: center;
+`
+
+export const NoItemsButton = styled(Link)`
+  border: solid 1px hsl(350, 64.6%, 69%);
+  border-radius: 4px;
+  background-color: hsl(350.5, 80%, 78.4%);
+  padding: 5px 35px;
+  display: flex;
+  cursor: pointer;
+  text-decoration: none;
+  max-width: max-content;
+
+  :hover {
+    opacity: 0.8;
+  }
+
+  span {
+    color: #2a3174;
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
   }
 `
