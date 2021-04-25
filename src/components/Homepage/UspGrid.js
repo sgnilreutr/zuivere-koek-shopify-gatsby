@@ -1,17 +1,20 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { ERROR_MESSAGE } from '../../utils'
-import { CellText, Grid, GridCell, HeaderContainer } from './UspGridStyles'
+import { CellImage, CellText, Grid, GridCell, HeaderContainer, UspContainer } from './UspGridStyles'
 
 const Uspgrid = ({ content }) => {
   const { name, columns } = content[0]
 
   const GridImage = ({ image, alt }) => {
     return image && alt ? (
+      <CellImage>
       <GatsbyImage
         image={image.localFile.childImageSharp.gatsbyImageData}
-        alt={alt}
-      />
+          alt={alt}
+          className="usp-image--small"
+        />
+      </CellImage>
     ) : null
   }
 
@@ -31,12 +34,12 @@ const Uspgrid = ({ content }) => {
     )
 
   return (
-    <>
+    <UspContainer>
       <HeaderContainer>
         <h2 className="page-title">{name}</h2>
       </HeaderContainer>
       <Grid>{grid}</Grid>
-    </>
+    </UspContainer>
   )
 }
 

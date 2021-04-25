@@ -3,6 +3,9 @@ import styled from '@emotion/styled'
 export const OrderWrapper = styled.div`
   background-color: hsl(358, 71%, 91%);
   display: grid;
+  h2 {
+    margin: 0 2rem;
+  }
 `
 
 export const Grid = styled.div`
@@ -12,6 +15,10 @@ export const Grid = styled.div`
   margin: 0 auto;
   grid-gap: 5%;
   padding: 3rem 0;
+  @media only screen and (max-width: 767px) {
+      grid-template-columns: none;
+      grid-gap: 1rem;
+  }
 `
 
 export const DataCell = styled.div`

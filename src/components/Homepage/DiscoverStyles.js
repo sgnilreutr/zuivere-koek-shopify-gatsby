@@ -6,6 +6,9 @@ export const DiscoverContainer = styled.div`
   height: 300px;
   display: grid;
   place-content: center;
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
 `
 
 export const Grid = styled.div`
@@ -15,6 +18,10 @@ export const Grid = styled.div`
   margin: 0 auto;
   grid-gap: 1rem;
   transform: translateY(-3rem);
+  @media only screen and (max-width: 767px) {
+    grid-template-columns: none;
+    place-items: center;
+  }
 `
 
 export const ProductPhoto = styled.figure`
