@@ -14,6 +14,9 @@ export const ContentGrid = styled.div`
   transform: translateY(-3rem);
   grid-template-columns: auto auto;
   /* grid-template-columns: repeat(auto-fill, minmax(780px, 1fr));; */
+  @media only screen and (max-width: 767px) {
+    grid-template-columns: none;
+  }
 `
 
 export const ImageContainer = styled.figure`

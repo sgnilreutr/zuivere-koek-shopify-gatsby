@@ -617,4 +617,8 @@ pre tt:after {
   height: auto;
   width: 117.8px;
 }
+
+.usp-image--small {
+  max-width: 93px;
+}
 /*# sourceMappingURL=layout.css.map */
