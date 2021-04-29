@@ -7,9 +7,9 @@ export const ProductWrapper = styled.div`
   max-width: 70%;
   margin: 10% auto;
   grid-template-rows: auto auto;
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 768px) {
     max-width: 100%;
-    margin: 10% 2rem;
+    margin: 0;
   }
 `
 

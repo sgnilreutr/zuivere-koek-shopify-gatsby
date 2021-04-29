@@ -3,7 +3,9 @@
 
 //colors
 $color-text-blue: hsl(234, 47%, 31%);
-$color-text-pink: hsl(351, 81%, 94%);
+// $color-text-pink: hsl(351, 81%, 94%);
+// $color-text-pink: hsl(354, 90, 88);
+$color-text-pink: hsl(351, 81, 94);
 $color-text-white: hsl(0, 0%, 100%);
 
 //Font variables
@@ -82,6 +84,7 @@ small,
   color: $color-text-pink;
   text-decoration: none;
   font-weight: 900;
+  padding-left: 1rem;
 }
 
 .hero-title {

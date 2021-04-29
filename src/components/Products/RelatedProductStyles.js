@@ -15,16 +15,29 @@ export const HeaderContainer = styled.div`
   }
 `
 
-export const ProductContainer = styled.div`
+export const ProductContainerBig = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   grid-column-gap: 2rem;
   max-width: 65%;
   margin: 0 auto;
   transform: translateY(-3rem);
-  @media only screen and (max-width: 767px) {
-    grid-template-columns: none;
-    max-width: 100%;
-    place-items: center;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`
+
+export const ProductContainerSmall = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-column-gap: 2rem;
+  max-width: 65%;
+  margin: 0 auto;
+  transform: translateY(-3rem);
+  grid-template-columns: none;
+  max-width: 100%;
+  place-items: center;
+  @media only screen and (min-width: 769px) {
+    display: none;
   }
 `

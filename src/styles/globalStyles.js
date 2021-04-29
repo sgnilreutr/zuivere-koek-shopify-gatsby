@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 // `
 
 export const HeaderTextContainer = styled.div`
-  background-color: hsl(358, 71%, 91%);
+  background-color: #FCC3C9;
   height: 300px;
   width: 100%;
   grid-column: 1 / 4;

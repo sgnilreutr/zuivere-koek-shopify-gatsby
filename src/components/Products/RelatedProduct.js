@@ -3,7 +3,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import {
   Banner,
   HeaderContainer,
-  ProductContainer,
+  ProductContainerBig,
+  ProductContainerSmall
 } from './RelatedProductStyles'
 import ProductCard from './ProductCard'
 
@@ -64,8 +65,16 @@ const Relatedproduct = ({ currentProduct }) => {
   const otherRelatedProducts = edges.filter(
     item => item.node.shopifyId !== currentProduct
   )
-  const mappedProducts = otherRelatedProducts
+  const smallFeed = otherRelatedProducts.slice(0, 1)
+
+  const mappedProductsBig = otherRelatedProducts
     ? otherRelatedProducts.map((item, index) => (
+        <ProductCard key={index} product={item.node} />
+      ))
+    : null
+  
+  const mappedProductsSmall = smallFeed
+    ? smallFeed.map((item, index) => (
         <ProductCard key={index} product={item.node} />
       ))
     : null
@@ -77,7 +86,8 @@ const Relatedproduct = ({ currentProduct }) => {
           <h2 className="related-product--header">{RELATED_HEADER}</h2>
         </HeaderContainer>
       </Banner>
-      <ProductContainer>{mappedProducts}</ProductContainer>
+      <ProductContainerBig>{mappedProductsBig}</ProductContainerBig>
+      <ProductContainerSmall>{mappedProductsSmall}</ProductContainerSmall>
     </div>
   )
 }

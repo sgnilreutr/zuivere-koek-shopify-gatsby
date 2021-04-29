@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
 export const DiscoverContainer = styled.div`
-  background-color: hsl(358, 71%, 91%);
+  background-color: #FCC3C9;
   height: 300px;
   display: grid;
   place-content: center;

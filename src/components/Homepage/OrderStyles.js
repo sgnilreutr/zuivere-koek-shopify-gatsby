@@ -4,7 +4,7 @@ export const OrderWrapper = styled.div`
   background-color: hsl(358, 71%, 91%);
   display: grid;
   h2 {
-    margin: 0 2rem;
+    margin: 2rem;
   }
   @media only screen and (max-width: 1024px) {
     display: none;
