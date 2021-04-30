@@ -2,6 +2,7 @@ import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { ERROR_MESSAGE } from '../../utils'
 import { ImageWrapper, Paragraph, Wrapper } from './landingStyles'
+import ReactMarkdown from 'react-markdown'
 import Column from './Column'
 
 const LandingPage = ({ page }) => {
@@ -9,7 +10,7 @@ const LandingPage = ({ page }) => {
     if (content.text) {
       return (
         <Paragraph>
-          <p className="landingpage-p">{content.text.text}</p>
+          <ReactMarkdown className="landingpage-p">{content.text.text}</ReactMarkdown>
         </Paragraph>
       )
     } else if (content.image) {
