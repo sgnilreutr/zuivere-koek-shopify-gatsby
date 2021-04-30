@@ -7,7 +7,7 @@ export const CartWrapper = styled.div`
   margin: 5% 0;
   @media only screen and (max-width: 768px) {
     margin: 0;
-    padding: 5%;
+    padding: 1rem;
     grid-column: 1 / 4;
   }
 `
@@ -80,6 +80,9 @@ export const CartBottomGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   margin: 2rem auto 0;
   max-width: 900px;
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: none;
+  }
 `
 
 export const TotalAndButton = styled.div`
