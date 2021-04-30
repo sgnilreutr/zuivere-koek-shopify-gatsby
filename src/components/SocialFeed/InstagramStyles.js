@@ -8,6 +8,11 @@ export const SocialContainer = styled.div`
   .horizontal-menu {
     max-width: 1920px;
   }
+  @media only screen and (max-width: 1500px) {
+    .horizontal-menu {
+    max-width: 100%;
+  }
+  }
 `
 
 export const SocialInfoContainer = styled(Link)`
