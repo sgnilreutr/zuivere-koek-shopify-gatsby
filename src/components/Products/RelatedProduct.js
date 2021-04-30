@@ -60,9 +60,6 @@ const Relatedproduct = ({ currentProduct }) => {
     }
   `)
 
-  console.log(currentProduct)
-  console.log(RelatedProducts.fourProducts.edges)
-
   const { edges } = RelatedProducts.fourProducts
   const otherRelatedProducts = edges.filter(
     item => item.node.shopifyId !== currentProduct
