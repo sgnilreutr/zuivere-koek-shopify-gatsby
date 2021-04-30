@@ -8,7 +8,7 @@ export const SocialContainer = styled.div`
   .horizontal-menu {
     max-width: 1920px;
   }
-  @media only screen and (max-width: 1500px) {
+  @media only screen and (max-width: 1920px) {
     .horizontal-menu {
     max-width: 100%;
   }
