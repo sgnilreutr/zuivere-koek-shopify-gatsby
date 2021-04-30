@@ -8,6 +8,7 @@ import Uspgrid from '../../components/Homepage/UspGrid'
 import Discover from '../../components/Homepage/Discover'
 import People from '../../components/Homepage/People'
 import Order from '../../components/Homepage/Order'
+import Instagram from '../../components/SocialFeed/Instagram'
 
 const Homepage = props => {
   const {
@@ -78,6 +79,9 @@ const Homepage = props => {
           </div>
           <div className="full-bleed">
             <Order content={OrderBlockData} />
+          </div>
+          <div className="full-bleed">
+          <Instagram />
           </div>
         </>
       ) : (

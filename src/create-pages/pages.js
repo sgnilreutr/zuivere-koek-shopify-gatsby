@@ -25,8 +25,6 @@ module.exports = async ({ actions, graphql }) => {
     return await graphql(GET_PAGES).then(({ data }) => {
       const { pages } = data
 
-      console.log(pages.nodes)
-
       return { pages: pages.nodes }
     })
   }

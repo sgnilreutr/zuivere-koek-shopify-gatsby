@@ -11,8 +11,6 @@ const LandingPageHero = ({ hero }) => {
     alt: title || ``,
   }
 
-  console.log('@@@TITLE', hero.title)
-
   return (
     <>
       {hero ? (

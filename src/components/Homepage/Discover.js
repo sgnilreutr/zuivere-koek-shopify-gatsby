@@ -30,7 +30,6 @@ const Discover = ({ content }) => {
   }
 
   const GridNews = ({ item }) => {
-    console.log(item)
     return (
       <GridNewsContainer>
         <NewsInnerContainer>

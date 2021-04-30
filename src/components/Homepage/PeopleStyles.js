@@ -27,8 +27,8 @@ export const ContentGrid = styled.div`
 `
 
 export const ImageContainer = styled.figure`
-  max-width: 780px;
-  max-height: 460px;
+  width: 780px;
+  height: 460px;
   margin: 0;
   @media only screen and (max-width: 767px) {
     width: 100%;

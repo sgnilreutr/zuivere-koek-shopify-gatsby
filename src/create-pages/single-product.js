@@ -41,9 +41,6 @@ module.exports = async ({ actions, graphql }) => {
   await fetchPosts().then(({ allProducts }) => {
     allProducts.length &&
       allProducts.forEach(product => {
-        {
-          console.log(product)
-        }
         createPage({
           path: `/shop/${product.node.handle}`,
           component: slash(singleProductTemplate),
