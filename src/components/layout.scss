@@ -24,6 +24,7 @@ summary {
 }
 
 main {
+  // overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
   @media only screen and (min-width: 1025px) {
