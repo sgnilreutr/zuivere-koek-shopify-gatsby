@@ -60,12 +60,17 @@ const Relatedproduct = ({ currentProduct }) => {
     }
   `)
 
+  console.log(currentProduct)
+  console.log(RelatedProducts.fourProducts.edges)
+
   const { edges } = RelatedProducts.fourProducts
   const otherRelatedProducts = edges.filter(
     item => item.node.shopifyId !== currentProduct
   )
-  const mappedProducts = otherRelatedProducts
-    ? otherRelatedProducts.map((item, index) => (
+
+  const maxThreeProducts = otherRelatedProducts.slice(0, 3)
+  const mappedProducts = maxThreeProducts
+    ? maxThreeProducts.map((item, index) => (
         <ProductCard key={index} product={item.node} />
       ))
     : null
