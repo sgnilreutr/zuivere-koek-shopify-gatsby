@@ -34,8 +34,6 @@ const Cart = ({ pageText, isLoading }) => {
 
   const [loading, setLoading] = useState(isLoading)
 
-  console.log(checkout)
-
   const lineItems = checkout.totalPrice ? (
     checkout.lineItems.length > 0 ? (
       checkout.lineItems.map((item, index) => (

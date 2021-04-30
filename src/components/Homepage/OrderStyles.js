@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 export const OrderWrapper = styled.div`
   background-color: hsl(358, 71%, 91%);
   display: grid;
+  padding: 2rem 0;
   h2 {
     margin: 0 2rem;
   }

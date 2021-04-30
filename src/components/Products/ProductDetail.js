@@ -35,8 +35,6 @@ const ProductDetail = ({ product, extraDescription }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
-  console.log(extraDescription)
-
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
     // alt: product.node.image.altText || ``,
@@ -115,35 +113,35 @@ const ProductDetail = ({ product, extraDescription }) => {
   return !isEmpty(product) ? (
     <ProductWrapper>
       <ProductInner>
-      <ProductImage>{displayProductImages()}</ProductImage>
-      <ProductDesc>
-        <div style={{ textAlign: `center` }}>
-          <h3 className="product-title">
-            {product.title ? product.title : ''}
-          </h3>
-          {!isEmpty(product.description) ? (
-            <p className="landingpage-p">{parse(product.description)}</p>
-          ) : null}
-          <AddToCart>
-            <h4 className="product-price--detail">{variantPrice}</h4>
-            <QtyAdjustContainer>
-              <QtyAdjust onClick={subtractQuantityItem}>
-                <span className="qty-controls--cart">-</span>
-              </QtyAdjust>
-              <span className="qty-controls--cart">{quantity}</span>
-              <QtyAdjust onClick={addQuantityItem}>
-                <span className="qty-controls--cart">+</span>
-              </QtyAdjust>
-            </QtyAdjustContainer>
-            <AddToCartButton
-              type="submit"
-              onClick={handleAddToCart}
-              disabled={!available || adding}
-            >
-              <IoCartOutline size={30} color={`#f8d8d9`} />
-            </AddToCartButton>
-          </AddToCart>
-        </div>
+        <ProductImage>{displayProductImages()}</ProductImage>
+        <ProductDesc>
+          <div style={{ textAlign: `center` }}>
+            <h3 className="product-title">
+              {product.title ? product.title : ''}
+            </h3>
+            {!isEmpty(product.description) ? (
+              <p className="landingpage-p">{parse(product.description)}</p>
+            ) : null}
+            <AddToCart>
+              <h4 className="product-price--detail">{variantPrice}</h4>
+              <QtyAdjustContainer>
+                <QtyAdjust onClick={subtractQuantityItem}>
+                  <span className="qty-controls--cart">-</span>
+                </QtyAdjust>
+                <span className="qty-controls--cart">{quantity}</span>
+                <QtyAdjust onClick={addQuantityItem}>
+                  <span className="qty-controls--cart">+</span>
+                </QtyAdjust>
+              </QtyAdjustContainer>
+              <AddToCartButton
+                type="submit"
+                onClick={handleAddToCart}
+                disabled={!available || adding}
+              >
+                <IoCartOutline size={30} color={`#f8d8d9`} />
+              </AddToCartButton>
+            </AddToCart>
+          </div>
         </ProductDesc>
       </ProductInner>
       <ProductContentful>

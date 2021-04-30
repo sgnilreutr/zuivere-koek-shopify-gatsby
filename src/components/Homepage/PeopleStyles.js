@@ -29,6 +29,7 @@ export const ContentGrid = styled.div`
 export const ImageContainer = styled.figure`
   width: 780px;
   height: 460px;
+  overflow: hidden;
   @media only screen and (max-width: 767px) {
     width: 100%;
     height: auto;
