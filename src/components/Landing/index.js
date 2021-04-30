@@ -3,7 +3,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { ERROR_MESSAGE } from '../../utils'
 import { ImageWrapper, Paragraph, Wrapper } from './landingStyles'
 import ReactMarkdown from 'react-markdown'
-import Column from './Column'
 
 const LandingPage = ({ page }) => {
   const ContentCreator = ({ content }) => {
