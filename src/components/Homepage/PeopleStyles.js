@@ -20,7 +20,7 @@ export const ContentGrid = styled.div`
   transform: translateY(-3rem);
   grid-template-columns: auto auto;
   /* grid-template-columns: repeat(auto-fill, minmax(780px, 1fr));; */
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 1023px) {
     grid-template-columns: none;
     transform: none;
   }
@@ -29,11 +29,10 @@ export const ContentGrid = styled.div`
 export const ImageContainer = styled.figure`
   width: 780px;
   height: 460px;
-  overflow: hidden;
+  margin: 0;
   @media only screen and (max-width: 767px) {
     width: 100%;
     height: auto;
-    margin: 0;
     display: grid;
   }
   /* margin-right: 6rem; */
@@ -44,7 +43,7 @@ export const TextContainer = styled.div`
   height: 440px;
   padding: 3rem 2rem 2rem;
   background-color: hsl(351, 81%, 94%);
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 1023px) {
     width: 100%;
     height: auto;
     display: grid;

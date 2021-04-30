@@ -6,6 +6,7 @@ import {
   Grid,
   GridNewsContainer,
   NewsInnerContainer,
+  NoIpad,
   ProductPhoto,
 } from './DiscoverStyles'
 
@@ -50,7 +51,9 @@ const Discover = ({ content }) => {
       <Grid>
         <GridImage image={firstItem.image} alt={firstItem.title} />
         <GridNews item={thirdItem} />
-        <GridImage image={secondItem.image} alt={secondItem.title} />
+        <NoIpad>
+          <GridImage image={secondItem.image} alt={secondItem.title} />
+        </NoIpad>
       </Grid>
     </>
   )

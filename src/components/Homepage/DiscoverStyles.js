@@ -18,9 +18,16 @@ export const Grid = styled.div`
   margin: 0 auto;
   grid-gap: 1rem;
   transform: translateY(-3rem);
+  padding: 0 1rem;
   @media only screen and (max-width: 767px) {
     grid-template-columns: none;
     place-items: center;
+  }
+`
+
+export const NoIpad = styled.div`
+  @media only screen and (max-width: 1024px) {
+    display: none;
   }
 `
 
