@@ -30,7 +30,7 @@ export const ImageContainer = styled.figure`
   width: 780px;
   height: 460px;
   margin: 0;
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 1024px) {
     width: 100%;
     height: auto;
     display: grid;
