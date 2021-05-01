@@ -24,8 +24,8 @@ const Footer = () => {
       }
     }
     footerMenu {
-      navigationLink
-      navigationTitle
+      navLink
+      navName
     }
     footerDetailsRight {
       footerDetailsRight
@@ -50,11 +50,13 @@ const Footer = () => {
   const menu =
     footerMenu && footerMenu.length > 0
       ? footerMenu.map((item, index) => (
-          <MenuItem key={index} to={item.navigationLink}>
-            <span>{parse(item.navigationTitle)}</span>
+          <MenuItem key={index} to={item.navLink}>
+            <span>{parse(item.navName)}</span>
           </MenuItem>
         ))
       : null
+  
+  // console.log(footerMenu && footerMenu.length > 0 ? 'hey' : 'nay')
 
   return (
     <FooterWrapper>
@@ -74,6 +76,7 @@ const Footer = () => {
         <RightFooter>
           <ReactMarkdown>{footerDetailsRight.footerDetailsRight}</ReactMarkdown>
         </RightFooter>
+        <MenuWrapper>{menu}</MenuWrapper>
       </FooterContainer>
     </FooterWrapper>
   )
