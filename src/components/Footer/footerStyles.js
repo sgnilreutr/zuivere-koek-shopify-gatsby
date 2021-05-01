@@ -18,7 +18,7 @@ export const FooterContainer = styled.div`
   margin: 0 auto;
   max-width: 83.4rem;
   display: grid;
-  grid-template-columns: 200px auto auto;
+  grid-template-columns: 200px auto auto 200px;
   grid-column-gap: 10%;
   p {
     margin-bottom: 0;
@@ -54,7 +54,7 @@ export const MenuWrapper = styled.nav`
 export const MenuItem = styled(Link)`
   color: white;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 
   &:hover {
     opacity: 0.7;

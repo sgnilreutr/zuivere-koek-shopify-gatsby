@@ -14,23 +14,27 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Footer = () => {
   const FooterData = useStaticQuery(graphql`
-    {
-      footer: contentfulFooter {
-        logo {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
-        footerDetailsRight {
-          footerDetailsRight
-        }
-        footerDetailsLeft {
-          footerDetailsLeft
+{
+  footer: contentfulFooter {
+    logo {
+      localFile {
+        childImageSharp {
+          gatsbyImageData
         }
       }
     }
+    footerMenu {
+      navLink
+      navName
+    }
+    footerDetailsRight {
+      footerDetailsRight
+    }
+    footerDetailsLeft {
+      footerDetailsLeft
+    }
+  }
+}
   `)
   const {
     footerMenu,
@@ -46,11 +50,13 @@ const Footer = () => {
   const menu =
     footerMenu && footerMenu.length > 0
       ? footerMenu.map((item, index) => (
-          <MenuItem key={index} to={item.navigationLink}>
-            <span>{parse(item.navigationTitle)}</span>
+          <MenuItem key={index} to={item.navLink}>
+            <span>{parse(item.navName)}</span>
           </MenuItem>
         ))
       : null
+  
+  // console.log(footerMenu && footerMenu.length > 0 ? 'hey' : 'nay')
 
   return (
     <FooterWrapper>
@@ -70,6 +76,7 @@ const Footer = () => {
         <RightFooter>
           <ReactMarkdown>{footerDetailsRight.footerDetailsRight}</ReactMarkdown>
         </RightFooter>
+        <MenuWrapper>{menu}</MenuWrapper>
       </FooterContainer>
     </FooterWrapper>
   )

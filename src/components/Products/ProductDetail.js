@@ -23,6 +23,7 @@ import {
 const ProductDetail = ({ product, extraDescription }) => {
   const {
     options,
+    title,
     variants,
     variants: [initialVariant],
     priceRange: { minVariantPrice },
@@ -35,9 +36,10 @@ const ProductDetail = ({ product, extraDescription }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
+
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
-    // alt: product.node.image.altText || ``,
+    alt: `${title}-featured-image` || `featured-image`,
   }
 
   const productVariant =
@@ -94,7 +96,7 @@ const ProductDetail = ({ product, extraDescription }) => {
         <figure>
           <GatsbyImage
             image={productImage.img}
-            // alt={productImage.alt}
+            alt={productImage.alt}
           />
         </figure>
       )
@@ -117,7 +119,7 @@ const ProductDetail = ({ product, extraDescription }) => {
         <ProductDesc>
           <div style={{ textAlign: `center` }}>
             <h3 className="product-title">
-              {product.title ? product.title : ''}
+              {product.title ? title : ''}
             </h3>
             {!isEmpty(product.description) ? (
               <p className="landingpage-p">{parse(product.description)}</p>

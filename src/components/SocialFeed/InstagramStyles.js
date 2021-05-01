@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { Link } from 'gatsby'
 
 export const SocialContainer = styled.div`
   display: flex;
@@ -15,7 +14,7 @@ export const SocialContainer = styled.div`
   }
 `
 
-export const SocialInfoContainer = styled(Link)`
+export const SocialInfoContainer = styled.div`
   div {
     width: 300px;
     height: 300px;
