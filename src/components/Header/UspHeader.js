@@ -17,8 +17,6 @@ const Uspheader = () => {
 
   const { text } = header
 
-  console.log(text)
-
   return (
     <Wrapper>
       <ReactMarkdown className="landingpage-p">{text.text}</ReactMarkdown>
