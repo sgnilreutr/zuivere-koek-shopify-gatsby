@@ -22,11 +22,9 @@ const Header = ({ siteTitle }) => {
       <NavWrapper>
         <NavContainer>
           <LogoContainer>
-              <Link to="/" style={{textDecoration: 'none'}}>
-            <h2 className="site-title">
-                {siteTitle}
-            </h2>
-              </Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <h2 className="site-title">{siteTitle}</h2>
+            </Link>
           </LogoContainer>
           <Menu toggleMenu={toggleMenu} />
           <Sidebar toggleMenu={toggleMenu} showMenu={showMenu} />

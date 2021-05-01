@@ -144,3 +144,29 @@ export const NoItemsButton = styled(Link)`
     font-family: 'Playfair Display', serif;
   }
 `
+
+export const NoteField = styled.form`
+  display: flex;
+  flex-flow: column;
+  max-width: 70%;
+  input {
+    min-height: 100px;
+    min-width: 280px;
+    margin-bottom: 1rem;
+  }
+`
+
+export const NoteButton = styled.button`
+  border-radius: 4px;
+  border: solid 1px hsl(0, 0%, 44%);
+  background-color: hsl(234, 47%, 31%);
+  cursor: pointer;
+  max-width: 320px;
+  /* display: inline-grid;
+  place-self: center; */
+  padding: 0.1rem 3rem;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`

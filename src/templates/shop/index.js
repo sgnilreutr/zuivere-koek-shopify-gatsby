@@ -44,9 +44,9 @@ const Shop = props => {
       ) : (
         <div>{ERROR_MESSAGE}</div>
       )}
-                <div className="full-bleed">
-          <Instagram />
-          </div>
+      <div className="full-bleed">
+        <Instagram />
+      </div>
     </Layout>
   )
 }

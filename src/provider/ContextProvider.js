@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import React, { useState, useEffect, useRef } from 'react'
-import Client from 'shopify-buy'
+// import Client from 'shopify-buy'
+import Client from 'shopify-buy/index.unoptimized.umd'
 
 import Context from '../context/StoreContext'
 
@@ -16,7 +17,7 @@ const ContextProvider = ({ children }) => {
   let initialStoreState = {
     client,
     adding: false,
-    checkout: { lineItems: [] },
+    checkout: { lineItems: [], customAttributes: { note: '' } },
     products: [],
     shop: {},
   }
@@ -116,6 +117,19 @@ const ContextProvider = ({ children }) => {
 
           return client.checkout
             .updateLineItems(checkoutID, lineItemsToUpdate)
+            .then(res => {
+              updateStore(prevState => {
+                return { ...prevState, checkout: res }
+              })
+            })
+        },
+        addNote: (client, checkoutID, note) => {
+          const input = {
+            customAttributes: [{ key: 'card_note', value: note }],
+          }
+
+          return client.checkout
+            .updateAttributes(checkoutID, input)
             .then(res => {
               updateStore(prevState => {
                 return { ...prevState, checkout: res }

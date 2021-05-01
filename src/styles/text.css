@@ -143,6 +143,11 @@ small,
   color: #fce3e7;
 }
 
+.check-out--note-header {
+  font-family: "Playfair Display", serif;
+  color: #2a3174;
+}
+
 .landingpage-p {
   color: #2a3174;
 }

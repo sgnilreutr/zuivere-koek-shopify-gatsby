@@ -9,7 +9,9 @@ const LandingPage = ({ page }) => {
     if (content.text) {
       return (
         <Paragraph>
-          <ReactMarkdown className="landingpage-p">{content.text.text}</ReactMarkdown>
+          <ReactMarkdown className="landingpage-p">
+            {content.text.text}
+          </ReactMarkdown>
         </Paragraph>
       )
     } else if (content.image) {
