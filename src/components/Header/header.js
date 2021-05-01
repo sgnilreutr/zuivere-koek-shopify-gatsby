@@ -9,6 +9,7 @@ import {
   NavContainer,
   NavWrapper,
 } from './headerStyles'
+import Uspheader from './UspHeader'
 
 const Header = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = React.useState(false)
@@ -22,16 +23,15 @@ const Header = ({ siteTitle }) => {
       <NavWrapper>
         <NavContainer>
           <LogoContainer>
-              <Link to="/" style={{textDecoration: 'none'}}>
-            <h2 className="site-title">
-                {siteTitle}
-            </h2>
-              </Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <h2 className="site-title">{siteTitle}</h2>
+            </Link>
           </LogoContainer>
           <Menu toggleMenu={toggleMenu} />
           <Sidebar toggleMenu={toggleMenu} showMenu={showMenu} />
         </NavContainer>
       </NavWrapper>
+      <Uspheader />
     </HeaderWrapper>
   )
 }

@@ -32,17 +32,17 @@ const Instagram = () => {
   const Menu = socialFeed =>
     socialFeed && socialFeed.edges.length > 0
       ? socialFeed.edges.map((item, index) => {
-        return (
+          return (
             <a href={item.node.permalink} key={index}>
-            <SocialInfoContainer>
-              <div>
-                <GatsbyImage
-                  image={item.node.localFile.childImageSharp.gatsbyImageData}
-                  alt={item.node.caption}
-                />
-              </div>
-            </SocialInfoContainer>
-          </a>
+              <SocialInfoContainer>
+                <div>
+                  <GatsbyImage
+                    image={item.node.localFile.childImageSharp.gatsbyImageData}
+                    alt={item.node.caption}
+                  />
+                </div>
+              </SocialInfoContainer>
+            </a>
           )
         })
       : null
