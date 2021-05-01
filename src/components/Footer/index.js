@@ -55,8 +55,6 @@ const Footer = () => {
           </MenuItem>
         ))
       : null
-  
-  // console.log(footerMenu && footerMenu.length > 0 ? 'hey' : 'nay')
 
   return (
     <FooterWrapper>
@@ -83,26 +81,3 @@ const Footer = () => {
 }
 
 export default Footer
-
-//backup
-// {
-//   footer: contentfulFooter {
-//     logo {
-//       localFile {
-//         childImageSharp {
-//           gatsbyImageData
-//         }
-//       }
-//     }
-//     footerMenu {
-//       navigationLink
-//       navigationTitle
-//     }
-//     footerDetailsRight {
-//       footerDetailsRight
-//     }
-//     footerDetailsLeft {
-//       footerDetailsLeft
-//     }
-//   }
-// }
