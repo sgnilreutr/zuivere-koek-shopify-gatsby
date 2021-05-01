@@ -74,14 +74,14 @@ const Homepage = props => {
           <div>
             <Uspgrid content={UspGridData} />
           </div>
-          <div className="full-bleed" style={{paddingBottom: `5rem`}}>
+          <div className="full-bleed" style={{ paddingBottom: `5rem` }}>
             <People content={PeopleBlockData} />
           </div>
           <div className="full-bleed">
             <Order content={OrderBlockData} />
           </div>
           <div className="full-bleed">
-          <Instagram />
+            <Instagram />
           </div>
         </>
       ) : (

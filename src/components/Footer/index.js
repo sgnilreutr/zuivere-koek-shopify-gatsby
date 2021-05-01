@@ -14,27 +14,27 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Footer = () => {
   const FooterData = useStaticQuery(graphql`
-{
-  footer: contentfulFooter {
-    logo {
-      localFile {
-        childImageSharp {
-          gatsbyImageData
+    {
+      footer: contentfulFooter {
+        logo {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        footerMenu {
+          navLink
+          navName
+        }
+        footerDetailsRight {
+          footerDetailsRight
+        }
+        footerDetailsLeft {
+          footerDetailsLeft
         }
       }
     }
-    footerMenu {
-      navLink
-      navName
-    }
-    footerDetailsRight {
-      footerDetailsRight
-    }
-    footerDetailsLeft {
-      footerDetailsLeft
-    }
-  }
-}
   `)
   const {
     footerMenu,

@@ -36,7 +36,6 @@ const ProductDetail = ({ product, extraDescription }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
-
   const productImage = {
     img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
     alt: `${title}-featured-image` || `featured-image`,
@@ -94,10 +93,7 @@ const ProductDetail = ({ product, extraDescription }) => {
     if (!isEmpty(product.images)) {
       return (
         <figure>
-          <GatsbyImage
-            image={productImage.img}
-            alt={productImage.alt}
-          />
+          <GatsbyImage image={productImage.img} alt={productImage.alt} />
         </figure>
       )
     } else {
@@ -118,9 +114,7 @@ const ProductDetail = ({ product, extraDescription }) => {
         <ProductImage>{displayProductImages()}</ProductImage>
         <ProductDesc>
           <div style={{ textAlign: `center` }}>
-            <h3 className="product-title">
-              {product.title ? title : ''}
-            </h3>
+            <h3 className="product-title">{product.title ? title : ''}</h3>
             {!isEmpty(product.description) ? (
               <p className="landingpage-p">{parse(product.description)}</p>
             ) : null}

@@ -9,8 +9,8 @@ export const SocialContainer = styled.div`
   }
   @media only screen and (max-width: 1920px) {
     .horizontal-menu {
-    max-width: 100%;
-  }
+      max-width: 100%;
+    }
   }
 `
 
