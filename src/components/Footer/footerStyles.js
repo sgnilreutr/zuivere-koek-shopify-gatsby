@@ -49,6 +49,9 @@ export const MenuWrapper = styled.nav`
   display: grid;
   grid-template-rows: repeat(3, auto);
   margin-right: 1rem;
+  @media only screen and (max-width: 600px) {
+    justify-items: center;
+  }
 `
 
 export const MenuItem = styled(Link)`
@@ -58,5 +61,26 @@ export const MenuItem = styled(Link)`
 
   &:hover {
     opacity: 0.7;
+  }
+`
+export const PoweredByFooter = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-evenly;
+  
+  a {
+    color: white;
+    text-decoration: none
+  }
+
+  a:hover {
+    color: #d1dce5;
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 1rem;
+    font-size: 0.5rem;
   }
 `
