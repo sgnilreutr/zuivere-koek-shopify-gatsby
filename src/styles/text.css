@@ -138,6 +138,11 @@ small,
   font-weight: bold;
 }
 
+.check-out--ship-minimum {
+  color: #2a3174;
+  margin-bottom: 1rem;
+}
+
 .check-out--checkout-button {
   font-family: "Playfair Display", serif;
   color: #fce3e7;

@@ -26,6 +26,7 @@ const CHECKOUT_TEXT =
 // const SHIPPING_TEXT = 'Verzendkosten'
 // const SHIPPING_FEE_TEXT = 'Worden op de volgende pagina berekend'
 const TOTAL_TEXT = 'Totaal winkelmand'
+const MINIMUM_ORDER = 'Minimaal order bedrag is €11.00'
 const BUTTON_TEXT = 'ik ga bestellen'
 
 const Cart = ({ pageText, isLoading }) => {
@@ -79,11 +80,12 @@ const Cart = ({ pageText, isLoading }) => {
                 <p className="check-out--ship-total text-align-right">
                   {totalPrice}
                 </p>
+                {parseFloat(checkout.totalPriceV2.amount) < 11.00 && <small className="check-out--ship-minimum">{MINIMUM_ORDER}</small>}
               </Total>
             )}
             <OrderButton
               onClick={handleCheckout}
-              disabled={loading || checkout.lineItems.length === 0}
+              disabled={loading || checkout.lineItems.length === 0 || parseFloat(checkout.totalPriceV2.amount) < 11.00}
             >
               <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
             </OrderButton>

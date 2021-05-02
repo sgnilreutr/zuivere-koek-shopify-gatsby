@@ -115,6 +115,11 @@ export const OrderButton = styled.button`
   &:hover {
     opacity: 0.7;
   }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 `
 
 export const NoItemsContainer = styled.div`
