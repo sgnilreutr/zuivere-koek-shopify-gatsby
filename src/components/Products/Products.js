@@ -10,7 +10,7 @@ const Products = () => {
         query Products {
           allProducts: allShopifyProduct(
             filter: { availableForSale: { eq: true } }
-            sort: { fields: createdAt, order: DESC }
+            sort: { fields: variants___price, order: DESC }
           ) {
             edges {
               node {

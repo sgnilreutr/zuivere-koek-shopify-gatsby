@@ -9,6 +9,7 @@ import {
   NavContainer,
   NavWrapper,
 } from './headerStyles'
+import Uspheader from './UspHeader'
 
 const Header = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = React.useState(false)
@@ -30,6 +31,7 @@ const Header = ({ siteTitle }) => {
           <Sidebar toggleMenu={toggleMenu} showMenu={showMenu} />
         </NavContainer>
       </NavWrapper>
+      <Uspheader />
     </HeaderWrapper>
   )
 }
