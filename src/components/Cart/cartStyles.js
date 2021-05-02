@@ -162,6 +162,7 @@ export const NoteButton = styled.button`
   background-color: hsl(234, 47%, 31%);
   cursor: pointer;
   max-width: 320px;
+  margin-top: 1rem;
   /* display: inline-grid;
   place-self: center; */
   padding: 0.1rem 3rem;
@@ -169,4 +170,12 @@ export const NoteButton = styled.button`
   &:hover {
     opacity: 0.7;
   }
+`
+
+export const ConfirmMessage = styled.span`
+  opacity: ${(props) => (props.success ? 1 : 0)};
+  transition: opacity 0.6s;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
 `

@@ -125,7 +125,7 @@ const ContextProvider = ({ children }) => {
         },
         addNote: (client, checkoutID, note) => {
           const input = {
-            customAttributes: [{ key: 'card_note', value: note }],
+            customAttributes: [{ key: 'cart_note', value: note }],
           }
 
           return client.checkout

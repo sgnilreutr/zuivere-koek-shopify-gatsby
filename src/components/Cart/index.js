@@ -17,7 +17,7 @@ import {
   Total,
   TotalAndButton,
 } from './cartStyles'
-import Cardnote from './cardNote'
+import Cartnote from './cartNote'
 
 const NO_ITEMS = 'Nog geen items in winkelmandje'
 const BACK_TO_SHOP = 'Ga naar Shop'
@@ -32,8 +32,6 @@ const Cart = ({ pageText, isLoading }) => {
   const {
     store: { checkout },
   } = useContext(StoreContext)
-
-  console.log(checkout)
 
   const [loading, setLoading] = useState(isLoading)
 
@@ -92,7 +90,7 @@ const Cart = ({ pageText, isLoading }) => {
           </TotalAndButton>
         </CartBottomGrid>
       </CartInner>
-      <Cardnote />
+      <Cartnote />
     </CartWrapper>
   )
 }

@@ -146,6 +146,7 @@ small,
 .check-out--note-header {
   font-family: "Playfair Display", serif;
   color: #2a3174;
+  margin-bottom: 0;
 }
 
 .landingpage-p {
