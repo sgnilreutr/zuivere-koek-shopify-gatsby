@@ -17,6 +17,7 @@ import {
   Total,
   TotalAndButton,
 } from './cartStyles'
+import Cartnote from './cartNote'
 
 const NO_ITEMS = 'Nog geen items in winkelmandje'
 const BACK_TO_SHOP = 'Ga naar Shop'
@@ -89,6 +90,7 @@ const Cart = ({ pageText, isLoading }) => {
           </TotalAndButton>
         </CartBottomGrid>
       </CartInner>
+      <Cartnote />
     </CartWrapper>
   )
 }
