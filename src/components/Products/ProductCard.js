@@ -94,7 +94,7 @@ const ProductCard = ({ product }) => {
           </ProductInfoContainer>
         ) : null}
         <ProductInfo>
-          <ProductInnerInfo to={`${id}`}>
+          <ProductInnerInfo to={`/shop/${handle}`}>
             <h4 className="product-title product-title--overview">{title}</h4>
             {priceRange.minVariantPrice && (
               <span
