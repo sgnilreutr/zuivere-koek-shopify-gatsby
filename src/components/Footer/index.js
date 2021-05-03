@@ -28,9 +28,6 @@ const Footer = () => {
           navLink
           navName
         }
-        footerDetailsRight {
-          footerDetailsRight
-        }
         footerDetailsLeft {
           footerDetailsLeft
         }
@@ -40,7 +37,6 @@ const Footer = () => {
   const {
     footerMenu,
     logo,
-    footerDetailsRight,
     footerDetailsLeft,
   } = FooterData.footer
 
@@ -72,9 +68,6 @@ const Footer = () => {
             {footerDetailsLeft.footerDetailsLeft}
           </ReactMarkdown>
         </LeftFooter>
-        <RightFooter>
-          <ReactMarkdown>{footerDetailsRight.footerDetailsRight}</ReactMarkdown>
-        </RightFooter>
         <MenuWrapper>{menu}</MenuWrapper>
       </FooterContainer>
       <PoweredByFooter>
