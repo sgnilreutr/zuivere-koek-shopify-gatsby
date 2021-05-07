@@ -17,7 +17,7 @@ const Shop = props => {
 
   const headerImage = {
     img: header_image.localFile?.childImageSharp?.gatsbyImageData,
-    // alt: homepageACF.heroImage?.altText || ``,
+    alt: 'Shop header',
   }
 
   return (
@@ -28,7 +28,7 @@ const Shop = props => {
           {headerImage?.img && (
             <GatsbyImage
               image={headerImage.img}
-              alt=""
+              alt={headerImage.alt}
               className="header-image--height-small full-bleed"
             />
           )}
