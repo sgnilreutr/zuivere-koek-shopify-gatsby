@@ -21,18 +21,18 @@ import Cartnote from './cartNote'
 
 const NO_ITEMS = 'Nog geen items in winkelmandje'
 const BACK_TO_SHOP = 'Ga naar Shop'
-const CHECKOUT_TEXT =
-  'We bakken en verzenden onze koeken 7 mei. Je hebt ze dan, als de bezorging bij PostNL goed verloopt, de dag erna in huis! Vragen? Laat het weten via hallo@zuiverekoek-shop.nl'
 // const SHIPPING_TEXT = 'Verzendkosten'
-// const SHIPPING_FEE_TEXT = 'Worden op de volgende pagina berekend'
+// const SHIPPING_FEE_TEXT = 'Berekend op volgende pagina'
 const TOTAL_TEXT = 'Totaal winkelmand'
 const MINIMUM_ORDER = 'Minimaal order bedrag is €11.00'
 const BUTTON_TEXT = 'ik ga bestellen'
 
-const Cart = ({ pageText, isLoading }) => {
+const Cart = ({ pageHeaderText, sections, isLoading }) => {
   const {
     store: { checkout },
   } = useContext(StoreContext)
+
+  const checkOutText = sections[0].text.text
 
   const [loading, setLoading] = useState(isLoading)
 
@@ -68,13 +68,14 @@ const Cart = ({ pageText, isLoading }) => {
   return (
     <CartWrapper>
       <CartInner>
-        <h1 className="page-title-alternative">{pageText}</h1>
+        <h1 className="page-title-alternative">{pageHeaderText}</h1>
         {lineItems}
         <HR />
         <CartBottomGrid>
-          <small className="check-out--service-delivery">{CHECKOUT_TEXT}</small>
+          <small className="check-out--service-delivery">{checkOutText}</small>
           <TotalAndButton>
             {totalPrice && (
+              <>
               <Total>
                 <p className="check-out--ship-total">{TOTAL_TEXT}</p>
                 <p className="check-out--ship-total text-align-right">
@@ -82,6 +83,11 @@ const Cart = ({ pageText, isLoading }) => {
                 </p>
                 {parseFloat(checkout.totalPriceV2.amount) < 11.00 && <small className="check-out--ship-minimum">{MINIMUM_ORDER}</small>}
               </Total>
+              {/* <Shipping>
+                  <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
+                  <p className="check-out--ship-total">{SHIPPING_FEE_TEXT}</p>
+              </Shipping> */}
+              </>
             )}
             <OrderButton
               onClick={handleCheckout}

@@ -5,9 +5,22 @@ const cartPageTemplate = require.resolve(`../templates/cart/index.js`)
 // Get all the shop page data.
 const GET_CART_PAGE = `
 query GET_CART_PAGE {
-  page: contentfulComponentContentpageHeader(title: {eq: "Cart"}) {
-    title
-    pageHeaderText
+  page: contentfulLandingPage(internalName: {eq: "Cart Landingpage"}) {
+    hero {
+      ... on ContentfulComponentContentpageHeader {
+        id
+        pageHeaderText
+      }
+    }
+    sections {
+      ... on ContentfulComponentText {
+        id
+        title
+        text {
+          text
+        }
+      }
+    }
   }
 }
 `

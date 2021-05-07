@@ -42,6 +42,7 @@ const Footer = () => {
 
   const footerImage = {
     img: logo.localFile?.childImageSharp?.gatsbyImageData,
+    alt: 'Zuiver&Koek'
   }
 
   const menu =
@@ -59,7 +60,7 @@ const Footer = () => {
         <Link to="/" className="footer-link">
           <GatsbyImage
             image={footerImage.img}
-            alt=""
+            alt={footerImage.alt}
             className="footer-image--height"
           />
         </Link>

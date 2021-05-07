@@ -14,10 +14,10 @@ export const Wrapper = styled.div`
       margin: 0;
     }
     @media only screen and (max-width: 768px) {
-      li:nth-child(2) {
+      li:nth-of-type(2) {
         display: none;
       }
-      li:nth-child(3) {
+      li:nth-of-type(3) {
         display: none;
       }
     }

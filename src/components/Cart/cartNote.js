@@ -28,7 +28,6 @@ const Cardnote = () => {
       setSuccess(false)
     }, 2500);
   }
-  console.log(errors)
 
   return (
     <>

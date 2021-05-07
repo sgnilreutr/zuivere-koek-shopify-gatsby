@@ -43,7 +43,7 @@ const Homepage = props => {
     img:
       props.pageContext.page.hero?.image.localFile.childImageSharp
         .gatsbyImageData,
-    // alt: homepageACF.heroImage?.altText || ``,
+    alt: 'hero-image'
   }
 
   return (
@@ -56,7 +56,7 @@ const Homepage = props => {
               {heroImageFile?.img && (
                 <GatsbyImage
                   image={heroImageFile.img}
-                  alt=""
+                  alt={heroImageFile.alt}
                   className="banner-image-div"
                 />
               )}
