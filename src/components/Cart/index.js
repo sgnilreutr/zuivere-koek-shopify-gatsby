@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import StoreContext from '~/context/StoreContext'
+import {MdInfoOutline} from "react-icons/md"
 import LinearProgress from '@material-ui/core/LinearProgress'
 import SingleLine from './single-line'
 import { formatPrice } from '../../utils'
@@ -10,6 +11,7 @@ import {
   CartRow,
   CartWrapper,
   HR,
+  MoreInfoButton,
   NoItemsButton,
   NoItemsContainer,
   OrderButton,
@@ -22,7 +24,8 @@ import Cartnote from './cartNote'
 const NO_ITEMS = 'Nog geen items in winkelmandje'
 const BACK_TO_SHOP = 'Ga naar Shop'
 // const SHIPPING_TEXT = 'Verzendkosten'
-// const SHIPPING_FEE_TEXT = 'Berekend op volgende pagina'
+const SHIPPING_FEE_TEXT = 'Exclusief verzendkosten'
+const SHIPPING_FEE_INFO_TEXT = 'Tot en met 6 koeken betaal je €3,95 verzendkosten voor 7 koeken of meer betaal je €6,95 verzendkosten gratis verzending vanaf €40,-'
 const TOTAL_TEXT = 'Totaal winkelmand'
 const MINIMUM_ORDER = 'Minimaal order bedrag is €11.00'
 const BUTTON_TEXT = 'ik ga bestellen'
@@ -35,6 +38,7 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
   const checkOutText = sections[0].text.text
 
   const [loading, setLoading] = useState(isLoading)
+  const [showShippingInfo, setShowShippingInfo] = useState(false)
 
   const lineItems = checkout.totalPrice ? (
     checkout.lineItems.length > 0 ? (
@@ -65,6 +69,10 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
     window.open(checkout.webUrl, '_self')
   }
 
+  const handleMoreInfo = () => {
+    setShowShippingInfo(!showShippingInfo)
+  }
+
   return (
     <CartWrapper>
       <CartInner>
@@ -81,12 +89,14 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
                 <p className="check-out--ship-total text-align-right">
                   {totalPrice}
                 </p>
-                {parseFloat(checkout.totalPriceV2.amount) < 11.00 && <small className="check-out--ship-minimum">{MINIMUM_ORDER}</small>}
               </Total>
-              {/* <Shipping>
-                  <p className="check-out--ship-total">{SHIPPING_TEXT}</p>
+              <Shipping>
+                  {/* <p className="check-out--ship-total">{SHIPPING_TEXT}</p> */}
                   <p className="check-out--ship-total">{SHIPPING_FEE_TEXT}</p>
-              </Shipping> */}
+                  <MoreInfoButton onClick={handleMoreInfo}><p className="check-out--ship-total text-align-right"><MdInfoOutline /></p></MoreInfoButton>
+              </Shipping>
+              {showShippingInfo && <small className="check-out--ship-minimum">{SHIPPING_FEE_INFO_TEXT}</small>}
+              {parseFloat(checkout.totalPriceV2.amount) < 11.00 && <small className="check-out--ship-minimum">{MINIMUM_ORDER}</small>}
               </>
             )}
             <OrderButton
