@@ -184,3 +184,7 @@ export const ConfirmMessage = styled.span`
   flex-flow: row;
   align-items: center;
 `
+
+export const MoreInfoButton = styled.div`
+  cursor: pointer;
+`
