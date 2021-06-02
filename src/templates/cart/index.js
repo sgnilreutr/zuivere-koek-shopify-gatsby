@@ -12,6 +12,8 @@ const CartPage = props => {
     },
   } = props
 
+  console.log(sections)
+
   return (
     <Layout>
       <SEO title={pageHeaderText} />
