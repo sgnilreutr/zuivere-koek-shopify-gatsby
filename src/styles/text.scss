@@ -218,3 +218,13 @@ small,
   margin: 0 0 1rem;
   font-family: $work-sans;
 }
+
+.arrow-global {
+  color: $color-text-blue;
+  transition: opacity ease-in-out 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

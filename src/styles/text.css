@@ -200,4 +200,15 @@ small,
   margin: 0 0 1rem;
   font-family: "Work Sans", sans-serif;
 }
+
+.arrow-global {
+  color: #2a3174;
+  -webkit-transition: opacity ease-in-out 0.3s;
+  transition: opacity ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.arrow-global:hover {
+  opacity: 0.8;
+}
 /*# sourceMappingURL=text.css.map */
