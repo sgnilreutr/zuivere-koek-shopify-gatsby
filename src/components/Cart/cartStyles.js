@@ -71,7 +71,7 @@ export const ProductRow = styled.div`
 `
 
 export const HR = styled.div`
-  border: solid 1px hsl(0, 0%, 44%);
+  border: solid 1px hsl(234, 47%, 31%);
 `
 
 export const CartBottomGrid = styled.div`
@@ -103,17 +103,18 @@ export const Total = styled.div`
 `
 
 export const OrderButton = styled.button`
+  border: none;
   border-radius: 4px;
-  border: solid 1px hsl(0, 0%, 44%);
   background-color: hsl(234, 47%, 31%);
   cursor: pointer;
   max-width: 320px;
   display: inline-grid;
   place-self: center;
   padding: 0.1rem 3rem;
+  transition: background-color ease-in-out 0.3s;
 
   &:hover {
-    opacity: 0.7;
+    background-color: hsl(234, 47%, 41%);
   }
 
   &:disabled {
@@ -162,18 +163,17 @@ export const NoteField = styled.form`
 `
 
 export const NoteButton = styled.button`
+  border: none;
   border-radius: 4px;
-  border: solid 1px hsl(0, 0%, 44%);
   background-color: hsl(234, 47%, 31%);
   cursor: pointer;
   max-width: 320px;
   margin-top: 1rem;
-  /* display: inline-grid;
-  place-self: center; */
   padding: 0.1rem 3rem;
+  transition: background-color ease-in-out 0.3s;
 
   &:hover {
-    opacity: 0.7;
+    background-color: hsl(234, 47%, 41%);
   }
 `
 

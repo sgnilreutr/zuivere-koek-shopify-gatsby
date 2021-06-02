@@ -512,7 +512,7 @@ pre tt:after {
 }
 
 .header-image--no-constrained {
-  display: inherit;
+  display: inherit !important;
 }
 
 .header-image--height-small {

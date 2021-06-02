@@ -4,6 +4,7 @@
 //colors
 $color-text-blue: hsl(234, 47%, 31%);
 $color-text-pink: hsl(351, 81%, 94%);
+$color-text-dark-pink: hsl(354, 90%, 88%);
 $color-text-white: hsl(0, 0%, 100%);
 
 //Font variables
@@ -191,7 +192,7 @@ small,
 
 .usp-header {
   font-family: $work-sans;
-  color: $color-text-pink;
+  color: $color-text-dark-pink;
   margin: 0;
 }
 
@@ -201,6 +202,12 @@ small,
 
 .block-header--blue {
   color: $color-text-blue;
+  text-align: center;
+  font-weight: 900;
+}
+
+.block-header--pink {
+  color: $color-text-dark-pink;
   text-align: center;
   font-weight: 900;
 }

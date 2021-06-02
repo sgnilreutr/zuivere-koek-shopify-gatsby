@@ -174,7 +174,7 @@ small,
 
 .usp-header {
   font-family: "Work Sans", sans-serif;
-  color: #fce3e7;
+  color: #fcc5ca;
   margin: 0;
 }
 
@@ -184,6 +184,12 @@ small,
 
 .block-header--blue {
   color: #2a3174;
+  text-align: center;
+  font-weight: 900;
+}
+
+.block-header--pink {
+  color: #fcc5ca;
   text-align: center;
   font-weight: 900;
 }
