@@ -131,6 +131,7 @@ small,
 
 .check-out--service-delivery {
   color: #2a3174;
+  font-size: 0.8rem;
 }
 
 .check-out--ship-total {
@@ -141,6 +142,7 @@ small,
 .check-out--ship-minimum {
   color: #2a3174;
   margin-bottom: 1rem;
+  font-size: 0.8rem;
 }
 
 .check-out--checkout-button {

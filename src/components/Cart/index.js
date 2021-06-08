@@ -20,6 +20,7 @@ import {
   TotalAndButton,
 } from './cartStyles'
 import Cartnote from './cartNote'
+import ReactMarkdown from 'react-markdown'
 
 const NO_ITEMS = 'Nog geen items in winkelmandje'
 const BACK_TO_SHOP = 'Ga naar Shop'
@@ -37,6 +38,7 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
   } = useContext(StoreContext)
 
   const checkOutText = sections[0].text.text
+  const shippingInfoText = sections[1].text.text
 
   const [loading, setLoading] = useState(isLoading)
   const [showShippingInfo, setShowShippingInfo] = useState(false)
@@ -81,7 +83,7 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
         {lineItems}
         <HR />
         <CartBottomGrid>
-          <small className="check-out--service-delivery">{checkOutText}</small>
+          <ReactMarkdown className="check-out--service-delivery">{checkOutText}</ReactMarkdown>
           <TotalAndButton>
             {totalPrice && (
               <>
@@ -94,22 +96,11 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
                 <Shipping>
                   {/* <p className="check-out--ship-total">{SHIPPING_TEXT}</p> */}
                   <p className="check-out--ship-total">{SHIPPING_FEE_TEXT}</p>
-                  <MoreInfoButton onClick={handleMoreInfo}>
-                    <p className="check-out--ship-total text-align-right">
-                      <MdInfoOutline />
-                    </p>
-                  </MoreInfoButton>
-                </Shipping>
-                {showShippingInfo && (
-                  <small className="check-out--ship-minimum">
-                    {SHIPPING_FEE_INFO_TEXT}
-                  </small>
-                )}
-                {parseFloat(checkout.totalPriceV2.amount) < 11.0 && (
-                  <small className="check-out--ship-minimum">
-                    {MINIMUM_ORDER}
-                  </small>
-                )}
+                  <MoreInfoButton onClick={handleMoreInfo}><p className="check-out--ship-total text-align-right"><MdInfoOutline /></p></MoreInfoButton>
+              </Shipping>
+              {/* {showShippingInfo && <small className="check-out--ship-minimum">{shippingInfoText}</small>} */}
+              {showShippingInfo && <ReactMarkdown className="check-out--ship-minimum">{shippingInfoText}</ReactMarkdown>}
+              {parseFloat(checkout.totalPriceV2.amount) < 11.00 && <small className="check-out--ship-minimum">{MINIMUM_ORDER}</small>}
               </>
             )}
             <OrderButton
