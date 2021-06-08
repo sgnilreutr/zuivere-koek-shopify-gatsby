@@ -2,7 +2,8 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
 export const DiscoverContainer = styled.div`
-  background-color: hsl(358, 71%, 91%);
+  /* background-color: hsl(358, 71%, 91%); */
+  background-color: #fcc3c9;
   height: 300px;
   display: grid;
   place-content: center;
@@ -55,7 +56,7 @@ export const NewsInnerContainer = styled.div`
   padding: 2rem;
 `
 export const DiscoverButton = styled(Link)`
-  border: solid 1px hsl(0, 0%, 44%);
+  border: none;
   border-radius: 4px;
   background-color: hsl(234, 47%, 31%);
   padding: 5px 35px;
@@ -65,9 +66,10 @@ export const DiscoverButton = styled(Link)`
   max-width: max-content;
   height: max-content;
   text-decoration: none;
+  transition: background-color ease-in-out 0.3s;
 
   :hover {
-    opacity: 0.8;
+    background-color: hsl(234, 47%, 41%);
   }
 
   span {

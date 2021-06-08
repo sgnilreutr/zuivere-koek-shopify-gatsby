@@ -42,7 +42,7 @@ export const TextContainer = styled.div`
   width: 340px;
   height: 440px;
   padding: 3rem 2rem 2rem;
-  background-color: hsl(351, 81%, 94%);
+  background-color: hsl(354, 90%, 88%);
   @media only screen and (max-width: 1023px) {
     width: 100%;
     height: auto;

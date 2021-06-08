@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const ProductWrapper = styled.div`
-  background-color: hsl(351, 81%, 94%);
+  background-color: hsl(354, 90%, 88%);
   display: grid;
   padding: 2rem;
   max-width: 70%;
@@ -64,14 +64,15 @@ export const AddToCart = styled.div`
 `
 export const AddToCartButton = styled.button`
   margin-top: 1rem;
-  border: solid 1px hsl(0, 0%, 44%);
+  border: none;
   border-radius: 4px;
   background-color: hsl(234, 47%, 31%);
   padding: 5px 35px;
   display: flex;
   cursor: pointer;
+  transition: background-color ease-in-out 0.3s;
 
   :hover {
-    opacity: 0.8;
+    background-color: hsl(234, 47%, 41%);
   }
 `

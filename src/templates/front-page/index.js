@@ -21,7 +21,7 @@ const Homepage = props => {
     },
   } = props
 
-  const DISCOVER_BLOCK_TITLE = 'ontdek onze Zuivere Koek'
+  const DISCOVER_BLOCK_TITLE = 'ontdek onze'
   const DiscoverBlockData = sections.filter(
     item => item.name === DISCOVER_BLOCK_TITLE
   )
@@ -43,7 +43,7 @@ const Homepage = props => {
     img:
       props.pageContext.page.hero?.image.localFile.childImageSharp
         .gatsbyImageData,
-    alt: 'hero-image'
+    alt: 'hero-image',
   }
 
   return (

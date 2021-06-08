@@ -28,7 +28,7 @@ export const HeroGrid = styled.div`
 `
 
 export const GoToShopButton = styled(Link)`
-  border: solid 1px hsl(0, 0%, 44%);
+  border: none;
   border-radius: 4px;
   background-color: hsl(234, 47%, 31%);
   padding: 5px 35px;
@@ -37,9 +37,10 @@ export const GoToShopButton = styled(Link)`
   cursor: pointer;
   max-width: max-content;
   text-decoration: none;
+  transition: background-color ease-in-out 0.3s;
 
   :hover {
-    opacity: 0.8;
+    background-color: hsl(234, 47%, 41%);
   }
 
   span {

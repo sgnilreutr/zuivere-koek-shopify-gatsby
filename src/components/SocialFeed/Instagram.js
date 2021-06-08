@@ -65,7 +65,7 @@ const Instagram = () => {
 
   return (
     <SocialContainer>
-      <h2 className="page-title">{FOLLOW_US_TEXT}</h2>
+      <h2 className="block-header--pink">{FOLLOW_US_TEXT}</h2>
       <ScrollMenu
         data={menuItems}
         dragging={true}

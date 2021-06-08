@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const OrderWrapper = styled.div`
-  background-color: hsl(358, 71%, 91%);
+  background-color: hsl(354, 90%, 88%);
   display: grid;
   padding: 2rem 0;
   h2 {

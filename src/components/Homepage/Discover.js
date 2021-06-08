@@ -11,8 +11,7 @@ import {
 } from './DiscoverStyles'
 
 const Discover = ({ content }) => {
-  const { name, columns } = content[0]
-
+  const { name, subname, columns } = content[0]
   const firstItem = columns && columns.length > 0 ? content[0].columns[0] : null
   const secondItem =
     columns && columns.length > 0 ? content[0].columns[1] : null
@@ -46,7 +45,10 @@ const Discover = ({ content }) => {
   return (
     <>
       <DiscoverContainer>
-        <h2 className="block-header--blue">{name}</h2>
+        <h2 className="page-title" style={{ margin: '1rem 0 1.38rem' }}>
+          {name} <br />
+          <span>{subname}</span>
+        </h2>
       </DiscoverContainer>
       <Grid>
         <GridImage image={firstItem.image} alt={firstItem.title} />

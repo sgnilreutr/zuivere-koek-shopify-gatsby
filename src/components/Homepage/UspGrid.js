@@ -43,7 +43,7 @@ const Uspgrid = ({ content }) => {
   return (
     <UspContainer>
       <HeaderContainer>
-        <h2 className="page-title">{name}</h2>
+        <h2 className="block-header--pink">{name}</h2>
       </HeaderContainer>
       <Grid>{grid}</Grid>
     </UspContainer>
