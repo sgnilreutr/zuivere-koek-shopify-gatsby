@@ -28,6 +28,7 @@ query GET_FRONT_PAGE {
       ... on ContentfulComponentSection {
         id
         name
+        subname
         columns {
           ... on ContentfulComponentText {
             id

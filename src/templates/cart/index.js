@@ -8,7 +8,10 @@ import Instagram from '../../components/SocialFeed/Instagram'
 const CartPage = props => {
   const {
     pageContext: {
-      page: { hero: {pageHeaderText}, sections },
+      page: {
+        hero: { pageHeaderText },
+        sections,
+      },
     },
   } = props
 
@@ -17,7 +20,7 @@ const CartPage = props => {
       <SEO title={pageHeaderText} />
       {props.pageContext.page ? (
         <>
-          <Cart pageHeaderText={pageHeaderText} sections={sections}/>
+          <Cart pageHeaderText={pageHeaderText} sections={sections} />
         </>
       ) : (
         <div>{ERROR_MESSAGE}</div>

@@ -178,7 +178,7 @@ export const NoteButton = styled.button`
 `
 
 export const ConfirmMessage = styled.span`
-  opacity: ${(props) => (props.success ? 1 : 0)};
+  opacity: ${props => (props.success ? 1 : 0)};
   transition: opacity 0.6s;
   display: flex;
   flex-flow: row;

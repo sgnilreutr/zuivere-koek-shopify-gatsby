@@ -69,10 +69,10 @@ export const PoweredByFooter = styled.div`
   font-size: 0.7rem;
   display: flex;
   justify-content: space-evenly;
-  
+
   a {
     color: white;
-    text-decoration: none
+    text-decoration: none;
   }
 
   a:hover {

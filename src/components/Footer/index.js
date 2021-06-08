@@ -34,15 +34,11 @@ const Footer = () => {
       }
     }
   `)
-  const {
-    footerMenu,
-    logo,
-    footerDetailsLeft,
-  } = FooterData.footer
+  const { footerMenu, logo, footerDetailsLeft } = FooterData.footer
 
   const footerImage = {
     img: logo.localFile?.childImageSharp?.gatsbyImageData,
-    alt: 'Zuiver&Koek'
+    alt: 'Zuiver&Koek',
   }
 
   const menu =
@@ -72,8 +68,20 @@ const Footer = () => {
         <MenuWrapper>{menu}</MenuWrapper>
       </FooterContainer>
       <PoweredByFooter>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/robberttuerlings">Code by Robbert Tuerlings</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/ruth-mollema-218083ba/">Design by Ruth Mollema</a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/robberttuerlings"
+        >
+          Code by Robbert Tuerlings
+        </a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/ruth-mollema-218083ba/"
+        >
+          Design by Ruth Mollema
+        </a>
       </PoweredByFooter>
     </FooterWrapper>
   )
