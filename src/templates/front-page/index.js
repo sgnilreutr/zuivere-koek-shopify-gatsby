@@ -8,7 +8,7 @@ import Uspgrid from '../../components/Homepage/UspGrid'
 import Discover from '../../components/Homepage/Discover'
 import People from '../../components/Homepage/People'
 import Order from '../../components/Homepage/Order'
-import Instagram from '../../components/SocialFeed/Instagram'
+// import Instagram from '../../components/SocialFeed/Instagram'
 
 const Homepage = props => {
   const {
@@ -80,9 +80,9 @@ const Homepage = props => {
           <div className="full-bleed">
             <Order content={OrderBlockData} />
           </div>
-          <div className="full-bleed">
+          {/* <div className="full-bleed">
             <Instagram />
-          </div>
+          </div> */}
         </>
       ) : (
         <div>{ERROR_MESSAGE}</div>

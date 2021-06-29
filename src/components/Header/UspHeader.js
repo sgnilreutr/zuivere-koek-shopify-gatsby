@@ -19,7 +19,7 @@ const Uspheader = () => {
 
   return (
     <Wrapper>
-      <ReactMarkdown className="landingpage-p">{text.text}</ReactMarkdown>
+      <ReactMarkdown className="landingpage-p">{text?.text}</ReactMarkdown>
     </Wrapper>
   )
 }
