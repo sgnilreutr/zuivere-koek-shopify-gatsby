@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 // import { getOgImage } from "../../utils/functions";
 import ProductDetail from '../../components/Products/ProductDetail'
 import Relatedproduct from '../../components/Products/RelatedProduct'
-import Instagram from '../../components/SocialFeed/Instagram'
+// import Instagram from '../../components/SocialFeed/Instagram'
 
 const SingleProductPage = ({ data }) => {
   const product = data.shopifyProduct
@@ -34,9 +34,9 @@ const SingleProductPage = ({ data }) => {
       ) : (
         <div>{ERROR_MESSAGE}</div>
       )}
-      <div className="full-bleed">
+      {/* <div className="full-bleed">
         <Instagram />
-      </div>
+      </div> */}
     </Layout>
   )
 }

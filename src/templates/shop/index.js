@@ -6,7 +6,7 @@ import SEO from '../../components/seo'
 import Products from '../../components/Products/Products'
 import { HeaderTextContainer } from '../../styles/globalStyles'
 import Toaster from '../../components/Toaster'
-import Instagram from '../../components/SocialFeed/Instagram'
+// import Instagram from '../../components/SocialFeed/Instagram'
 
 const Shop = props => {
   const {
@@ -44,9 +44,9 @@ const Shop = props => {
       ) : (
         <div>{ERROR_MESSAGE}</div>
       )}
-      <div className="full-bleed">
+      {/* <div className="full-bleed">
         <Instagram />
-      </div>
+      </div> */}
     </Layout>
   )
 }
