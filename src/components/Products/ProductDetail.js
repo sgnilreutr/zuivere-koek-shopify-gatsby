@@ -19,6 +19,7 @@ import {
   QtyAdjust,
   QtyAdjustContainer,
 } from './ProductDetailStyles'
+import * as global from '../../constants/globalConstants'
 
 const ProductDetail = ({ product, extraDescription }) => {
   const {
@@ -120,6 +121,7 @@ const ProductDetail = ({ product, extraDescription }) => {
             ) : null}
             <AddToCart>
               <h4 className="product-price--detail">{variantPrice}</h4>
+              <span className="product-price--detail-details">{global.PER_UNIT}</span>
               <QtyAdjustContainer>
                 <QtyAdjust onClick={subtractQuantityItem}>
                   <span className="qty-controls--cart">-</span>

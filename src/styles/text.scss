@@ -130,10 +130,25 @@ small,
   font-family: $work-sans;
 }
 
+.product-price--overview-details {
+  color: $color-text-blue;
+  font-family: $work-sans;
+  font-size: $small;
+  line-height: $small;
+}
+
 .product-price--detail {
   color: $color-text-white;
   font-family: $work-sans;
   font-weight: 800;
+  margin-bottom: 0;
+}
+
+.product-price--detail-details {
+  color: $color-text-white;
+  font-family: $work-sans;
+  font-size: $small;
+  margin-bottom: 1.38rem;
 }
 
 .product-price--cart {
