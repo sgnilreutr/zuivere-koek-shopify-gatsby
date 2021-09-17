@@ -90,6 +90,11 @@ export const ProductInnerInfo = styled(Link)`
   text-decoration: none;
 `
 
+export const ProductPrice = styled.div`
+  display: flex;
+  flex-flow: column;
+`
+
 export const AddToCartButton = styled.button`
   margin-top: 1rem;
   border: none;

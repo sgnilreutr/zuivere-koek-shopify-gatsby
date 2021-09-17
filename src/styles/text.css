@@ -111,10 +111,25 @@ small,
   font-family: "Work Sans", sans-serif;
 }
 
+.product-price--overview-details {
+  color: #2a3174;
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
 .product-price--detail {
   color: white;
   font-family: "Work Sans", sans-serif;
   font-weight: 800;
+  margin-bottom: 0;
+}
+
+.product-price--detail-details {
+  color: white;
+  font-family: "Work Sans", sans-serif;
+  font-size: 0.8rem;
+  margin-bottom: 1.38rem;
 }
 
 .product-price--cart {

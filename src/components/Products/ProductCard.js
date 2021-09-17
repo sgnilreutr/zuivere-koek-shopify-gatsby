@@ -4,17 +4,10 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { IoCartOutline } from 'react-icons/io5'
 import { formatPrice } from '../../utils'
-import {
-  AddToCartButton,
-  ProductCardWrapper,
-  ProductPhoto,
-  ProductInfo,
-  ProductInnerInfo,
-  ProductInfoContainer,
-  ProductInfoContent,
-} from './ProductCardStyles'
+import * as S from './ProductCardStyles'
 import StoreContext from '~/context/StoreContext'
 import { toast } from 'react-toastify'
+import * as global from '../../constants/globalConstants'
 
 const ProductCard = ({ product }) => {
   const {
@@ -30,6 +23,7 @@ const ProductCard = ({ product }) => {
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
   const [loading, setLoading] = useState(false)
+
   const QUICKBUY_QTY = 1
   const TOASTER_TEXT = 'is toegevoegd aan je winkelmand.'
 
@@ -75,31 +69,31 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <ProductCardWrapper>
+    <S.ProductCardWrapper>
       <form onSubmit={handleSubmit}>
         {productImage.img ? (
-          <ProductInfoContainer to={`/shop/${handle}`}>
-            <ProductPhoto>
+          <S.ProductInfoContainer to={`/shop/${handle}`}>
+            <S.ProductPhoto>
               <GatsbyImage
                 image={productImage.img}
                 alt={productImage.alt}
                 className="blog-preview-image"
               />
-            </ProductPhoto>
-            <ProductInfoContent>
+            </S.ProductPhoto>
+            <S.ProductInfoContent>
               <div>
                 <p>{description}</p>
               </div>
-            </ProductInfoContent>
-          </ProductInfoContainer>
+            </S.ProductInfoContent>
+          </S.ProductInfoContainer>
         ) : null}
-        <ProductInfo>
-          <ProductInnerInfo to={`/shop/${handle}`}>
+        <S.ProductInfo>
+          <S.ProductInnerInfo to={`/shop/${handle}`}>
             <h4 className="product-title product-title--overview">{title}</h4>
+            <S.ProductPrice>
             {priceRange.minVariantPrice && (
               <span
                 className="product-price--overview"
-                // value={price.id}
               >
                 {formatPrice(
                   priceRange.minVariantPrice.amount,
@@ -107,16 +101,18 @@ const ProductCard = ({ product }) => {
                 )}
               </span>
             )}
-          </ProductInnerInfo>
-          <AddToCartButton
+            <span className="product-price--overview-details"> {global.PER_UNIT}</span>
+            </S.ProductPrice>
+          </S.ProductInnerInfo>
+          <S.AddToCartButton
             disabled={loading || adding || !available}
             onClick={() => toast.dark(`${title} ${TOASTER_TEXT}`)}
           >
             <IoCartOutline size={30} color={`#f8d8d9`} />
-          </AddToCartButton>
-        </ProductInfo>
+          </S.AddToCartButton>
+        </S.ProductInfo>
       </form>
-    </ProductCardWrapper>
+    </S.ProductCardWrapper>
   )
 }
 
