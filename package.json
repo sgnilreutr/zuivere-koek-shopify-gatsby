@@ -21,7 +21,7 @@
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-source-instagram": "^0.9.0",
     "gatsby-source-shopify": "^4.3.0",
-    "gatsby-transformer-sharp": "^3.1.0",
+    "gatsby-transformer-sharp": "^3.14.0",
     "html-react-parser": "^1.2.4",
     "isomorphic-fetch": "^3.0.0",
     "js-yaml": "^4.0.0",
