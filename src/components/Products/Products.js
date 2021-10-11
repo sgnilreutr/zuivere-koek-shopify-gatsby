@@ -10,7 +10,7 @@ const Products = () => {
         query Products {
           allProducts: allShopifyProduct(
             filter: { availableForSale: { eq: true } }
-            sort: { fields: variants___price, order: DESC }
+            sort: {fields: publishedAt, order: DESC}
           ) {
             edges {
               node {
@@ -57,10 +57,14 @@ const Products = () => {
       render={({ allProducts }) => {
         const products = allProducts.edges
 
+        const boxItem = products.filter((product) => product.node.priceRange.maxVariantPrice.amount > 14)
+        const restItems = products.filter((product) => product.node.priceRange.maxVariantPrice.amount < 10)
+        const allProductsResorted = boxItem.concat(restItems)
+
         return (
           <ProductGrid>
-            {products.map((product, index) => (
-              <ProductCard key={index} product={product.node} />
+            {allProductsResorted.map((product) => (
+              <ProductCard key={product.node.id} product={product.node} />
             ))}
           </ProductGrid>
         )
