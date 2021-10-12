@@ -11650,10 +11650,10 @@ react-hook-form@^7.3.6:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.3.6.tgz#21da0f1aff834a9ae9f80a604ebbc28c5b229f79"
   integrity sha512-3LRjxMDn+CUKZ2G9TA9BgNQXX7M9I8WcE5GkcMNg6eOHa9mFc+uF6rKY9QAKlNNjKhdL1atOmOTVBEj2gJVuEQ==
 
-react-horizontal-scrolling-menu@^0.7.10:
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/react-horizontal-scrolling-menu/-/react-horizontal-scrolling-menu-0.7.10.tgz#d5b941ddda459d5d7090f6aab53364e4e4884ba4"
-  integrity sha512-QwoTMIbKwO+K3byB9zr6culXE1lhXZ7hIJJmBt5bHMM7Okl7mCFyZvD5/GkQ8Txp5C4pqRI5Lq/zlWxxyy59nA==
+react-horizontal-scrolling-menu@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/react-horizontal-scrolling-menu/-/react-horizontal-scrolling-menu-2.4.2.tgz#e0f5f10889dc8fbe8b3129d3e12d1e3041dc5d0b"
+  integrity sha512-v1lgrMtdW4VWnsLb1FEWZ+G0gzy1qbcfkykOAXdmteWRGVS7h2c41EMGLoGESqed1C0XUSbl9x9wx112Lc2xaw==
 
 react-icons@^4.2.0:
   version "4.2.0"
