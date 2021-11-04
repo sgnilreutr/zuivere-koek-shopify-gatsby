@@ -7,8 +7,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `zuiver&koek`,
-    description: `Webshop voor Zuivere Koek.`,
+    title: `Zuiver&Koek`,
+    description: `Ontdek de allerlekkerste brievenbuskoeken - 100% vegan, zonder plastic verpakking en ongekend lekker!`,
     author: `@sgnilreutR`,
   },
   plugins: [

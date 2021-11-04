@@ -8,6 +8,9 @@ import { HeaderTextContainer } from '../../styles/globalStyles'
 import Toaster from '../../components/Toaster'
 // import Instagram from '../../components/SocialFeed/Instagram'
 
+const SEO_TITLE = "Shop"
+const SEO_DESCRIPTION = "Plantaardige koeken - ontdek alle smaken. Leuk als cadeau voor vrienden, familie en collega’s, of gewoon voor jezelf!"
+
 const Shop = props => {
   const {
     pageContext: {
@@ -22,7 +25,7 @@ const Shop = props => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={SEO_TITLE} description={SEO_DESCRIPTION}/>
       {props.pageContext.page ? (
         <>
           {headerImage?.img && (
