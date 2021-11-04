@@ -10,6 +10,9 @@ import People from '../../components/Homepage/People'
 import Order from '../../components/Homepage/Order'
 // import Instagram from '../../components/SocialFeed/Instagram'
 
+const SEO_TITLE = "De allerlekkerste VEGAN brievenbuskoeken"
+const SEO_DESCRIPTION = "100% plantaardig, zonder plastic verpakking en met oog op duurzaamheid geproduceerd. Oh, en ongekend lekker natuurlijk!"
+
 const Homepage = props => {
   const {
     pageContext: {
@@ -48,7 +51,7 @@ const Homepage = props => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={SEO_TITLE} description={SEO_DESCRIPTION}/>
       {props.pageContext.page ? (
         <>
           <div className="full-bleed">
