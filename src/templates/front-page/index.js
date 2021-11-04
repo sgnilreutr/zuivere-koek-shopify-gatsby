@@ -10,8 +10,8 @@ import People from '../../components/Homepage/People'
 import Order from '../../components/Homepage/Order'
 // import Instagram from '../../components/SocialFeed/Instagram'
 
-const SEO_TITLE = "De allerlekkerste brievenbuskoeken"
-const SEO_DESCRIPTION = "Ontdek de allerlekkerste brievenbuskoeken - 100% vegan, zonder plastic verpakking en ongekend lekker!"
+const SEO_TITLE = "De allerlekkerste VEGAN brievenbuskoeken - Zuiver&Koek"
+const SEO_DESCRIPTION = "100% plantaardig, zonder plastic verpakking en met oog op duurzaamheid geproduceerd. Oh, en ongekend lekker natuurlijk!"
 
 const Homepage = props => {
   const {

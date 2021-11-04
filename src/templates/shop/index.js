@@ -8,8 +8,8 @@ import { HeaderTextContainer } from '../../styles/globalStyles'
 import Toaster from '../../components/Toaster'
 // import Instagram from '../../components/SocialFeed/Instagram'
 
-const SEO_TITLE = "Shop"
-const SEO_DESCRIPTION = "Plantaardige koeken - ontdek alle smaken. Leuk als cadeau voor vrienden, familie en collega’s, of gewoon voor jezelf!"
+const SEO_TITLE = "De webshop van Zuiver&Koek - 100% VEGAN"
+const SEO_DESCRIPTION = "Voor de allerlekkerste VEGAN koeken. Ontdek nu al onze smaken. Leuk als brievenbuscadeau voor vrienden, familie en collega’s - of gewoon voor jezelf!"
 
 const Shop = props => {
   const {
