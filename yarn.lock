@@ -11645,10 +11645,10 @@ react-helmet@^6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
-react-hook-form@^7.3.6:
-  version "7.3.6"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.3.6.tgz#21da0f1aff834a9ae9f80a604ebbc28c5b229f79"
-  integrity sha512-3LRjxMDn+CUKZ2G9TA9BgNQXX7M9I8WcE5GkcMNg6eOHa9mFc+uF6rKY9QAKlNNjKhdL1atOmOTVBEj2gJVuEQ==
+react-hook-form@^7.19.3:
+  version "7.19.3"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.19.3.tgz#b6769ab3440390a3a1c33184e25881ff8f3ec1b8"
+  integrity sha512-ko3kz9wQNvwbTo5+4jlQi0iNnYv28eEAz47UAHxOtPUi+tCccCsm7fu8CTaJtMz77P3bedTNLSXAdcO/j1p3Ng==
 
 react-horizontal-scrolling-menu@^0.7.10:
   version "0.7.10"
