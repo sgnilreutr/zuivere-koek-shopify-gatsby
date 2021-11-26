@@ -1,26 +1,24 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-shopify-zuiver-koek",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A Shopify website for Zuivere Koek",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "@sgnilreutR",
   "dependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^4.12.3",
     "dompurify": "^2.2.7",
-    "gatsby": "^3.1.2",
-    "gatsby-plugin-gatsby-cloud": "^3.1.0",
-    "gatsby-plugin-image": "^1.3.1",
-    "gatsby-plugin-manifest": "^3.1.0",
-    "gatsby-plugin-offline": "^4.14.0",
+    "gatsby": "^4.1.3",
+    "gatsby-plugin-image": "^2.1.2",
+    "gatsby-plugin-manifest": "^4.1.3",
     "gatsby-plugin-react-helmet": "^4.1.0",
     "gatsby-plugin-root-import": "^2.0.7",
-    "gatsby-plugin-sharp": "^3.1.2",
-    "gatsby-source-contentful": "^5.1.3",
+    "gatsby-plugin-sharp": "^4.1.3",
+    "gatsby-source-contentful": "^7.0.0",
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-source-instagram": "^0.9.0",
-    "gatsby-source-shopify": "^4.3.0",
+    "gatsby-source-shopify": "^6.2.0",
     "gatsby-transformer-sharp": "^3.14.0",
     "html-react-parser": "^1.2.4",
     "isomorphic-fetch": "^3.0.0",
@@ -59,9 +57,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/sgnilreutr/zuivere-koek-shopify-gatsby"
   }
 }
