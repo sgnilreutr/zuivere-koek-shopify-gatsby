@@ -13,18 +13,15 @@ const SingleProductPage = ({ data }) => {
   const product = data.shopifyProduct
   const extraDescription =
     data.desc && !isEmpty(data.desc) ? data.desc.description.text : ''
+  
+  console.log(data)
+  console.log(extraDescription)
 
   return (
     <Layout>
+      
       {!isEmpty(data) ? (
         <>
-          {/* <SEO
-              title={name}
-              seoData={seo}
-              uri={link}
-              header={{ siteTitle: 'Gatsby WooCommerce Theme' }}
-              openGraphImage={getOgImage(seo)}
-            /> */}
           <ProductDetail
             product={product}
             extraDescription={extraDescription}
@@ -34,6 +31,7 @@ const SingleProductPage = ({ data }) => {
       ) : (
         <div>{ERROR_MESSAGE}</div>
       )}
+      
       {/* <div className="full-bleed">
         <Instagram />
       </div> */}
@@ -47,16 +45,12 @@ export const query = graphql`
       id
       title
       handle
-      availableForSale
+      status
       description
       descriptionHtml
       shopifyId
       images {
-        localFile {
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
+        gatsbyImageData
       }
       variants {
         id
@@ -69,7 +63,7 @@ export const query = graphql`
           value
         }
       }
-      priceRange {
+      priceRangeV2 {
         maxVariantPrice {
           amount
           currencyCode

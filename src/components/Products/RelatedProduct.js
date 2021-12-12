@@ -13,8 +13,8 @@ const Relatedproduct = ({ currentProduct }) => {
   const RelatedProducts = useStaticQuery(graphql`
     query RelatedProducts {
       fourProducts: allShopifyProduct(
-        filter: { availableForSale: { eq: true } }
-        sort: { fields: createdAt, order: DESC }
+        filter: {status: {eq: "ACTIVE"}}
+        sort: {fields: createdAt, order: DESC}
         limit: 4
       ) {
         edges {
@@ -22,16 +22,12 @@ const Relatedproduct = ({ currentProduct }) => {
             id
             title
             handle
-            availableForSale
+            status
             description
             descriptionHtml
             shopifyId
             images {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
+              gatsbyImageData
             }
             variants {
               id
@@ -44,7 +40,7 @@ const Relatedproduct = ({ currentProduct }) => {
                 value
               }
             }
-            priceRange {
+            priceRangeV2 {
               maxVariantPrice {
                 amount
                 currencyCode

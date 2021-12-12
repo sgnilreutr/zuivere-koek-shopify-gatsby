@@ -105,11 +105,11 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
             )}
             <OrderButton
               onClick={handleCheckout}
-              disabled={
-                loading ||
-                checkout.lineItems.length === 0 ||
-                parseFloat(checkout.totalPriceV2.amount) < 11.0
-              }
+              // disabled={
+              //   loading ||
+              //   checkout.lineItems.length === 0 ||
+              //   parseFloat(checkout.totalPriceV2.amount) < 11.0
+              // }
             >
               <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
             </OrderButton>

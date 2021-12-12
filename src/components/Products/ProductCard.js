@@ -17,8 +17,8 @@ const ProductCard = ({ product }) => {
     handle,
     id,
     title,
-    priceRange,
-    images,
+    priceRangeV2,
+    images: [firstImage],
     description,
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
   }, [productVariant, checkAvailability, product.shopifyId])
 
   const productImage = {
-    img: images[0].localFile?.childImageSharp?.gatsbyImageData,
+    img: firstImage?.gatsbyImageData,
     alt: `${title}-featured-image` || `featured-image`,
   }
 
@@ -91,13 +91,13 @@ const ProductCard = ({ product }) => {
           <S.ProductInnerInfo to={`/shop/${handle}`}>
             <h4 className="product-title product-title--overview">{title}</h4>
             <S.ProductPrice>
-            {priceRange.minVariantPrice && (
+            {priceRangeV2.minVariantPrice && (
               <span
                 className="product-price--overview"
               >
                 {formatPrice(
-                  priceRange.minVariantPrice.amount,
-                  priceRange.currencyCode
+                  priceRangeV2.minVariantPrice.amount,
+                  priceRangeV2.currencyCode
                 )}
               </span>
             )}

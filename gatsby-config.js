@@ -2,7 +2,6 @@ const path = require('path')
 
 require('dotenv').config({
   path: `.env`
-  // path: `.env.${process.env.NODE_ENV}`
 })
 
 module.exports = {
@@ -34,16 +33,6 @@ module.exports = {
       options: {
         password: process.env.GATSBY_SHOPIFY_SHOP_PASSWORD,
         storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL
-      },
-    },
-    {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
-        instagram_id: process.env.INSTAGRAM_ID,
-        paginate: 100,
-        maxPosts: 1000,
-        hashtags: true
       },
     },
     {
