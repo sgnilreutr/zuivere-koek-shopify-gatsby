@@ -37,8 +37,6 @@ const ProductDetail = ({ product, extraDescription }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
-  console.log(product)
-
   const productImage = {
     img: product.images[0].gatsbyImageData || ``,
     alt: `${title}-featured-image` || `featured-image`,
@@ -51,12 +49,14 @@ const ProductDetail = ({ product, extraDescription }) => {
   const checkAvailability = useCallback(
     productId => {
       client.product.fetch(productId).then(fetchedProduct => {
-        // this checks the currently selected variant for availability
+        // this checks the currently selected variant for availability - if no result, allow to be sold.
+        if(fetchedProduct){
         const result = fetchedProduct.variants.filter(
           variant => variant.id === productVariant.shopifyId
         )
         if (result.length > 0) {
           setAvailable(result[0].available)
+          }
         }
       })
     },

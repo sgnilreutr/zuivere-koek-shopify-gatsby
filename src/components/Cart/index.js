@@ -29,7 +29,7 @@ const SHIPPING_FEE_TEXT = 'Exclusief verzendkosten'
 const SHIPPING_FEE_INFO_TEXT =
   'Tot en met 6 koeken betaal je €3,95 verzendkosten voor 7 koeken of meer betaal je €6,95 verzendkosten gratis verzending vanaf €40,-'
 const TOTAL_TEXT = 'Totaal winkelmand'
-const MINIMUM_ORDER = 'Minimaal order bedrag is €11.00'
+const MINIMUM_ORDER = 'Minimaal een order van 4 koeken/fudge of 1 Minibox'
 const BUTTON_TEXT = 'ik ga bestellen'
 
 const Cart = ({ pageHeaderText, sections, isLoading }) => {
@@ -62,7 +62,26 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
     <CartLoader>
       <LinearProgress />
     </CartLoader>
-  )
+    )
+  
+  const hasMinibox = checkout.lineItems.filter((item) => {
+    return /MINIBOX/gi.test(item.title)
+  })
+
+  const disabledSpecialAction = () => {
+    if (hasMinibox.length === 0 && checkout.lineItems.length > 0 && parseFloat(checkout.totalPriceV2.amount) < 11.0){
+      return true
+    }
+    if (hasMinibox.length > 0) {
+      return false
+    }
+    if (checkout.lineItems.length > 0 && parseFloat(checkout.totalPriceV2.amount) > 11.0) {
+      return false
+    }
+    if (checkout.lineItems.length === 0) {
+      return true
+    }
+  }
 
   const totalPrice = checkout.totalPrice
     ? formatPrice(checkout.totalPrice, checkout.currencyCode)
@@ -105,11 +124,10 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
             )}
             <OrderButton
               onClick={handleCheckout}
-              // disabled={
-              //   loading ||
-              //   checkout.lineItems.length === 0 ||
-              //   parseFloat(checkout.totalPriceV2.amount) < 11.0
-              // }
+              disabled={
+                loading ||
+                disabledSpecialAction()
+              }
             >
               <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
             </OrderButton>

@@ -13,9 +13,6 @@ const SingleProductPage = ({ data }) => {
   const product = data.shopifyProduct
   const extraDescription =
     data.desc && !isEmpty(data.desc) ? data.desc.description.text : ''
-  
-  console.log(data)
-  console.log(extraDescription)
 
   return (
     <Layout>
