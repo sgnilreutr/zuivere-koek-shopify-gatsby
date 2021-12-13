@@ -17,8 +17,8 @@ const ProductCard = ({ product }) => {
     handle,
     id,
     title,
-    priceRange,
-    images,
+    priceRangeV2,
+    images: [firstImage],
     description,
   } = product
   const [variant, setVariant] = useState({ ...initialVariant })
@@ -40,11 +40,13 @@ const ProductCard = ({ product }) => {
     productId => {
       client.product.fetch(productId).then(fetchedProduct => {
         // this checks the currently selected variant for availability
-        const result = fetchedProduct.variants.filter(
-          variant => variant.id === productVariant.shopifyId
-        )
-        if (result.length > 0) {
-          setAvailable(result[0].available)
+        if(fetchedProduct){
+          const result = fetchedProduct.variants.filter(
+            variant => variant.id === productVariant.shopifyId
+          )
+          if (result.length > 0) {
+            setAvailable(result[0].available)
+          }
         }
       })
     },
@@ -56,7 +58,7 @@ const ProductCard = ({ product }) => {
   }, [productVariant, checkAvailability, product.shopifyId])
 
   const productImage = {
-    img: images[0].localFile?.childImageSharp?.gatsbyImageData,
+    img: firstImage?.gatsbyImageData,
     alt: `${title}-featured-image` || `featured-image`,
   }
 
@@ -91,13 +93,13 @@ const ProductCard = ({ product }) => {
           <S.ProductInnerInfo to={`/shop/${handle}`}>
             <h4 className="product-title product-title--overview">{title}</h4>
             <S.ProductPrice>
-            {priceRange.minVariantPrice && (
+            {priceRangeV2.minVariantPrice && (
               <span
                 className="product-price--overview"
               >
                 {formatPrice(
-                  priceRange.minVariantPrice.amount,
-                  priceRange.currencyCode
+                  priceRangeV2.minVariantPrice.amount,
+                  priceRangeV2.currencyCode
                 )}
               </span>
             )}

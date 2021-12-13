@@ -27,7 +27,7 @@ const ProductDetail = ({ product, extraDescription }) => {
     title,
     variants,
     variants: [initialVariant],
-    priceRange: { minVariantPrice },
+    priceRangeV2: { minVariantPrice },
   } = product
   const { text } = extraDescription
   const [variant, setVariant] = useState({ ...initialVariant })
@@ -38,7 +38,7 @@ const ProductDetail = ({ product, extraDescription }) => {
   } = useContext(StoreContext)
 
   const productImage = {
-    img: product.images[0].localFile.childImageSharp.gatsbyImageData || ``,
+    img: product.images[0].gatsbyImageData || ``,
     alt: `${title}-featured-image` || `featured-image`,
   }
 
@@ -49,12 +49,14 @@ const ProductDetail = ({ product, extraDescription }) => {
   const checkAvailability = useCallback(
     productId => {
       client.product.fetch(productId).then(fetchedProduct => {
-        // this checks the currently selected variant for availability
+        // this checks the currently selected variant for availability - if no result, allow to be sold.
+        if(fetchedProduct){
         const result = fetchedProduct.variants.filter(
           variant => variant.id === productVariant.shopifyId
         )
         if (result.length > 0) {
           setAvailable(result[0].available)
+          }
         }
       })
     },
@@ -102,10 +104,10 @@ const ProductDetail = ({ product, extraDescription }) => {
     }
   }
 
-  const variantPrice = product.priceRange
+  const variantPrice = product.priceRangeV2
     ? formatPrice(
-        product.priceRange.minVariantPrice.amount,
-        product.priceRange.minVariantPrice.currencyCode
+        product.priceRangeV2.minVariantPrice.amount,
+        product.priceRangeV2.minVariantPrice.currencyCode
       )
     : null
 

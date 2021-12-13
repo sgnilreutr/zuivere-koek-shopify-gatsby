@@ -8,7 +8,7 @@ const singleProductTemplate = require.resolve(
 // Get all the product data.
 const GET_ALL_PRODUCTS = `
 query GET_ALL_PRODUCTS {
-  products: allShopifyProduct(filter: {availableForSale: {eq: true}}) {
+  products: allShopifyProduct(filter: {status: {eq: "ACTIVE"}}) {
     edges {
       node {
         title

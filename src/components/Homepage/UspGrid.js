@@ -12,12 +12,13 @@ import {
 
 const Uspgrid = ({ content }) => {
   const { name, columns } = content[0]
+  console.log(content)
 
   const GridImage = ({ image, alt }) => {
     return image && alt ? (
       <CellImage>
         <GatsbyImage
-          image={image.localFile.childImageSharp.gatsbyImageData}
+          image={image?.localFile?.childImageSharp?.gatsbyImageData}
           alt={alt}
           className="usp-image--small"
         />

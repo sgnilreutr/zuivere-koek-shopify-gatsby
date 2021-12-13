@@ -8,8 +8,8 @@ const Products = () => {
     <StaticQuery
       query={graphql`
         query Products {
-          allProducts: allShopifyProduct(
-            filter: { availableForSale: { eq: true } }
+            allProducts: allShopifyProduct(
+            filter: {status: {eq: "ACTIVE"}}
             sort: {fields: variants___price, order: DESC}
           ) {
             edges {
@@ -17,16 +17,12 @@ const Products = () => {
                 id
                 title
                 handle
-                availableForSale
+                status
                 description
                 descriptionHtml
                 shopifyId
                 images {
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
-                  }
+                  gatsbyImageData
                 }
                 variants {
                   id
@@ -39,7 +35,7 @@ const Products = () => {
                     value
                   }
                 }
-                priceRange {
+                priceRangeV2 {
                   maxVariantPrice {
                     amount
                     currencyCode
@@ -57,8 +53,8 @@ const Products = () => {
       render={({ allProducts }) => {
         const products = allProducts.edges
 
-        const boxItem = products.filter((product) => product.node.priceRange.maxVariantPrice.amount > 14)
-        const restItems = products.filter((product) => product.node.priceRange.maxVariantPrice.amount < 10)
+        const boxItem = products.filter((product) => product.node.priceRangeV2.maxVariantPrice.amount > 14)
+        const restItems = products.filter((product) => product.node.priceRangeV2.maxVariantPrice.amount < 10)
         const allProductsResorted = boxItem.concat(restItems)
 
         return (
