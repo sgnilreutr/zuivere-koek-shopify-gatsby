@@ -10,6 +10,7 @@ import {
   NavWrapper,
 } from './headerStyles'
 import Uspheader from './UspHeader'
+import SnowParticles from '../Particles/snowParticles'
 
 const Header = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = React.useState(false)
@@ -19,6 +20,8 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
+    <>
+      <SnowParticles />
     <HeaderWrapper>
       <NavWrapper>
         <NavContainer>
@@ -32,7 +35,8 @@ const Header = ({ siteTitle }) => {
         </NavContainer>
       </NavWrapper>
       <Uspheader />
-    </HeaderWrapper>
+      </HeaderWrapper>
+      </>
   )
 }
 

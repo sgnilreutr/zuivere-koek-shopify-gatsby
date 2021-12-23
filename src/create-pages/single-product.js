@@ -2,8 +2,6 @@ const { slash } = require(`gatsby-core-utils`)
 const singleProductTemplate = require.resolve(
   `../templates/single-product/index.js`
 )
-// const { ImageFragment } = require('./fragments/image/index.js');
-// const { SeoFragment } = require('./fragments/seo/index.js');
 
 // Get all the product data.
 const GET_ALL_PRODUCTS = `

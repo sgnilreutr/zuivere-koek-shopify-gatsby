@@ -1,7 +1,5 @@
 const { slash } = require(`gatsby-core-utils`)
 const shopPageTemplate = require.resolve(`../templates/shop/index.js`)
-// const { ImageFragment } = require('./fragments/image/index.js');
-// const { SeoFragment } = require('./fragments/seo/index.js');
 
 // Get all the shop page data.
 const GET_SHOP_PAGE = `
