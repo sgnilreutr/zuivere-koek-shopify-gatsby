@@ -1,7 +1,5 @@
 const { slash } = require(`gatsby-core-utils`)
 const termsPageTemplate = require.resolve(`../templates/terms/index.js`)
-// const { ImageFragment } = require('./fragments/image/index.js');
-// const { SeoFragment } = require('./fragments/seo/index.js');
 
 // Get all the Terms and Conditions page data.
 const GET_TERMS_PAGE = `

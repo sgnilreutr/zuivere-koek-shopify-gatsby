@@ -2,8 +2,6 @@ const { slash } = require(`gatsby-core-utils`)
 // const customTemplatesUris = [ '/'  ];
 const customTemplateSlugs = ['/', 'cart']
 const singlePageTemplate = require.resolve(`../templates/single-page/index.js`)
-// const { ImageFragment } = require('./fragments/image/index');
-// const { SeoFragment } = require('./fragments/seo/index.js');
 
 // Get all the pages.
 const GET_PAGES = `

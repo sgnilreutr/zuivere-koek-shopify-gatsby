@@ -1,7 +1,5 @@
 const { slash } = require(`gatsby-core-utils`)
 const frontPageTemplate = require.resolve(`../templates/front-page/index.js`)
-// const { ImageFragment } = require('./fragments/image/index.js');
-// const { SeoFragment } = require('./fragments/seo/index.js');
 
 // Get all the front page data.
 const GET_FRONT_PAGE = `
@@ -102,52 +100,3 @@ module.exports = async ({ actions, graphql }) => {
     })
   })
 }
-
-// query GET_FRONT_PAGE {
-//   page: contentfulHomepage {
-//     heroHeader
-//     reasonHeader
-//     introductionHeader
-//     hero {
-//       gatsbyImageData
-//     }
-//     duurzaamBody
-//     duurzaamHeader
-//     duurzaamImage {
-//       gatsbyImageData
-//     }
-//     lowImpactBody
-//     lowImpactHeader
-//     lowImpactImage {
-//       gatsbyImageData
-//     }
-//     metLiefdeBody
-//     metLiefdeHeader
-//     metLiefdeImage {
-//       gatsbyImageData
-//     }
-//     opBestellingBody
-//     opBestellingHeader
-//     opBestellingImage {
-//       gatsbyImageData
-//     }
-//     socialHeader
-//     timEnRuthHeader
-//     transparantBody
-//     transparantHeader
-//     transparantImage {
-//       gatsbyImageData
-//     }
-//     usp1body
-//     usp1header
-//     usp2body
-//     usp2header
-//     usp3body
-//     usp3header
-//     verassingBody
-//     verassingHeader
-//     verassingImage {
-//       gatsbyImageData
-//     }
-//   }
-// }
