@@ -21,7 +21,7 @@
     "gatsby-transformer-sharp": "^4.3.0",
     "html-react-parser": "^1.2.4",
     "isomorphic-fetch": "^3.0.0",
-    "js-yaml": "^4.0.0",
+    "js-yaml": "^4.1.0",
     "prop-types": "^15.7.2",
     "querystringify": "^2.2.0",
     "react": "^17.0.2",
