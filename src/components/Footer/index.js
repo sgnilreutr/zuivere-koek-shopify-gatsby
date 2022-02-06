@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import parse from 'html-react-parser'
+import React from "react"
+import ReactMarkdown from "react-markdown"
+import parse from "html-react-parser"
 import {
   FooterContainer,
   FooterWrapper,
@@ -9,9 +9,9 @@ import {
   MenuWrapper,
   PoweredByFooter,
   RightFooter,
-} from './footerStyles'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+} from "./footerStyles"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Footer = () => {
   const FooterData = useStaticQuery(graphql`
@@ -38,7 +38,7 @@ const Footer = () => {
 
   const footerImage = {
     img: logo.localFile?.childImageSharp?.gatsbyImageData,
-    alt: 'Zuiver&Koek',
+    alt: "Zuiver&Koek",
   }
 
   const menu =
@@ -61,7 +61,7 @@ const Footer = () => {
           />
         </Link>
         <LeftFooter>
-          <ReactMarkdown style={{ color: 'white' }}>
+          <ReactMarkdown style={{ color: "white" }}>
             {footerDetailsLeft.footerDetailsLeft}
           </ReactMarkdown>
         </LeftFooter>

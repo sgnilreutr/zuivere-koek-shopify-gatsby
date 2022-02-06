@@ -1,5 +1,5 @@
-import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import React from "react"
+import { GatsbyImage } from "gatsby-plugin-image"
 import {
   DiscoverButton,
   DiscoverContainer,
@@ -8,7 +8,7 @@ import {
   NewsInnerContainer,
   NoIpad,
   ProductPhoto,
-} from './DiscoverStyles'
+} from "./DiscoverStyles"
 
 const Discover = ({ content }) => {
   const { name, subname, columns } = content[0]
@@ -45,7 +45,7 @@ const Discover = ({ content }) => {
   return (
     <>
       <DiscoverContainer>
-        <h2 className="page-title" style={{ margin: '1rem 0 1.38rem' }}>
+        <h2 className="page-title" style={{ margin: "1rem 0 1.38rem" }}>
           {name} <br />
           <span>{subname}</span>
         </h2>

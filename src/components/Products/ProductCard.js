@@ -1,13 +1,13 @@
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
-import React, { useCallback, useContext, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import { IoCartOutline } from 'react-icons/io5'
-import { formatPrice } from '../../utils'
-import * as S from './ProductCardStyles'
-import StoreContext from '~/context/StoreContext'
-import { toast } from 'react-toastify'
-import * as global from '../../constants/globalConstants'
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import React, { useCallback, useContext, useEffect, useState } from "react"
+import PropTypes from "prop-types"
+import { Link } from "gatsby"
+import { IoCartOutline } from "react-icons/io5"
+import { formatPrice } from "../../utils"
+import * as S from "./ProductCardStyles"
+import StoreContext from "~/context/StoreContext"
+import { toast } from "react-toastify"
+import * as global from "../../constants/globalConstants"
 
 const ProductCard = ({ product }) => {
   const {
@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(false)
 
   const QUICKBUY_QTY = 1
-  const TOASTER_TEXT = 'is toegevoegd aan je winkelmand.'
+  const TOASTER_TEXT = "is toegevoegd aan je winkelmand."
 
   const {
     addVariantToCart,
@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
     productId => {
       client.product.fetch(productId).then(fetchedProduct => {
         // this checks the currently selected variant for availability
-        if(fetchedProduct){
+        if (fetchedProduct) {
           const result = fetchedProduct.variants.filter(
             variant => variant.id === productVariant.shopifyId
           )
@@ -93,17 +93,18 @@ const ProductCard = ({ product }) => {
           <S.ProductInnerInfo to={`/shop/${handle}`}>
             <h4 className="product-title product-title--overview">{title}</h4>
             <S.ProductPrice>
-            {priceRangeV2.minVariantPrice && (
-              <span
-                className="product-price--overview"
-              >
-                {formatPrice(
-                  priceRangeV2.minVariantPrice.amount,
-                  priceRangeV2.currencyCode
-                )}
+              {priceRangeV2.minVariantPrice && (
+                <span className="product-price--overview">
+                  {formatPrice(
+                    priceRangeV2.minVariantPrice.amount,
+                    priceRangeV2.currencyCode
+                  )}
+                </span>
+              )}
+              <span className="product-price--overview-details">
+                {" "}
+                {global.PER_UNIT}
               </span>
-            )}
-            <span className="product-price--overview-details"> {global.PER_UNIT}</span>
             </S.ProductPrice>
           </S.ProductInnerInfo>
           <S.AddToCartButton

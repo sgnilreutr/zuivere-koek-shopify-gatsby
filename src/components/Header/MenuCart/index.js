@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import { MenuItem } from '../Menu/MenuStyles'
-import { IoCartOutline } from 'react-icons/io5'
-import Badge from '@material-ui/core/Badge'
-import StoreContext from '~/context/StoreContext'
-import reduce from 'lodash/reduce'
+import React, { useContext } from "react"
+import { MenuItem } from "../Menu/MenuStyles"
+import { IoCartOutline } from "react-icons/io5"
+import Badge from "@material-ui/core/Badge"
+import StoreContext from "~/context/StoreContext"
+import reduce from "lodash/reduce"
 
 const useQuantity = () => {
   const {
@@ -14,7 +14,7 @@ const useQuantity = () => {
   return [total !== 0, total]
 }
 
-const CART_URL = '/cart'
+const CART_URL = "/cart"
 
 const MenuCart = () => {
   const [hasItems, quantity] = useQuantity()

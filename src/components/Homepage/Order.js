@@ -1,13 +1,13 @@
-import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { ERROR_MESSAGE } from '../../utils'
+import React from "react"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { ERROR_MESSAGE } from "../../utils"
 import {
   CellImage,
   CellText,
   DataCell,
   Grid,
   OrderWrapper,
-} from './OrderStyles'
+} from "./OrderStyles"
 
 const Order = ({ content }) => {
   const { name, columns } = content[0]
@@ -29,7 +29,7 @@ const Order = ({ content }) => {
         <DataCell key={index}>
           <GridImage image={item.uspImage} alt={item.title} />
           <CellText>
-            <h5 className="order-body--header">{item.title}</h5> <br />{' '}
+            <h5 className="order-body--header">{item.title}</h5> <br />{" "}
             <p className="usp-body text_small">{item.text.text}</p>
           </CellText>
         </DataCell>

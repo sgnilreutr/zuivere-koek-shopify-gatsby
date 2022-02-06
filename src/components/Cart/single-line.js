@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
-import StoreContext from '~/context/StoreContext'
-import { Link } from 'gatsby'
-import { formatPrice } from '../../utils'
-import { IoTrashOutline } from 'react-icons/io5'
+import React, { useContext, useState } from "react"
+import StoreContext from "~/context/StoreContext"
+import { Link } from "gatsby"
+import { formatPrice } from "../../utils"
+import { IoTrashOutline } from "react-icons/io5"
 import {
   Delete,
   NameContainer,
@@ -11,7 +11,7 @@ import {
   QtyAdjust,
   QtyAdjustContainer,
   QtyDeleteContainer,
-} from './cartStyles'
+} from "./cartStyles"
 
 const SingleLine = ({ product }) => {
   const {

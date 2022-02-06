@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 export const ProductCardWrapper = styled.div`
   width: 340px;
@@ -45,7 +45,7 @@ export const ProductInfoContainer = styled(Link)`
     }
   }
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import { FiX } from 'react-icons/fi'
+import React from "react"
+import { Link } from "gatsby"
+import { FiX } from "react-icons/fi"
 // import logo from '../../images/Logo_white.png'
 import {
   CloseIcon,
@@ -12,14 +12,14 @@ import {
   MenuWrapper,
   MobileMenu,
   Overlay,
-} from './SidebarStyles'
+} from "./SidebarStyles"
 
 const Sidebar = ({ showMenu, toggleMenu }) => {
   const MenuOptions = [
-    { link: '/shop', name: 'Shop' },
-    { link: '/over-ons', name: 'Over ons' },
-    { link: '/faq', name: 'FAQ' },
-    { link: '/contact', name: 'Contact' },
+    { link: "/shop", name: "Shop" },
+    { link: "/over-ons", name: "Over ons" },
+    { link: "/faq", name: "FAQ" },
+    { link: "/contact", name: "Contact" },
   ]
 
   return (
@@ -30,21 +30,21 @@ const Sidebar = ({ showMenu, toggleMenu }) => {
             <Logo src={logo} width={158} />
           </Link> */}
           <CloseIcon onClick={toggleMenu}>
-            <FiX size={34} style={{ color: 'white', marginRight: '1rem' }} />
+            <FiX size={34} style={{ color: "white", marginRight: "1rem" }} />
           </CloseIcon>
         </LogoIcon>
         <MenuInnerContainer>
           {MenuOptions.map((menuItem, i) => {
             const path = menuItem.link
 
-            const itemId = 'menu-item-' + menuItem.link.replace(/^\/|\/$/g, '')
+            const itemId = "menu-item-" + menuItem.link.replace(/^\/|\/$/g, "")
 
             return (
               <MenuItem
                 id={itemId}
                 key={i + menuItem.link}
                 className={
-                  'menu-item menu-item-type-custom menu-item-object-custom menu-item-home ' +
+                  "menu-item menu-item-type-custom menu-item-object-custom menu-item-home " +
                   itemId
                 }
               >
@@ -57,7 +57,7 @@ const Sidebar = ({ showMenu, toggleMenu }) => {
                   // }}
                   to={path}
                   activeClassName={
-                    'current-menu-item current_page_item small-letters'
+                    "current-menu-item current_page_item small-letters"
                   }
                 >
                   {menuItem.name}

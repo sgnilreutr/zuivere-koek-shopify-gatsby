@@ -1,8 +1,8 @@
-import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { ERROR_MESSAGE } from '../../utils'
-import { ImageWrapper, Paragraph, Wrapper } from './landingStyles'
-import ReactMarkdown from 'react-markdown'
+import React from "react"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { ERROR_MESSAGE } from "../../utils"
+import { ImageWrapper, Paragraph, Wrapper } from "./landingStyles"
+import ReactMarkdown from "react-markdown"
 
 const LandingPage = ({ page }) => {
   const ContentCreator = ({ content }) => {

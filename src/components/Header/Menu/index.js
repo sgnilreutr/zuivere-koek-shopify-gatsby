@@ -1,6 +1,6 @@
-import React from 'react'
-import MenuCart from '../MenuCart'
-import { FiMenu } from 'react-icons/fi'
+import React from "react"
+import MenuCart from "../MenuCart"
+import { FiMenu } from "react-icons/fi"
 import {
   DesktopWrapper,
   InnerMenuWrapper,
@@ -8,14 +8,14 @@ import {
   MenuWrapper,
   NoLinkMenuItem,
   OpenIcon,
-} from './MenuStyles'
+} from "./MenuStyles"
 
 const Menu = ({ toggleMenu }) => {
   const MenuOptions = [
-    { link: '/shop', name: 'Shop' },
-    { link: '/over-ons', name: 'Over ons' },
-    { link: '/faq', name: 'FAQ' },
-    { link: '/contact', name: 'Contact' },
+    { link: "/shop", name: "Shop" },
+    { link: "/over-ons", name: "Over ons" },
+    { link: "/faq", name: "FAQ" },
+    { link: "/contact", name: "Contact" },
   ]
 
   return (

@@ -1,12 +1,12 @@
-import DOMPurify from 'dompurify'
+import DOMPurify from "dompurify"
 
-export const ERROR_MESSAGE = 'Er is iets mis gegaan'
+export const ERROR_MESSAGE = "Er is iets mis gegaan"
 
 export const formatPrice = (amount, currencyCode) => {
   let numberFormat = new Intl.NumberFormat(undefined, {
-    style: 'currency',
-    currency: currencyCode ? currencyCode : 'EUR',
-    currencyDisplay: 'symbol',
+    style: "currency",
+    currency: currencyCode ? currencyCode : "EUR",
+    currencyDisplay: "symbol",
   })
   return numberFormat.format(amount)
 }

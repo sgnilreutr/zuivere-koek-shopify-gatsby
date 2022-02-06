@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 export const DiscoverContainer = styled.div`
   /* background-color: hsl(358, 71%, 91%); */
@@ -75,6 +75,6 @@ export const DiscoverButton = styled(Link)`
   span {
     color: #f8d8d9;
     text-decoration: none;
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
   }
 `

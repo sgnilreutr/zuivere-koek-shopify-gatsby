@@ -1,8 +1,8 @@
-import React from 'react'
-import Layout from '../../components/layout'
-import SEO from '../../components/seo'
-import LandingPage from '../../components/Landing'
-import Hero from '../../components/Landing/Hero'
+import React from "react"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
+import LandingPage from "../../components/Landing"
+import Hero from "../../components/Landing/Hero"
 
 const TermsPage = props => {
   const {

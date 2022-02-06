@@ -1,6 +1,6 @@
 const { slash } = require(`gatsby-core-utils`)
 // const customTemplatesUris = [ '/'  ];
-const customTemplateSlugs = ['/', 'cart']
+const customTemplateSlugs = ["/", "cart"]
 const singlePageTemplate = require.resolve(`../templates/single-page/index.js`)
 
 // Get all the pages.
