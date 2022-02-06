@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 export const LogoIcon = styled.div`
   display: flex;
@@ -34,8 +34,8 @@ export const MobileMenu = styled.aside`
   align-items: center;
   left: 0;
   transition: 0.3s ease-in-out;
-  opacity: ${({ showMenu }) => (showMenu ? '100%' : '0')};
-  top: ${({ showMenu }) => (showMenu ? '0' : '-100%')};
+  opacity: ${({ showMenu }) => (showMenu ? "100%" : "0")};
+  top: ${({ showMenu }) => (showMenu ? "0" : "-100%")};
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 5px;
@@ -46,7 +46,7 @@ export const MobileMenu = styled.aside`
 export const Overlay = styled.div`
   background: black;
   width: 100%;
-  height: ${({ showMenu }) => (showMenu ? '100%' : '0')};
+  height: ${({ showMenu }) => (showMenu ? "100%" : "0")};
   position: fixed;
   z-index: -1;
   left: 0;

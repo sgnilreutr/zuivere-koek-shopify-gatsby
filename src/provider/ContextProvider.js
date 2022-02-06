@@ -1,9 +1,9 @@
-import fetch from 'isomorphic-fetch'
-import React, { useState, useEffect, useRef } from 'react'
+import fetch from "isomorphic-fetch"
+import React, { useState, useEffect, useRef } from "react"
 // import Client from 'shopify-buy'
-import Client from 'shopify-buy/index.unoptimized.umd'
+import Client from "shopify-buy/index.unoptimized.umd"
 
-import Context from '../context/StoreContext'
+import Context from "../context/StoreContext"
 
 const client = Client.buildClient(
   {
@@ -17,7 +17,7 @@ const ContextProvider = ({ children }) => {
   let initialStoreState = {
     client,
     adding: false,
-    checkout: { lineItems: [], customAttributes: { note: '' } },
+    checkout: { lineItems: [], customAttributes: { note: "" } },
     products: [],
     shop: {},
   }
@@ -28,14 +28,14 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     const initializeCheckout = async () => {
       // Check for an existing cart.
-      const isBrowser = typeof window !== 'undefined'
+      const isBrowser = typeof window !== "undefined"
       const existingCheckoutID = isBrowser
-        ? localStorage.getItem('shopify_checkout_id')
+        ? localStorage.getItem("shopify_checkout_id")
         : null
 
       const setCheckoutInState = checkout => {
         if (isBrowser) {
-          localStorage.setItem('shopify_checkout_id', checkout.id)
+          localStorage.setItem("shopify_checkout_id", checkout.id)
         }
 
         updateStore(prevState => {
@@ -55,7 +55,7 @@ const ContextProvider = ({ children }) => {
             return
           }
         } catch (e) {
-          localStorage.setItem('shopify_checkout_id', null)
+          localStorage.setItem("shopify_checkout_id", null)
         }
       }
 
@@ -77,8 +77,8 @@ const ContextProvider = ({ children }) => {
       value={{
         store,
         addVariantToCart: async (variantId, quantity) => {
-          if (variantId === '' || !quantity) {
-            console.error('Both a size and quantity are required.')
+          if (variantId === "" || !quantity) {
+            console.error("Both a size and quantity are required.")
             return
           }
 
@@ -125,7 +125,7 @@ const ContextProvider = ({ children }) => {
         },
         addNote: (client, checkoutID, note) => {
           const input = {
-            customAttributes: [{ key: 'cart_note', value: note }],
+            customAttributes: [{ key: "cart_note", value: note }],
           }
 
           return client.checkout

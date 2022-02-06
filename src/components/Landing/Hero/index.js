@@ -1,7 +1,7 @@
-import React from 'react'
-import { ERROR_MESSAGE } from '../../../utils'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { HeaderTextContainer } from '../../../styles/globalStyles'
+import React from "react"
+import { ERROR_MESSAGE } from "../../../utils"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { HeaderTextContainer } from "../../../styles/globalStyles"
 
 const LandingPageHero = ({ hero }) => {
   const { title, pageHeaderText, pageHeaderSubtext, header_image } = hero

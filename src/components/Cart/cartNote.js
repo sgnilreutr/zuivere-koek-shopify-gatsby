@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react'
-import StoreContext from '~/context/StoreContext'
-import { useForm } from 'react-hook-form'
-import { ConfirmMessage, NoteButton, NoteField } from './cartStyles'
-import { FiCheck } from 'react-icons/fi'
+import React, { useContext, useState } from "react"
+import StoreContext from "~/context/StoreContext"
+import { useForm } from "react-hook-form"
+import { ConfirmMessage, NoteButton, NoteField } from "./cartStyles"
+import { FiCheck } from "react-icons/fi"
 
-const NOTE_HEADER = 'Bestel je een wenskaart?'
+const NOTE_HEADER = "Bestel je een wenskaart?"
 const NOTE_INSTRUCTIONS =
-  'Wil je dat wij er iets voor je opzetten? Laat dan hier je bericht achter.'
-const CONFIRM_NOTE = 'Bevestig opmerking'
-const CONFIRM_MESSAGE = 'Opgeslagen'
+  "Wil je dat wij er iets voor je opzetten? Laat dan hier je bericht achter."
+const CONFIRM_NOTE = "Bevestig opmerking"
+const CONFIRM_MESSAGE = "Opgeslagen"
 
 const Cardnote = () => {
   const [success, setSuccess] = useState(false)
@@ -21,7 +21,7 @@ const Cardnote = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onBlur' })
+  } = useForm({ mode: "onBlur" })
   const onSubmit = data => {
     addNote(client, checkout.id, data.Opmerking)
     setSuccess(true)
@@ -36,12 +36,12 @@ const Cardnote = () => {
       <small className="landingpage-p">{NOTE_INSTRUCTIONS}</small>
       <NoteField onSubmit={handleSubmit(onSubmit)}>
         <textarea
-          style={{ maxWidth: '85%' }}
-          {...register('Opmerking', { required: true, min: 1 })}
+          style={{ maxWidth: "85%" }}
+          {...register("Opmerking", { required: true, min: 1 })}
           defaultValue={
             checkout && checkout.customAttributes.length > 0
               ? checkout.customAttributes[0].value
-              : ''
+              : ""
           }
         />
         <NoteButton type="submit">

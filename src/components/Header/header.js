@@ -1,16 +1,15 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import Menu from './Menu'
-import Sidebar from './Sidebar'
+import * as React from "react"
+import PropTypes from "prop-types"
+import { Link } from "gatsby"
+import Menu from "./Menu"
+import Sidebar from "./Sidebar"
 import {
   HeaderWrapper,
   LogoContainer,
   NavContainer,
   NavWrapper,
-} from './headerStyles'
-import Uspheader from './UspHeader'
-import SnowParticles from '../Particles/snowParticles'
+} from "./headerStyles"
+import Uspheader from "./UspHeader"
 
 const Header = ({ siteTitle }) => {
   const [showMenu, setShowMenu] = React.useState(false)
@@ -20,13 +19,11 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
-    <>
-      <SnowParticles />
     <HeaderWrapper>
       <NavWrapper>
         <NavContainer>
           <LogoContainer>
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to="/" style={{ textDecoration: "none" }}>
               <h2 className="site-title">{siteTitle}</h2>
             </Link>
           </LogoContainer>
@@ -35,8 +32,7 @@ const Header = ({ siteTitle }) => {
         </NavContainer>
       </NavWrapper>
       <Uspheader />
-      </HeaderWrapper>
-      </>
+    </HeaderWrapper>
   )
 }
 

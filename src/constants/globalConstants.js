@@ -1,1 +1,1 @@
-export const PER_UNIT = 'per stuk'
+export const PER_UNIT = "per stuk"

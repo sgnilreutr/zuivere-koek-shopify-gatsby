@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled"
 
 export const UspContainer = styled.div`
   @media only screen and (max-width: 767px) {

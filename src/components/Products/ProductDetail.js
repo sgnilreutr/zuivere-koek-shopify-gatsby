@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react'
-import StoreContext from '~/context/StoreContext'
-import find from 'lodash/find'
-import ReactMarkdown from 'react-markdown'
-import isEqual from 'lodash/isEqual'
-import isEmpty from 'lodash/isEmpty'
-import { formatPrice, sanitize } from '../../utils/index'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import parse from 'html-react-parser'
-import { IoCartOutline } from 'react-icons/io5'
+import React, { useState, useContext, useEffect, useCallback } from "react"
+import StoreContext from "~/context/StoreContext"
+import find from "lodash/find"
+import ReactMarkdown from "react-markdown"
+import isEqual from "lodash/isEqual"
+import isEmpty from "lodash/isEmpty"
+import { formatPrice, sanitize } from "../../utils/index"
+import { GatsbyImage } from "gatsby-plugin-image"
+import parse from "html-react-parser"
+import { IoCartOutline } from "react-icons/io5"
 import {
   AddToCart,
   AddToCartButton,
@@ -18,8 +18,8 @@ import {
   ProductDesc,
   QtyAdjust,
   QtyAdjustContainer,
-} from './ProductDetailStyles'
-import * as global from '../../constants/globalConstants'
+} from "./ProductDetailStyles"
+import * as global from "../../constants/globalConstants"
 
 const ProductDetail = ({ product, extraDescription }) => {
   const {
@@ -50,12 +50,12 @@ const ProductDetail = ({ product, extraDescription }) => {
     productId => {
       client.product.fetch(productId).then(fetchedProduct => {
         // this checks the currently selected variant for availability - if no result, allow to be sold.
-        if(fetchedProduct){
-        const result = fetchedProduct.variants.filter(
-          variant => variant.id === productVariant.shopifyId
-        )
-        if (result.length > 0) {
-          setAvailable(result[0].available)
+        if (fetchedProduct) {
+          const result = fetchedProduct.variants.filter(
+            variant => variant.id === productVariant.shopifyId
+          )
+          if (result.length > 0) {
+            setAvailable(result[0].available)
           }
         }
       })
@@ -117,13 +117,15 @@ const ProductDetail = ({ product, extraDescription }) => {
         <ProductImage>{displayProductImages()}</ProductImage>
         <ProductDesc>
           <div style={{ textAlign: `center` }}>
-            <h3 className="product-title">{product.title ? title : ''}</h3>
+            <h3 className="product-title">{product.title ? title : ""}</h3>
             {!isEmpty(product.description) ? (
               <p className="landingpage-p">{parse(product.description)}</p>
             ) : null}
             <AddToCart>
               <h4 className="product-price--detail">{variantPrice}</h4>
-              <span className="product-price--detail-details">{global.PER_UNIT}</span>
+              <span className="product-price--detail-details">
+                {global.PER_UNIT}
+              </span>
               <QtyAdjustContainer>
                 <QtyAdjust onClick={subtractQuantityItem}>
                   <span className="qty-controls--cart">-</span>

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled"
 
 export const HeaderWrapper = styled.header`
   background-color: hsl(234, 47%, 31%);

@@ -1,7 +1,7 @@
-import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import ReactMarkdown from 'react-markdown'
-import { Wrapper } from './UspHeaderStyles'
+import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import ReactMarkdown from "react-markdown"
+import { Wrapper } from "./UspHeaderStyles"
 
 const Uspheader = () => {
   const { header } = useStaticQuery(graphql`

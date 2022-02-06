@@ -1,17 +1,18 @@
-import React from 'react'
-import Layout from '../../components/layout'
-import { ERROR_MESSAGE } from '../../utils'
-import { GoToShopButton, HeroGrid } from '../../components/Homepage/HeroStyles'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import SEO from '../../components/seo'
-import Uspgrid from '../../components/Homepage/UspGrid'
-import Discover from '../../components/Homepage/Discover'
-import People from '../../components/Homepage/People'
-import Order from '../../components/Homepage/Order'
+import React from "react"
+import Layout from "../../components/layout"
+import { ERROR_MESSAGE } from "../../utils"
+import { GoToShopButton, HeroGrid } from "../../components/Homepage/HeroStyles"
+import { GatsbyImage } from "gatsby-plugin-image"
+import SEO from "../../components/seo"
+import Uspgrid from "../../components/Homepage/UspGrid"
+import Discover from "../../components/Homepage/Discover"
+import People from "../../components/Homepage/People"
+import Order from "../../components/Homepage/Order"
 // import Instagram from '../../components/SocialFeed/Instagram'
 
 const SEO_TITLE = "De allerlekkerste VEGAN brievenbuskoeken"
-const SEO_DESCRIPTION = "100% plantaardig, zonder plastic verpakking en met oog op duurzaamheid geproduceerd. Oh, en ongekend lekker natuurlijk!"
+const SEO_DESCRIPTION =
+  "100% plantaardig, zonder plastic verpakking en met oog op duurzaamheid geproduceerd. Oh, en ongekend lekker natuurlijk!"
 
 const Homepage = props => {
   const {
@@ -24,34 +25,33 @@ const Homepage = props => {
     },
   } = props
 
-  const DISCOVER_BLOCK_TITLE = 'ontdek onze'
+  const DISCOVER_BLOCK_TITLE = "ontdek onze"
   const DiscoverBlockData = sections.filter(
     item => item.name === DISCOVER_BLOCK_TITLE
   )
 
-  const USP_BLOCK_TITLE = 'waarom zuiver&koek?'
+  const USP_BLOCK_TITLE = "waarom zuiver&koek?"
   const UspGridData = sections.filter(item => item.name === USP_BLOCK_TITLE)
 
-  const PEOPLE_BLOCK_TITLE = 'Tim & Ruth'
+  const PEOPLE_BLOCK_TITLE = "Tim & Ruth"
   const PeopleBlockData = sections.filter(
     item => item.name === PEOPLE_BLOCK_TITLE
   )
 
-  const ORDER_BLOCK_TITLE = 'bestellen & genieten'
+  const ORDER_BLOCK_TITLE = "bestellen & genieten"
   const OrderBlockData = sections.filter(
     item => item.name === ORDER_BLOCK_TITLE
   )
 
   const heroImageFile = {
-    img:
-      props.pageContext.page.hero?.image.localFile.childImageSharp
-        .gatsbyImageData,
-    alt: 'hero-image',
+    img: props.pageContext.page.hero?.image.localFile.childImageSharp
+      .gatsbyImageData,
+    alt: "hero-image",
   }
 
   return (
     <Layout>
-      <SEO title={SEO_TITLE} description={SEO_DESCRIPTION}/>
+      <SEO title={SEO_TITLE} description={SEO_DESCRIPTION} />
       {props.pageContext.page ? (
         <>
           <div className="full-bleed">

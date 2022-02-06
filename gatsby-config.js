@@ -1,7 +1,7 @@
-const path = require('path')
+const path = require("path")
 
-require('dotenv').config({
-  path: `.env`
+require("dotenv").config({
+  path: `.env`,
 })
 
 module.exports = {
@@ -22,6 +22,12 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint: 'https://zuiverekoek-shop.us1.list-manage.com/subscribe/post?u=adb87ce77fd939daff2cc9ff2&amp;id=afa1b2b93f'
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -32,13 +38,13 @@ module.exports = {
       resolve: `gatsby-source-shopify`,
       options: {
         password: process.env.GATSBY_SHOPIFY_SHOP_PASSWORD,
-        storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL
+        storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
       },
     },
     {
-      resolve: 'gatsby-plugin-root-import',
+      resolve: "gatsby-plugin-root-import",
       options: {
-        '~': path.join(__dirname, 'src/'),
+        "~": path.join(__dirname, "src/"),
       },
     },
     `gatsby-transformer-sharp`,

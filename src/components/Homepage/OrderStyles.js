@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled"
 
 export const OrderWrapper = styled.div`
   background-color: hsl(354, 90%, 88%);

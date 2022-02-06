@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react'
-import StoreContext from '~/context/StoreContext'
-import { MdInfoOutline } from 'react-icons/md'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import SingleLine from './single-line'
-import { formatPrice } from '../../utils'
+import React, { useContext, useState } from "react"
+import StoreContext from "~/context/StoreContext"
+import { MdInfoOutline } from "react-icons/md"
+import LinearProgress from "@material-ui/core/LinearProgress"
+import SingleLine from "./single-line"
+import { formatPrice } from "../../utils"
 import {
   CartBottomGrid,
   CartInner,
@@ -18,19 +18,19 @@ import {
   Shipping,
   Total,
   TotalAndButton,
-} from './cartStyles'
-import Cartnote from './cartNote'
-import ReactMarkdown from 'react-markdown'
+} from "./cartStyles"
+import Cartnote from "./cartNote"
+import ReactMarkdown from "react-markdown"
 
-const NO_ITEMS = 'Nog geen items in winkelmandje'
-const BACK_TO_SHOP = 'Ga naar Shop'
+const NO_ITEMS = "Nog geen items in winkelmandje"
+const BACK_TO_SHOP = "Ga naar Shop"
 // const SHIPPING_TEXT = 'Verzendkosten'
-const SHIPPING_FEE_TEXT = 'Exclusief verzendkosten'
+const SHIPPING_FEE_TEXT = "Exclusief verzendkosten"
 const SHIPPING_FEE_INFO_TEXT =
-  'Tot en met 6 koeken betaal je €3,95 verzendkosten voor 7 koeken of meer betaal je €6,95 verzendkosten gratis verzending vanaf €40,-'
-const TOTAL_TEXT = 'Totaal winkelmand'
-const MINIMUM_ORDER = 'Minimaal een order van 4 koeken/fudge of 1 Minibox'
-const BUTTON_TEXT = 'ik ga bestellen'
+  "Tot en met 6 koeken betaal je €3,95 verzendkosten voor 7 koeken of meer betaal je €6,95 verzendkosten gratis verzending vanaf €40,-"
+const TOTAL_TEXT = "Totaal winkelmand"
+const MINIMUM_ORDER = "Minimaal een order van 4 koeken/fudge of 1 Minibox"
+const BUTTON_TEXT = "ik ga bestellen"
 
 const Cart = ({ pageHeaderText, sections, isLoading }) => {
   const {
@@ -62,20 +62,27 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
     <CartLoader>
       <LinearProgress />
     </CartLoader>
-    )
-  
-  const hasMinibox = checkout.lineItems.filter((item) => {
+  )
+
+  const hasMinibox = checkout.lineItems.filter(item => {
     return /MINIBOX/gi.test(item.title)
   })
 
   const disabledSpecialAction = () => {
-    if (hasMinibox.length === 0 && checkout.lineItems.length > 0 && parseFloat(checkout.totalPriceV2.amount) < 11.0){
+    if (
+      hasMinibox.length === 0 &&
+      checkout.lineItems.length > 0 &&
+      parseFloat(checkout.totalPriceV2.amount) < 11.0
+    ) {
       return true
     }
     if (hasMinibox.length > 0) {
       return false
     }
-    if (checkout.lineItems.length > 0 && parseFloat(checkout.totalPriceV2.amount) > 11.0) {
+    if (
+      checkout.lineItems.length > 0 &&
+      parseFloat(checkout.totalPriceV2.amount) > 11.0
+    ) {
       return false
     }
     if (checkout.lineItems.length === 0) {
@@ -88,7 +95,7 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
     : null
 
   const handleCheckout = () => {
-    window.open(checkout.webUrl, '_self')
+    window.open(checkout.webUrl, "_self")
   }
 
   const handleMoreInfo = () => {
@@ -102,7 +109,9 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
         {lineItems}
         <HR />
         <CartBottomGrid>
-          <ReactMarkdown className="check-out--service-delivery">{checkOutText}</ReactMarkdown>
+          <ReactMarkdown className="check-out--service-delivery">
+            {checkOutText}
+          </ReactMarkdown>
           <TotalAndButton>
             {totalPrice && (
               <>
@@ -115,19 +124,28 @@ const Cart = ({ pageHeaderText, sections, isLoading }) => {
                 <Shipping>
                   {/* <p className="check-out--ship-total">{SHIPPING_TEXT}</p> */}
                   <p className="check-out--ship-total">{SHIPPING_FEE_TEXT}</p>
-                  <MoreInfoButton onClick={handleMoreInfo}><p className="check-out--ship-total text-align-right"><MdInfoOutline /></p></MoreInfoButton>
-              </Shipping>
-              {/* {showShippingInfo && <small className="check-out--ship-minimum">{shippingInfoText}</small>} */}
-              {showShippingInfo && <ReactMarkdown className="check-out--ship-minimum">{shippingInfoText}</ReactMarkdown>}
-              {parseFloat(checkout.totalPriceV2.amount) < 11.00 && <small className="check-out--ship-minimum">{MINIMUM_ORDER}</small>}
+                  <MoreInfoButton onClick={handleMoreInfo}>
+                    <p className="check-out--ship-total text-align-right">
+                      <MdInfoOutline />
+                    </p>
+                  </MoreInfoButton>
+                </Shipping>
+                {/* {showShippingInfo && <small className="check-out--ship-minimum">{shippingInfoText}</small>} */}
+                {showShippingInfo && (
+                  <ReactMarkdown className="check-out--ship-minimum">
+                    {shippingInfoText}
+                  </ReactMarkdown>
+                )}
+                {parseFloat(checkout.totalPriceV2.amount) < 11.0 && (
+                  <small className="check-out--ship-minimum">
+                    {MINIMUM_ORDER}
+                  </small>
+                )}
               </>
             )}
             <OrderButton
               onClick={handleCheckout}
-              disabled={
-                loading ||
-                disabledSpecialAction()
-              }
+              disabled={loading || disabledSpecialAction()}
             >
               <span className="check-out--checkout-button">{BUTTON_TEXT}</span>
             </OrderButton>

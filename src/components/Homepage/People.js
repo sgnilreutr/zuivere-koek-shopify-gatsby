@@ -1,13 +1,13 @@
-import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import ReactMarkdown from 'react-markdown'
+import React from "react"
+import { GatsbyImage } from "gatsby-plugin-image"
+import ReactMarkdown from "react-markdown"
 import {
   ContentGrid,
   HeaderContainer,
   ImageContainer,
   TextContainer,
   TextGrid,
-} from './PeopleStyles'
+} from "./PeopleStyles"
 
 const People = ({ content }) => {
   const { name, columns } = content[0]

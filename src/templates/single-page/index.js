@@ -1,10 +1,10 @@
-import React from 'react'
-import { isEmpty } from 'lodash'
-import { ERROR_MESSAGE } from '../../utils'
-import { graphql } from 'gatsby'
-import Layout from '../../components/layout'
-import LandingPage from '../../components/Landing'
-import Hero from '../../components/Landing/Hero'
+import React from "react"
+import { isEmpty } from "lodash"
+import { ERROR_MESSAGE } from "../../utils"
+import { graphql } from "gatsby"
+import Layout from "../../components/layout"
+import LandingPage from "../../components/Landing"
+import Hero from "../../components/Landing/Hero"
 
 const PageTemplate = ({ data }) => {
   const {
@@ -26,7 +26,7 @@ const PageTemplate = ({ data }) => {
 }
 
 export const query = graphql`
-  query($id: String) {
+  query ($id: String) {
     contentfulLandingPage(id: { eq: $id }) {
       internalName
       hero {

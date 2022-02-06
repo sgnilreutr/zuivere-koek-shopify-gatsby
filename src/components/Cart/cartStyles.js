@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 export const CartWrapper = styled.div`
   background-color: hsl(351, 81%, 94%);
@@ -147,7 +147,7 @@ export const NoItemsButton = styled(Link)`
   span {
     color: #2a3174;
     text-decoration: none;
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
   }
 `
 

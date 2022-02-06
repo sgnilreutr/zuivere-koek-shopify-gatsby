@@ -1,8 +1,8 @@
-import React from 'react'
-import { ERROR_MESSAGE } from '../../utils'
-import Layout from '../../components/layout'
-import SEO from '../../components/seo'
-import Cart from '../../components/Cart'
+import React from "react"
+import { ERROR_MESSAGE } from "../../utils"
+import Layout from "../../components/layout"
+import SEO from "../../components/seo"
+import Cart from "../../components/Cart"
 // import Instagram from '../../components/SocialFeed/Instagram'
 
 const CartPage = props => {

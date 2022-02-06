@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 export const FooterWrapper = styled.footer`
   background-color: hsl(234, 47%, 31%);

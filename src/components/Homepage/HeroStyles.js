@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 export const HeroGrid = styled.div`
   display: grid;
@@ -46,6 +46,6 @@ export const GoToShopButton = styled(Link)`
   span {
     color: #f8d8d9;
     text-decoration: none;
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
   }
 `
