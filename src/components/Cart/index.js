@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react"
-import StoreContext from "~/context/StoreContext"
 import { MdInfoOutline } from "react-icons/md"
-import LinearProgress from "@material-ui/core/LinearProgress"
+import StoreContext from "~/context/StoreContext"
+import ReactMarkdown from "react-markdown"
+import LinearProgress from "@mui/material/LinearProgress"
 import SingleLine from "./single-line"
 import { formatPrice } from "../../utils"
 import {
@@ -20,7 +21,6 @@ import {
   TotalAndButton,
 } from "./cartStyles"
 import Cartnote from "./cartNote"
-import ReactMarkdown from "react-markdown"
 
 const NO_ITEMS = "Nog geen items in winkelmandje"
 const BACK_TO_SHOP = "Ga naar Shop"

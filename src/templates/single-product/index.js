@@ -16,7 +16,7 @@ const SingleProductPage = ({ data }) => {
 
   return (
     <Layout>
-      {/* {!isEmpty(data) ? (
+      {!isEmpty(data) ? (
         <>
           <ProductDetail
             product={product}
@@ -24,9 +24,9 @@ const SingleProductPage = ({ data }) => {
           />
           <Relatedproduct currentProduct={product.shopifyId} />
         </>
-      ) : ( */}
-      <div>{ERROR_MESSAGE}</div>
-      {/* )} */}
+      ) : (
+        <div>{ERROR_MESSAGE}</div>
+      )}
 
       {/* <div className="full-bleed">
         <Instagram />
@@ -35,50 +35,50 @@ const SingleProductPage = ({ data }) => {
   )
 }
 
-// export const query = graphql`
-//   query($handle: String!, $title: String!) {
-//     shopifyProduct(handle: { eq: $handle }) {
-//       id
-//       title
-//       handle
-//       status
-//       description
-//       descriptionHtml
-//       shopifyId
-//       images {
-//         gatsbyImageData
-//       }
-//       variants {
-//         id
-//         title
-//         price
-//         availableForSale
-//         shopifyId
-//         selectedOptions {
-//           name
-//           value
-//         }
-//       }
-//       priceRangeV2 {
-//         maxVariantPrice {
-//           amount
-//           currencyCode
-//         }
-//         minVariantPrice {
-//           amount
-//           currencyCode
-//         }
-//       }
-//     }
-//     desc: contentfulProductAdditionalDescription(productTitle: { eq: $title }) {
-//       productTitle
-//       description {
-//         text {
-//           text
-//         }
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  query ($handle: String!, $title: String!) {
+    shopifyProduct(handle: { eq: $handle }) {
+      id
+      title
+      handle
+      status
+      description
+      descriptionHtml
+      shopifyId
+      images {
+        gatsbyImageData
+      }
+      variants {
+        id
+        title
+        price
+        availableForSale
+        shopifyId
+        selectedOptions {
+          name
+          value
+        }
+      }
+      priceRangeV2 {
+        maxVariantPrice {
+          amount
+          currencyCode
+        }
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+    }
+    desc: contentfulProductAdditionalDescription(productTitle: { eq: $title }) {
+      productTitle
+      description {
+        text {
+          text
+        }
+      }
+    }
+  }
+`
 
 export default SingleProductPage

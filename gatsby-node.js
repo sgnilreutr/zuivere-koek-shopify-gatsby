@@ -8,8 +8,8 @@ const createPages = require("./src/create-pages/pages")
 // Create all pages.
 exports.createPages = async ({ actions, graphql }) => {
   await createFrontPage({ actions, graphql })
-  // await createShopPage( { actions, graphql } );
-  // await createSingleProductPage( { actions, graphql } );
-  // await createCartPage( { actions, graphql } );
-  // await createPages( { actions, graphql } );
+  await createShopPage( { actions, graphql } );
+  await createSingleProductPage( { actions, graphql } );
+  await createCartPage( { actions, graphql } );
+  await createPages( { actions, graphql } );
 }

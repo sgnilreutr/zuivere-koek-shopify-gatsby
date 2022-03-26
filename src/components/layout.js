@@ -2,7 +2,6 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import ContextProvider from "~/provider/ContextProvider"
-import Overlay from "./Overlay/overlay"
 import Header from "./Header/header"
 import Footer from "./Footer"
 import "./layout.css"
@@ -21,7 +20,6 @@ const Layout = ({ children }) => {
 
   return (
     <ContextProvider>
-      <Overlay />
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main>{children}</main>
       <Footer />
