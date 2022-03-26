@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
+import Badge from "@mui/material/Badge"
 import { MenuItem } from "../Menu/MenuStyles"
 import { IoCartOutline } from "react-icons/io5"
-import Badge from "@material-ui/core/Badge"
 import StoreContext from "~/context/StoreContext"
 import reduce from "lodash/reduce"
 
