@@ -6,6 +6,7 @@ import Header from "./Header/header"
 import Footer from "./Footer"
 import "./layout.css"
 import "../styles/text.css"
+import Overlay from "./Overlay/overlay"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -18,8 +19,11 @@ const Layout = ({ children }) => {
     }
   `)
 
+  console.log(process.env.GATSBY_SHOP_STATUS)
+
   return (
     <ContextProvider>
+      {process.env.GATSBY_SHOP_STATUS !== "online" && <Overlay />}
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main>{children}</main>
       <Footer />
