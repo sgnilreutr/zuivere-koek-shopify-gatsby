@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "author": "@sgnilreutR",
   "dependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "11.10.0",
+    "@emotion/styled": "11.10.0",
     "@mui/material": "^5.5.2",
     "dompurify": "^2.2.7",
     "gatsby": "^4.1.3",
